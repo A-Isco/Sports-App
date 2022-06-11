@@ -6,11 +6,11 @@ let PlayerList = () => {
   let [players, setPlayers] = useState([]);
   let [numberOfPages, setNumberOfPages] = useState(0);
   let [searchFlag, setSearchFlag] = useState(0);
-  // let [pages, setPages] = useState([]);
+  let [pages, setPages] = useState([]);
 
   const [query, setQuery] = useState("");
 
-  let pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+  // let pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
   // default data
   const fetchRetrieveData = async () => {
@@ -31,6 +31,11 @@ let PlayerList = () => {
     setNumberOfPages(res.data.totalPages);
     setPlayers(res.data.players);
   };
+
+  // useEffect number of pages
+  useEffect(() => {
+    setPages(new Array(numberOfPages).fill(null).map((v, i) => i));
+  }, [numberOfPages]);
 
   // Retrieve all
   useEffect(() => {
@@ -65,14 +70,14 @@ let PlayerList = () => {
       />
       <button
         onClick={() => {
+          if (query.length !== 0) {
+            setPageNumber(0);
+          }
           if (searchFlag === 0) {
             setSearchFlag(1);
           }
           if (searchFlag === 1) {
             setSearchFlag(0);
-          }
-          if (query.length !== 0) {
-            setPageNumber(0);
           }
         }}
       >
