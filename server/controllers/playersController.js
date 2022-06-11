@@ -31,16 +31,6 @@ const getPlayers = async (req, res) => {
     .limit(PAGE_SIZE)
     .skip(PAGE_SIZE * page);
 
-  // const keys = ["name"];
-
-  // const search = (data) => {
-  //   return data.filter((item) =>
-  //     keys.some((key) => item[key].toLowerCase().includes(q))
-  //   );
-  // };
-
-  // console.log(search(players));
-
   res.json({
     totalPages: Math.ceil(total / PAGE_SIZE),
     players,
@@ -65,9 +55,7 @@ const getPlayersBySearch = async (req, res) => {
   };
 
   const result = search(players);
-
-  const total = players.length;
-
+  const total = players.result;
   const limit = 3;
 
   const startIndex = (page - 1) * limit;

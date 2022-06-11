@@ -10,7 +10,7 @@ let PlayerList = () => {
 
   const [query, setQuery] = useState("");
 
-  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+  let pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
   // default data
   const fetchRetrieveData = async () => {
@@ -24,7 +24,9 @@ let PlayerList = () => {
   // search
   const fetchSearchData = async () => {
     const res = await axios.get(
-      `http://localhost:4000/api/players/search?q=${query}&page=${pageNumber}}`
+      `http://localhost:4000/api/players/search?q=${query}&page=${
+        pageNumber + 1
+      }}`
     );
     setNumberOfPages(res.data.totalPages);
     setPlayers(res.data.players);
@@ -70,7 +72,7 @@ let PlayerList = () => {
             setSearchFlag(0);
           }
           if (query.length !== 0) {
-            setPageNumber(1);
+            setPageNumber(0);
           }
         }}
       >
