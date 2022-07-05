@@ -1,11 +1,10 @@
 const app = require("./app");
 const connectDB = require("./db/connectDB");
-const cors=require('cors')
 require("dotenv").config();
+
 
 // Port
 const port = process.env.PORT || 3000;
-app.use(cors())
 
 const startServer = async () => {
   try {
