@@ -8,9 +8,12 @@ let PlayerList = () => {
   let [pages, setPages] = useState([]);
   let [searchFlag, setSearchFlag] = useState(0);
 
+  // Search Query
   const [query, setQuery] = useState("");
 
-  // let pages = new Array(numberOfPages).fill(null).map((v, i) => i);
+  // Filters
+  const [rate, setRate] = useState("4");
+  const [region, setRegion] = useState("");
 
   // default data
   const fetchRetrieveData = async () => {
@@ -21,7 +24,7 @@ let PlayerList = () => {
     setPlayers(res.data.players);
   };
 
-  // search
+  // ****** Search Fn *********
   const fetchSearchData = async () => {
     const res = await axios.get(
       `http://localhost:4000/api/players/search?q=${query}&page=${
@@ -32,7 +35,18 @@ let PlayerList = () => {
     setPlayers(res.data.players);
   };
 
-  // useEffect number of pages
+  // ****** Filter Fn *********
+  const fetchFilteredData = async () => {
+    const res = await axios.get(
+      `http://localhost:4000/api/players/filter?rate=${rate}&region=${region}&page=${
+        pageNumber + 1
+      }}`
+    );
+    setNumberOfPages(res.data.totalPages);
+    setPlayers(res.data.players);
+  };
+
+  // useEffect number of pages (( Pagination ))
   useEffect(() => {
     setPages(new Array(numberOfPages).fill(null).map((v, i) => i));
   }, [numberOfPages]);
@@ -68,6 +82,8 @@ let PlayerList = () => {
         placeholder="Search..."
         onChange={(e) => setQuery(e.target.value.toLowerCase())}
       />
+
+      {/* Search Button */}
       <button
         onClick={() => {
           if (query.length !== 0) {
@@ -83,6 +99,16 @@ let PlayerList = () => {
       >
         Search
       </button>
+
+      <button
+        onClick={() => {
+          setPageNumber(0);
+          fetchFilteredData();
+        }}
+      >
+        Filter
+      </button>
+
       <h3>Page Number : {pageNumber + 1}</h3>
       {
         <div>
