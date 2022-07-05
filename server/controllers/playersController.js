@@ -122,11 +122,30 @@ const getPlayersByFilter = async (req, res) => {
   }
 };
 
+const getPlayersBySort = async (req, res) => {
+  let rate = req.query.rate || false;
+  let age = req.query.age || false;
+
+  const PAGE_SIZE = 3;
+  const page = parseInt(req.query.page || "0");
+  const limit = 3;
+
+  const players = await Player.find({}).sort({ rate: -1 });
+  const total = players.length;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  res.json({
+    totalPages: Math.ceil(total / PAGE_SIZE),
+    players: players.slice(startIndex, endIndex),
+  });
+};
+
 module.exports = {
   createPlayer,
   getPlayers,
   getPlayersBySearch,
   getPlayersByFilter,
+  getPlayersBySort,
 };
 
 /* 

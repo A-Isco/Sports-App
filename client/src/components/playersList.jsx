@@ -15,6 +15,10 @@ let PlayerList = () => {
   const [rate, setRate] = useState("");
   const [region, setRegion] = useState("");
 
+  //Sort
+  const [rateSort, setRateSort] = useState("");
+  const [ageSort, setAgeSort] = useState("");
+
   // default data
   const fetchRetrieveData = async () => {
     const res = await axios.get(
@@ -39,6 +43,17 @@ let PlayerList = () => {
   const fetchFilteredData = async () => {
     const res = await axios.get(
       `http://localhost:4000/api/players/filter?rate=${rate}&region=${region}&page=${
+        pageNumber + 1
+      }}`
+    );
+    setNumberOfPages(res.data.totalPages);
+    setPlayers(res.data.players);
+  };
+
+  // ****** Sort Fn *********
+  const fetchSortedData = async () => {
+    const res = await axios.get(
+      `http://localhost:4000/api/players/sort?rateSort=${rateSort}&ageSort=${ageSort}&page=${
         pageNumber + 1
       }}`
     );
@@ -100,6 +115,7 @@ let PlayerList = () => {
         Search
       </button>
 
+      {/* Filter Button */}
       <button
         onClick={() => {
           setPageNumber(0);
@@ -137,6 +153,16 @@ let PlayerList = () => {
         <option value="roma">Roma</option>
         <option value="madrid">Madrid</option>
       </select>
+
+      {/* Sort Button */}
+      <button
+        onClick={() => {
+          setPageNumber(0);
+          fetchSortedData();
+        }}
+      >
+        Sort
+      </button>
 
       <h3>Page Number : {pageNumber + 1}</h3>
       {
