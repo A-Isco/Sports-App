@@ -55,7 +55,8 @@ const getPlayersBySearch = async (req, res) => {
   };
 
   const result = search(players);
-  const total = players.result;
+  // console.log(result.length);
+  const total = result.length;
   const limit = 3;
 
   const startIndex = (page - 1) * limit;

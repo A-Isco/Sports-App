@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 let PlayerList = () => {
-  let [pageNumber, setPageNumber] = useState(0);
   let [players, setPlayers] = useState([]);
+  let [pageNumber, setPageNumber] = useState(0);
   let [numberOfPages, setNumberOfPages] = useState(0);
-  let [searchFlag, setSearchFlag] = useState(0);
   let [pages, setPages] = useState([]);
+  let [searchFlag, setSearchFlag] = useState(0);
 
   const [query, setQuery] = useState("");
 
