@@ -8,6 +8,8 @@ const createPlayer = async (req, res) => {
       name: req.body.name,
       gender: req.body.gender,
       age: req.body.age,
+      rate: req.body.rate,
+      region: req.body.region,
     });
 
     await player.save();
@@ -30,16 +32,6 @@ const getPlayers = async (req, res) => {
   const players = await Player.find()
     .limit(PAGE_SIZE)
     .skip(PAGE_SIZE * page);
-
-  // const keys = ["name"];
-
-  // const search = (data) => {
-  //   return data.filter((item) =>
-  //     keys.some((key) => item[key].toLowerCase().includes(q))
-  //   );
-  // };
-
-  // console.log(search(players));
 
   res.json({
     totalPages: Math.ceil(total / PAGE_SIZE),
@@ -65,9 +57,8 @@ const getPlayersBySearch = async (req, res) => {
   };
 
   const result = search(players);
-
-  const total = players.length;
-
+  // console.log(result.length);
+  const total = result.length;
   const limit = 3;
 
   const startIndex = (page - 1) * limit;
@@ -79,7 +70,83 @@ const getPlayersBySearch = async (req, res) => {
   });
 };
 
-module.exports = { createPlayer, getPlayers, getPlayersBySearch };
+// ******** Filter ***********
+const getPlayersByFilter = async (req, res) => {
+  let rate = req.query.rate || false;
+  let region = req.query.region || false;
+
+  const PAGE_SIZE = 3;
+  const page = parseInt(req.query.page || "0");
+  const limit = 3;
+
+  // filter rate
+  if (rate && region == false) {
+    const players = await Player.find({ rate: rate });
+    const total = players.length;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    res.json({
+      totalPages: Math.ceil(total / PAGE_SIZE),
+      players: players.slice(startIndex, endIndex),
+    });
+  }
+
+  // filter region
+  if (region && rate == false) {
+    const players = await Player.find({ region: region });
+    const total = players.length;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    res.json({
+      totalPages: Math.ceil(total / PAGE_SIZE),
+      players: players.slice(startIndex, endIndex),
+    });
+  }
+
+  // rate && region
+  if (region && rate) {
+    const players = await Player.find({ region: region, rate: rate });
+    const total = players.length;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    res.json({
+      totalPages: Math.ceil(total / PAGE_SIZE),
+      players: players.slice(startIndex, endIndex),
+    });
+  }
+};
+
+const getPlayersBySort = async (req, res) => {
+  let rate = req.query.rate || false;
+  let age = req.query.age || false;
+
+  const PAGE_SIZE = 3;
+  const page = parseInt(req.query.page || "0");
+  const limit = 3;
+
+  const players = await Player.find({}).sort({ rate: -1 });
+  const total = players.length;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  res.json({
+    totalPages: Math.ceil(total / PAGE_SIZE),
+    players: players.slice(startIndex, endIndex),
+  });
+};
+
+module.exports = {
+  createPlayer,
+  getPlayers,
+  getPlayersBySearch,
+  getPlayersByFilter,
+  getPlayersBySort,
+};
 
 /* 
    => Create Player 
