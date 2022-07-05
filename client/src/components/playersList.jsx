@@ -12,7 +12,7 @@ let PlayerList = () => {
   const [query, setQuery] = useState("");
 
   // Filters
-  const [rate, setRate] = useState("4");
+  const [rate, setRate] = useState("");
   const [region, setRegion] = useState("");
 
   // default data
@@ -108,6 +108,35 @@ let PlayerList = () => {
       >
         Filter
       </button>
+
+      {/* filter rate drop menu */}
+      <select
+        name="rate-filter"
+        id="rate-filter"
+        onChange={(e) => setRate(e.target.value)}
+      >
+        <option selected value="">
+          none
+        </option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      {/* filter region drop menu */}
+      <select
+        name="region-filter"
+        id="region-filter"
+        onChange={(e) => setRegion(e.target.value)}
+      >
+        <option selected value="">
+          none
+        </option>
+        <option value="roma">Roma</option>
+        <option value="madrid">Madrid</option>
+      </select>
 
       <h3>Page Number : {pageNumber + 1}</h3>
       {
