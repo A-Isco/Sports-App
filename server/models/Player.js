@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const {string} = require("joi");
 
 const PlayerSchema = new mongoose.Schema({
   name: {
@@ -19,15 +20,20 @@ const PlayerSchema = new mongoose.Schema({
   nationalID: {
     type: String,
   },
-  rate: {
-    type: String,
-  },
   region: {
     type: String,
   },
   sports: {
     type: [String],
   },
+  address: {
+    type: String,
+  },
+  img:
+      {
+        data: Buffer,
+        contentType: String
+      }
 });
 
 module.exports = mongoose.model("Player", PlayerSchema);

@@ -1,5 +1,6 @@
 const Player = require("../models/Player");
 
+
 // Create Player
 const createPlayer = async (req, res) => {
   try {
@@ -78,16 +79,28 @@ const getPlayersBySearch = async (req, res) => {
     players: result.slice(startIndex, endIndex),
   });
 };
+//get 1 player
 
-module.exports = { createPlayer, getPlayers, getPlayersBySearch };
+const getPlayer = async (req, res) => {
+  const playerId = req.params.id;
+  const playerid=await Player.findById(req.params.id)
+  res.send(playerid);
 
-/* 
-   => Create Player 
-   => Get All Players (sport) 
+};
+const updatePlayer=async (req,res)=>{
+  const player= await Player.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true})
+  res.send(req.body);
+};
+
+module.exports = { createPlayer, getPlayers, getPlayersBySearch,getPlayer,updatePlayer };
+
+/*
+   => Create Player
+   => Get All Players (sport)
       " To retrieve players and display them depending on sport type "
-   => Get Player (:id) 
+   => Get Player (:id)
       " To get player details viewed "
-   => Edit Player (:id) 
+   => Edit Player (:id)
       " To update player data "
 
 */

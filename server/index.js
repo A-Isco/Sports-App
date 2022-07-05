@@ -3,11 +3,12 @@ const connectDB = require("./db/connectDB");
 require("dotenv").config();
 
 // Port
-const port = process.env.PORT || 4000;
+//const port = process.env.PORT || 4000;
+const port=4000;
 
 const startServer = async () => {
   try {
-    await connectDB(process.env.MONGO_URI);
+    //await connectDB(process.env.MONGO_URI);
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
