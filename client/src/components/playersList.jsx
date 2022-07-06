@@ -12,8 +12,10 @@ let PlayerList = () => {
   const [query, setQuery] = useState("");
 
   // Filters
-  const [rate, setRate] = useState("");
+  // const [rate, setRate] = useState("");
   const [region, setRegion] = useState("");
+  const [sortAttribute, setSortAttribute] = useState("");
+  const [sortWay, setSortWay] = useState("");
 
   //Sort
   const [rateSort, setRateSort] = useState("");
@@ -42,7 +44,7 @@ let PlayerList = () => {
   // ****** Filter Fn *********
   const fetchFilteredData = async () => {
     const res = await axios.get(
-      `http://localhost:4000/api/players/filter?rate=${rate}&region=${region}&page=${
+      `http://localhost:4000/api/players/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
         pageNumber + 1
       }}`
     );
@@ -118,30 +120,20 @@ let PlayerList = () => {
       {/* Filter Button */}
       <button
         onClick={() => {
-          setPageNumber(0);
-          fetchFilteredData();
+          if (region == "" && sortAttribute == "" && sortWay == "") {
+            console.log("works none");
+            setPageNumber(0);
+            fetchRetrieveData();
+          } else {
+            setPageNumber(0);
+            fetchFilteredData();
+          }
         }}
       >
         Filter
       </button>
 
-      {/* filter rate drop menu */}
-      <select
-        name="rate-filter"
-        id="rate-filter"
-        onChange={(e) => setRate(e.target.value)}
-      >
-        <option selected value="">
-          none
-        </option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-
-      {/* filter region drop menu */}
+      {/*  region drop menu */}
       <select
         name="region-filter"
         id="region-filter"
@@ -154,15 +146,31 @@ let PlayerList = () => {
         <option value="madrid">Madrid</option>
       </select>
 
-      {/* Sort Button */}
-      <button
-        onClick={() => {
-          setPageNumber(0);
-          fetchSortedData();
-        }}
+      {/*   sortAttribute drop menu */}
+      <select
+        name="sortAttribute"
+        id="sortAttribute"
+        onChange={(e) => setSortAttribute(e.target.value)}
       >
-        Sort
-      </button>
+        <option selected value="">
+          none
+        </option>
+        <option value="rate">rate</option>
+        <option value="age">age</option>
+      </select>
+
+      {/*   sortWay drop menu */}
+      <select
+        name="sortAttribute"
+        id="sortAttribute"
+        onChange={(e) => setSortWay(e.target.value)}
+      >
+        <option selected value="">
+          none
+        </option>
+        <option value="asc">asc</option>
+        <option value="desc">desc</option>
+      </select>
 
       <h3>Page Number : {pageNumber + 1}</h3>
       {
