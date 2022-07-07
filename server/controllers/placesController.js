@@ -286,11 +286,19 @@ const getPlacesByFilter = async (req, res) => {
     }
 };
 
+const getPlaceById = async (req, res) => {
+    const placeId = req.params.id;
+    const place=await Place.findById(placeId)
+    res.send(place);
+
+};
+
 module.exports = {
     createPlace,
     getPlaces,
     getPlacesBySearch,
     getPlacesByFilter,
+    getPlaceById
 };
 
 /*
