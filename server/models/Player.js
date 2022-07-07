@@ -14,12 +14,9 @@ const PlayerSchema = new mongoose.Schema({
     required: true,
   },
   rate: {
-    type: String,
+    type: Number,
   },
   nationalID: {
-    type: String,
-  },
-  rate: {
     type: String,
   },
   region: {
