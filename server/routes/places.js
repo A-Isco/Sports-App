@@ -9,9 +9,9 @@ const {
     getPlacesBySort,
 } = require("../controllers/placesController");
 
-router.route("/").post(createPlace).get(getPlaces);
-router.route("/search").get(getPlacesBySearch);
-router.route("/filter").get(getPlacesByFilter);
+router.route("/:sport").post(createPlace).get(getPlaces);
+router.route("/:sport/search").get(getPlacesBySearch);
+router.route("/:sport/filter").get(getPlacesByFilter);
 
 module.exports = router;
 
