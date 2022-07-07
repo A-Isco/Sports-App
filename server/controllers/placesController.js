@@ -294,12 +294,21 @@ const getPlaceById = async (req, res) => {
 
 };
 
+const updatePlace = async (req, res) => {
+    const place = await Place.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    })
+    res.send(req.body);
+};
+
 module.exports = {
     createPlace,
     getPlaces,
     getPlacesBySearch,
     getPlacesByFilter,
-    getPlaceById
+    getPlaceById,
+    updatePlace
 };
 
 /*

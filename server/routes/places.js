@@ -6,14 +6,17 @@ const {
     getPlaces,
     getPlacesBySearch,
     getPlacesByFilter,
-    getPlacesBySort,
-    getPlaceById
+   // getPlacesBySort,
+    getPlaceById,
+    updatePlace
 } = require("../controllers/placesController");
 
 router.route("/").post(createPlace).get(getPlaces);
 router.route("/:sport/search").get(getPlacesBySearch);
 router.route("/:sport/filter").get(getPlacesByFilter);
 router.route("/:sport/:id").get(getPlaceById);
+router.route("/:sport/:id/update").put(updatePlace);
+
 
 module.exports = router;
 
