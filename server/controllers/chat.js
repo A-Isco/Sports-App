@@ -24,9 +24,10 @@ module.exports={
      async createContact(req,res,next){
         try {
             const chat= await Chat.create({user1:req.body.player1,user2:req.body.player2});
-            return res.json({ status: true, chat });
+            return res.json({ status: true, chat },201);
       } catch (ex) {
              next(ex);
+             return res.json({ status: false },505);
       }
 
      }

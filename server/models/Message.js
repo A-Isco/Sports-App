@@ -7,17 +7,17 @@ const MessageSchema = mongoose.Schema(
        required: true 
     },
     from:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         ref: "Player",
         required: true,
     },
     to:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         ref: "Player",
         required: true,
     },
     chat:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.String,
         ref: "Chat",
         required: true,
     }
