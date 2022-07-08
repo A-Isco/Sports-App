@@ -24,6 +24,16 @@ const PlaceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+   profile: {
+        type: String,
+    },
+    address: {
+        type: String,
+    },
+    images:{
+        type:Array,
+    }
+
 });
 
 module.exports = mongoose.model("Place", PlaceSchema);
