@@ -4,7 +4,6 @@ const Message = require("../models/message");
 module.exports={
     async  getMessages(req,res,next){
         let messages= await Message.find({chat:req.params.id}) 
-        console.log(messages)   
         return res.json(messages);
     },
     

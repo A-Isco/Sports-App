@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from "styled-components"
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
+import { io } from "socket.io-client";
 import axios from "axios";
 
 let ChatComponent=()=>{
-
+    let socket = useRef();
     let [contacts, setContacts] = useState([]);
     let [currentChat, setCurrentChat] = useState([]);
+    let [currentContact, setCurrenContact] = useState();
+    let [sendedMessage, setMessage] = useState('');
+
+   
 
     useEffect(()=>{//Fetch API
       let id=String(sessionStorage.getItem('id'))
@@ -17,9 +22,26 @@ let ChatComponent=()=>{
                 })
                 .catch()
                 
+
+                  socket.current = io('http://localhost:8000');
+                  socket.current.emit("add-user", id);
+                  
+                
     },[]);
-    function getChatMessages(chat_id){
-      fetch( `http://localhost:8000/api/v1/message/${chat_id}`)
+
+    useEffect(() => {
+      if (socket.current) {
+        socket.current.on("msg-recieve", (msg) => {
+          const msgs = [...currentChat];
+          msgs.push({ fromSelf: true,...msg });
+          setCurrentChat(msgs);
+        }); 
+      }
+      
+    }, [currentChat]);
+    function getChatMessages(item){
+      setCurrenContact(item)
+      fetch( `http://localhost:8000/api/v1/message/${item.chat}`)
       .then((response)=>{return response.json()})
       .then((data)=>{
         setCurrentChat(data)
@@ -28,10 +50,35 @@ let ChatComponent=()=>{
       
     }
 
-    let sendMessage=()=>{
+    let sendMessage=async()=>{
+      if(typeof currentContact != "undefined" && sendedMessage != ''){
+            let id=String(sessionStorage.getItem('id'))
+            let messageToBeSend={
+              message:sendedMessage,
+              from:id,
+              to:currentContact.player._id,
+              chat:currentContact.chat
+            }
+          
+            
+            const res = await axios.post(
+              `http://localhost:8000/api/v1/message/`,messageToBeSend
+            );
+            if(res.data.status==true){ 
+              socket.current.emit("send-msg",res.data.message );
+              currentChat.push(res.data.message)
+              setCurrentChat(currentChat)
+              setMessage('')
+           
+
+
+            }
+           
+          }
 
     }
- 
+
+
     let chatPop= ()=>{
         var popup = document.getElementById("myPopup");
         if(popup.className=='container') {
@@ -52,7 +99,7 @@ let ChatComponent=()=>{
                   <div className="contacts">
                                 {
                           contacts.map((item) => (
-                            <div className='contact' onClick={()=>{getChatMessages(item.chat)}} key={item.chat} >
+                            <div className='contact' onClick={()=>{getChatMessages(item)}} key={item.chat} >
                             <h1  >{item.player.name}</h1>
 
                           </div>
@@ -62,27 +109,24 @@ let ChatComponent=()=>{
                   <div className='chatContent'>
                             <div className='messages'>
                                         {
-                                      currentChat.map((item) => 
-                                      {
-                                        let id=String(sessionStorage.getItem('id'))
-                                        let msgType
-                                        if(item.from==id) msgType='yours'
-                                        else msgType='notYours'
-                                        return (  <div className={msgType} key={item._id} >
-                                                <h5  >{item.message}</h5>
-                                                
-                                                </div>
-                                                
-                                      )
-                                      }
+                                          currentChat.map((item) => 
+                                          {
+                                            let id=String(sessionStorage.getItem('id'))
+                                            let msgType
+                                            if(item.from==id) msgType='yours'
+                                            else msgType='notYours'
+                                            return (  <div className={msgType} key={item._id} >
+                                                    <h5  >{item.message}</h5>
+                                                    
+                                                    </div>
+                                                    
+                                          )
+                                          }
                                     )}
-                                    
-                                    
-                                                        
-                              
+        
                     </div>
                             <div className='sendTools'>
-                              <input  className='inputsend' type='text'/>
+                              <input   onChange={(e)=>{setMessage(e.target.value)}} value={sendedMessage} className='inputsend' type='text'/>
                               <button onClick={()=>{sendMessage()}}>send</button>
                             </div>
               </div>
@@ -226,7 +270,7 @@ const Container = styled.div`
     }
   }
 .messages{
-  padding: 1rem 2rem;
+     padding: 1rem 0rem  7rem 0rem; 
     display: flex;
     flex-direction: column;
     gap: 1rem;
