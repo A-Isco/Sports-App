@@ -1,27 +1,28 @@
 const Place = require("../models/Place");
 
-// Create Player
+//*********************** Create Place ***********************
 const createPlace = async (req, res) => {
-    // try {
-    //     // Create a new Player
-    //     const player = new Player({
-    //         name: req.body.name,
-    //         gender: req.body.gender,
-    //         age: req.body.age,
-    //         rate: req.body.rate,
-    //         region: req.body.region,
-    //     });
-    //
-    //     await player.save();
-    //     res.status(200).json({
-    //         message: `New Player has been Created`,
-    //     });
-    // } catch (error) {
-    //     res.status(500).send(error.message);
-    // }
+    try {
+        // Create a new Place
+        const place = new Place({
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            rate: req.body.rate,
+            region: req.body.region,
+            sport:req.body.sport
+        });
+    
+        await place.save();
+        res.status(200).json({
+            message: `New Place has been Created`,
+        });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 };
 
-// *********************** Get Players ***********************
+//*********************** Get Places ***********************
 const getPlaces = async (req, res) => {
     let sport = req.params.sport;
     console.log(sport)
@@ -293,12 +294,21 @@ const getPlaceById = async (req, res) => {
 
 };
 
+const updatePlace = async (req, res) => {
+    const place = await Place.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    })
+    res.send(req.body);
+};
+
 module.exports = {
     createPlace,
     getPlaces,
     getPlacesBySearch,
     getPlacesByFilter,
-    getPlaceById
+    getPlaceById,
+    updatePlace
 };
 
 /*

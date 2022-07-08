@@ -18,9 +18,11 @@ const PlaceSchema = new mongoose.Schema({
     },
     region: {
         type: String,
+        required: true
     },
     sport: {
         type: String,
+        required: true
     },
    profile: {
         type: String,
