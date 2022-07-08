@@ -29,7 +29,7 @@ const getPlaces = async (req, res) => {
 
     const PAGE_SIZE = 3;
     const page = parseInt(req.query.page || "0");
-    const total = await Place.countDocuments({});
+    const total = await Place.countDocuments({sport:sport});
 
     const places = await Place.find({ sport: sport })
         .limit(PAGE_SIZE)
@@ -80,9 +80,9 @@ const getPlacesByFilter = async (req, res) => {
     let sortAttribute = req.query.sortAttribute;
     let sortWay = req.query.sortWay;
 
-    const PAGE_SIZE = 3;
+    const PAGE_SIZE = 6;
     const page = parseInt(req.query.page || "0");
-    const limit = 3;
+    const limit = 6;
 
     // Region Only
     if (region && sortAttribute == false && sortWay == false) {
