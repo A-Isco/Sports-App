@@ -3,6 +3,7 @@ import PlayersList from "./components/playersList";
 import PlacesList from "./components/placesList";
 import {Route, Router, Routes} from "react-router";
 import {BrowserRouter} from "react-router-dom";
+import PlaceDetails from "./components/placeDetails";
 
 export default function App() {
     return (
@@ -12,6 +13,7 @@ export default function App() {
             {/*<PlayersList />*/}
 
                     <Route path="/" element={ <PlacesList/> } />
+                    <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
                 </Routes>
             </BrowserRouter>
         </div>

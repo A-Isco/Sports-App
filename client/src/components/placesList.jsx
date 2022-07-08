@@ -55,7 +55,7 @@ let PlaceList = () => {
             }}`
         );
         setNumberOfPages(res.data.totalPages);
-        setPlaces(res.data.places);
+        setPlaces([].concat(res.data.places));
     };
 
     // ****** Sort Fn *********
@@ -200,7 +200,7 @@ let PlaceList = () => {
                     <div className="d-flex flex-wrap justify-content-around
                      ">
                         {places.map((place) => {
-                            return <PlaceCard  place={place} />;
+                            return <PlaceCard  key={place._id} place={place} />;
                         })}
                     </div>
 

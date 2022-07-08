@@ -76,9 +76,7 @@ let PlaceCard = ({ place }) => {
                     <p>{` ${place.address}`}</p>
                     <p>{` ${place.rate}`}</p>
 
-<p >
-
-
+<div className="d-flex justify-content-center" >
 
                     <ReactStars
                         count={5}
@@ -90,10 +88,10 @@ let PlaceCard = ({ place }) => {
                         activeColor="#ffd700"
 
                     />
-</p>
+</div>
                     <h6>{` ${place.price} LE/h`}</h6>
 
-                    <Link to="#"> show more</Link>
+                    <Link to={`/football/places/${place._id}`}> show more</Link>
 
 
                     {/*<NavLink*/}
