@@ -34,6 +34,7 @@ let PlaceList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces(res.data.places);
+        console.log("1")
     };
 
     // ****** Search Fn *********
@@ -45,6 +46,7 @@ let PlaceList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces(res.data.places);
+        console.log("2")
     };
 
     // ****** Filter Fn *********
@@ -56,6 +58,7 @@ let PlaceList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces([].concat(res.data.places));
+        console.log("3")
     };
 
     // ****** Sort Fn *********
@@ -77,14 +80,19 @@ let PlaceList = () => {
 
     // Retrieve all
     useEffect(() => {
-        if (query.length === 0) {
+        if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
         }
+        else if(sortAttribute.length===0|| region.length===0)
+        {
+            fetchFilteredData();
+        }
 
-    }, [pageNumber, query]);
+    }, [pageNumber, query])
 
     // Search
     useEffect(() => {
+
         if (query.length !== 0) {
             fetchSearchData();
         }
@@ -96,6 +104,7 @@ let PlaceList = () => {
     };
     const gotoNext = () => {
         setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+        console.log(sortAttribute)
     };
     const handleKeyDown=(e)=>
     { if(e.key==="Enter")

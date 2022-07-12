@@ -81,9 +81,9 @@ const getPlacesByFilter = async (req, res) => {
     let sortAttribute = req.query.sortAttribute;
     let sortWay = req.query.sortWay;
 
-    const PAGE_SIZE = 6;
+    const PAGE_SIZE = 3;
     const page = parseInt(req.query.page || "0");
-    const limit = 6;
+    const limit = 3;
 
     // Region Only
     if (region && sortAttribute == false && sortWay == false) {
@@ -317,7 +317,7 @@ const createProductReview = async (req, res) => {
 
     place.numReviews = place.reviews.length
 
-    place.rate = place.reviews.reduce((acc, item) => item.rating + acc, 0) / place.numReviews
+    place.rate = (place.reviews.reduce((acc, item) => item.rating + acc, 0) / place.numReviews).toFixed(1)
     await place.save()
     res.status(201).json({ message: 'Review added' })
 
