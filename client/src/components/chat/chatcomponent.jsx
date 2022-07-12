@@ -39,6 +39,7 @@ let ChatComponent=()=>{
       }
       
     }, [currentChat]);
+    
     function getChatMessages(item){
       setCurrenContact(item)
       fetch( `http://localhost:8000/api/v1/message/${item.chat}`)
