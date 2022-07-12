@@ -62,16 +62,7 @@ let PlaceList = () => {
         console.log("3")
     };
 
-    // ****** Sort Fn *********
-    // const fetchSortedData = async () => {
-    //     const res = await axios.get(
-    //         `http://localhost:4000/api/players/sort?rateSort=${rateSort}&ageSort=${ageSort}&page=${
-    //             pageNumber + 1
-    //         }}`
-    //     );
-    //     setNumberOfPages(res.data.totalPages);
-    //     setPlayers(res.data.players);
-    // };
+
 
     // useEffect number of pages (( Pagination ))
     useEffect(() => {

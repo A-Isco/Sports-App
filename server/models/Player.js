@@ -34,9 +34,9 @@ const PlayerSchema = new mongoose.Schema({
   sports: {
     type: [String],
   },
-  profile_image:{
-    type:String
-  }
+  image: {
+   type: String,
+  },
 });
 
 module.exports = mongoose.model("Player", PlayerSchema);
