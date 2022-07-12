@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import logo from '../assets/images/logo.jpeg';
-import {NavLink} from "react-router-dom"; // Tell webpack this JS file uses this image
+import {NavLink} from "react-router-dom";
 
 
-let PlayerCard = () => {
+let PlayerProfile = () => {
     let [Card, setCard] = useState("Player Card");
     let [Sports,setSports]=useState(["football","swimming"]);
     const [Player, setPlayer] = useState({
@@ -13,7 +13,7 @@ let PlayerCard = () => {
         age: 0,
         address: "",
         img:"",
-        region:"",
+        regions:"",
         gender:"",
         rate:"",
         nationalID:""
@@ -32,13 +32,13 @@ let PlayerCard = () => {
     };
     const button= {
         backgroundColor: "blue", /* Green */
-        border: "none",
+        // border: "none",
         color: "white",
         textAlign: "center",
         textDecoration: "none",
         // display: "inline-block",
-        fontSize: "16px",
-        height:"15px",
+        fontSize: "10px",
+        height:"20px",
         marginLeft:"20px"
 
     };
@@ -56,7 +56,8 @@ let PlayerCard = () => {
         let id ="62c24c0c0d6372c368cb51ac";
 
         const headers = {
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data"
             //Authorization: "token " + token,
         };
         axios
@@ -69,53 +70,43 @@ let PlayerCard = () => {
                 setPlayer(res.data);
 
             });
+        axios
+            .get(" http://localhost:4000/api/players/card/" + id , {
+                headers,
+            })
+            .then((res) => {
+                console.log(res.data);
+
+                setPlayer(res.data);
+
+            });
 
     }, []);
-
-
-
-    // Return Component
     return (
-
-        <div>
-
-            <h1>{Card}</h1>
-            <div>
-
+        <div className="w-50 mx-5">
+            <h1 className="card-header ">{Card}</h1>
+            <div className="card-body">
                 <span style={mystyle}>
-                    <img style={avatar} src={process.env.PUBLIC_URL+Player.img} />
+                    <img style={avatar} src ={`http://localhost:4000/${Player.img}`}/>
                     <div>
-                <div style={margin}>{Player.name}</div>
-                <div style={margin}>{Player.address}</div>
-                <div style={margin}>{Player.age}</div>
+                <div className="text-primary" style={margin}> {Player.name}</div>
+                <div className="text-primary" style={margin}> {Player.nationalID}</div>
+                <div className="text-primary" style={margin}> {Player.age}</div>
+                        <div className="text-primary" style={margin}> {Player.region}</div>
+                        <div>{Player.region}</div>
                     </div>
                 <NavLink className="btn-primary align-center" type="button" to={`/card/${Player._id}/update`} style={button}>
                           Edit Profile
                 </NavLink>
                 </span>
-
+                <div>
+                    {Player.sports.map((sport,index)=>(
+                        <div className="btn btn-primary mx-2">{sport}</div>
+                    ))}
+                </div>
             </div>
-
-            <p>Sports</p>
-            <table>
-                <tr>
-                    <th> </th>
-
-                </tr>
-
-                {Player.sports.map((sport,index)=>(
-                <tr data-index={index}>
-                    <td>{sport}</td>
-                </tr>
-
-
-            ))}
-            </table>
-
-
-
         </div>
     );
 };
 
-export default PlayerCard;
+export default PlayerProfile;

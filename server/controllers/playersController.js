@@ -1,5 +1,10 @@
 const Player = require("../models/Player");
 
+const {schema}=require("../middleware/PlayerAuth");
+const multer  = require('multer')
+
+
+
 
 // Create Player
 const createPlayer = async (req, res) => {
@@ -88,9 +93,68 @@ const getPlayer = async (req, res) => {
 
 };
 const updatePlayer=async (req,res)=>{
-  const player= await Player.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true})
-  res.send(req.body);
+
+
+
+
+
+
+
+
+
+  console.log("up")
+  console.log(req.file)
+  console.log(req.params.id)
+  console.log(req.body)
+  console.log(req.body)
+  try {
+    //const value =  playerauth.validate(req.body);
+    const value=schema.validate(req.body);
+    //console.log("val")
+   // console.log(req.file.mimetype)
+   //  const splitted=req.file.mimetype.split("/");
+   //  console.log("llllllllllllllllllllllllllllllllllllllll");
+   //  console.log(splitted[1]);
+    const my_sports=req.body.sports;
+    console.log("sports");
+    console.log(my_sports)
+    sports_arr=my_sports.split(',');
+    //console.log("ibsgjfnmdc mcmndmndmncdfdc,dnfkldjlkfjlkdfmf");
+
+
+
+    console.log("storage")
+    //console.log(storage);
+
+
+
+
+    if(!value.error){
+    const player1= await Player.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true});
+    if (req.file){
+      const inserted_image=req.file.path;
+      console.log(inserted_image)
+
+
+      const playerimg=await Player.findByIdAndUpdate(req.params.id,{img:inserted_image},{new:true,runValidators:true});
+
+    }
+      const playersports=await Player.findByIdAndUpdate(req.params.id,{sports:sports_arr},{new:true,runValidators:true});
+      res.send(playersports);
+    }else {
+   res.status(400);
+  res.send(value);
+    }
+  }
+  catch (err) {
+    res.send(err)
+    console.log(err)
+  }
 };
+// app.post('/profile', upload.single('img'), function (req, res, next) {
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+// })
 
 module.exports = { createPlayer, getPlayers, getPlayersBySearch,getPlayer,updatePlayer };
 

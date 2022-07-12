@@ -5,8 +5,7 @@ import axios from "axios";
 import Select from 'react-select';
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useNavigate } from "react-router-dom";
-
+import PlayerProfile from "./playerProfile";
 
 
 const validationSchema = Yup.object({
@@ -14,21 +13,23 @@ const validationSchema = Yup.object({
     age: Yup.number().required(),
 });
 
-const initialValues = {
-    name: "",
-    age: 0,
 
-};
 
 const onSubmit = (values) => {
     alert(JSON.stringify(values, null, 2));
 };
-let EditProfile = () => {
-    let navigate = useNavigate();
-
+let TestProfile = () => {
     //let regions=[];
+    const [Sports,setSports] = useState({
+        _id: "",
+        name: ""
+    });
 
 
+    const [Region,setRegion] = useState({
+        _id: "",
+        name: ""
+    });
     const [Player, setPlayer] = useState({
         sports: [],
         name: "",
@@ -41,14 +42,11 @@ let EditProfile = () => {
         nationalID:""
 
     });
-    const [Region,setRegion] = useState({
-        _id: "",
-        name: Player.region
-    });
-    const [Sports,setSports] = useState({
-        _id: "",
-        name: Player.sports
-    });
+    const initialValues = {
+        name: Player.name,
+        age: Player.age,
+
+    };
 
     useEffect(() => {
         //let token = window.localStorage.getItem("token");
@@ -67,8 +65,7 @@ let EditProfile = () => {
             .then((res) => {
                 console.log(res.data.name);
                 setPlayer(res.data);
-                setRegion(res.data.region)
-                setSports(res.data.sports)
+
             });
         axios
             .get(" http://localhost:4000/api/sports/"  , {
@@ -112,17 +109,12 @@ let EditProfile = () => {
     const [file, setFile] = useState();
     const [selectedOption, setSelectedOption] = useState(null);
     const [value,setValue]=useState("");
-    const [errors, SetErrors] = useState("");
-
 
 
 
     const handleChange = (event) => {
         console.log(event.target.name)
-        console.log(event.label)
-        if(event.target.name=="sports"){
-
-        }
+        console.log(event.target.value)
         if(event.target.name=="nationalID"){
             console.log("nationalID")
             const regex = /^[0-9]\d*$/;
@@ -133,6 +125,20 @@ let EditProfile = () => {
                 const sum=0;
                 if (id.length != 13) return setValue(id.length);
                 else return setValue("");
+                // STEP 1 - get only first 12 digits
+                for (i = 0, sum = 0; i < 12; i++) {
+                    // STEP 2 - multiply each digit with each index (reverse)
+                    // STEP 3 - sum multiply value together
+                    sum += parseInt(id.charAt(i)) * (13 - i);
+                }
+                // STEP 4 - mod sum with 11
+                let mod = sum % 11;
+                // STEP 5 - subtract 11 with mod, then mod 10 to get unit
+                let check = (11 - mod) % 10;
+                // STEP 6 - if check is match the digit 13th is correct
+                if (check == parseInt(id.charAt(12))) {
+                    return setValue("");
+                }
             }
         }else {
             if (event.target.name == "img") {
@@ -142,12 +148,11 @@ let EditProfile = () => {
 
                 //setPlayer({...Player, [event.target.name]: event.target.files[0]});
 
-            }else if(event.target.name=="region"){
-                Player.region=event.label
-                setPlayer(Player);
-            }
-            else{
+
+            }else{
                 setPlayer({ ...Player, [event.target.name]: event.target.value });
+
+
             }
         }
 
@@ -164,16 +169,32 @@ let EditProfile = () => {
         formData.append('sports',Player.sports)
         formData.append('gender',Player.gender)
         formData.append('age',Player.age)
+
+
+
+
+
+
+
+
+
+
         console.log("data")
         console.log(event)
         console.log("dd");
         console.log(Player);
+        // if(!renderError){
+        //     console.log("no err");
+        //
+        // }
+
+
         //setPlayer(Player)
-       // event.preventDefault();
+        // event.preventDefault();
         // let token = window.localStorage.getItem("token");
         // let id = window.localStorage.getItem("id");
         const headers = {
-             "Content-Type": "multipart/form-data",
+            "Content-Type": "multipart/form-data",
             // Authorization: "token " + token,
         };
         let id ="62c24c0c0d6372c368cb51ac";
@@ -186,10 +207,12 @@ let EditProfile = () => {
                 console.log("res")
 
                 console.log(response);
-                SetErrors({});
+                // navigate("/developer/profile")
             })
             .catch((response) => {
-                SetErrors(response.response.data.error.details[0].message);
+
+                console.log(response);
+
             });
 
         console.log(Player);
@@ -220,16 +243,47 @@ let EditProfile = () => {
             {/*    }}*/}
 
             {/*>*/}
-                {/*{({ isSubmitting }) => (*/}
-                {/*    <form>*/}
+            {/*{({ isSubmitting }) => (*/}
+            {/*    <form>*/}
 
+            <Formik
+                initialValues={initialValues}
+                validate={values => {
+                    const errors = {};
+                    if (!values.name) {
+                        errors.name = 'Required';
+                    } else if (!values.name) {
+                        errors.email = 'Required';
+                    }
+                    return errors;
+                }}
+                onSubmit={(values, { setSubmitting }) => {
 
-                <form className="mx-5"  action="http://localhost:4000/api/players/card/62c24c0c0d6372c368cb51ac" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
+                    console.log("values")
+                    console.log(values)
+
+                    setTimeout(() => {
+                        alert(JSON.stringify(values, null, 2));
+                        setSubmitting(false);
+                    }, 400);
+                }}
+            >
+                {({
+                      values,
+                      errors,
+                      touched,
+                      handleChange,
+                      handleBlur,
+                      handleSubmit,
+                      isSubmitting,
+                      /* and other goodies */
+                  }) => (
+            <form className="mx-5" onSubmit={handleSubmit} enctype="multipart/form-data">
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label htmlFor="inputName">Name</label>
                         <input name="name"
-                               value={Player.name}
+                               value={values.name}
                                type="text"
                                className="form-control"
                                id="inputName"
@@ -244,7 +298,7 @@ let EditProfile = () => {
                     <div className="form-group col-md-6">
                         <label htmlFor="inputAge">Age</label>
                         <input name="age"
-                               value={Player.age}
+                               value={values.age}
                                type="number"
                                className="form-control"
                                id="inputAge"
@@ -261,139 +315,113 @@ let EditProfile = () => {
                     <div className="form-group col-md-6">
                         <label htmlFor="inputID">nationalID</label>
                         <input
-                               name="nationalID"
-                               value={Player.nationalID}
-                               type="text"
-                               className="form-control"
-                               id="inputID"
-                               placeholder=""
-                               onChange={(e) => {
-                                   handleChange(e);
-                               }}
+                            name="nationalID"
+                            value={Player.nationalID}
+                            type="text"
+                            className="form-control"
+                            id="inputID"
+                            placeholder=""
+                            onChange={(e) => {
+                                handleChange(e);
+                            }}
                         />
                         <div>{value}</div>
                     </div>
                 </div>
                 <div className="form-group col-md-6">
-                <label className="form-label" htmlFor="customFile">Update Image</label>
-                <input
-                    type="file"
-                    className="form-control"
-                    id="customFile"
-                    name="img"
-                    onChange={(e) => {
-                        handleChange(e);
-                        console.log(e.target.value)
-                        //setFile(e.target.value);
-                    }}
-                />
+                    <label className="form-label" htmlFor="customFile">Update Image</label>
+                    <input
+                        type="file"
+                        className="form-control"
+                        id="customFile"
+                        name="img"
+                        onChange={(e) => {
+                            handleChange(e);
+                            console.log(e.target.value)
+                            //setFile(e.target.value);
+                        }}
+                    />
                 </div>
                 <div className="form-group col-md-4">
                     <label>Region</label>
-                <Select
-                    name={selectedreg}
-                    value={selectedreg}
-                    options={Region}
-                    onChange={(e)=>{setSelectedreg(e.label);
-                        Player.region=e.label
-                        setPlayer(Player)
-                        console.log(e.label)
-                        console.log(Player)
-                    }}
-                />
+                    <Select
+                        name={selectedreg}
+                        value={selectedreg}
+                        onChange={(e)=>{setSelectedreg(e.label);
+                            console.log(e.label)
+
+                        }}
+                        options={Region}
+
+                    />
                 </div>
-                    {/*<div className="form-group col-md-4">*/}
-                    {/*    <label>Regions</label>*/}
-                    {/*    <MultiSelect*/}
-                    {/*        options={Region}*/}
-                    {/*        value={selectedreg}*/}
-                    {/*        onChange={(e)=>{*/}
-                    {/*            setSelectedreg(e);*/}
-                    {/*        }}*/}
-                    {/*        labelledBy="Select"*/}
-                    {/*    />*/}
-                    {/*</div>*/}
-                    <div className="form-group col-md-4">
-                        <label>Sports</label>
-                        <MultiSelect
-                            options={Sports}
-                            value={selected}
-                            onChange={(e)=>{
-                                setSelected(e);
-                                let value=[]
-                                e.map((item)=>{
-                                    value.push(item.label);
-                                })
-                                // setPlayer(...PlayerPlayer.sports,value);
-                                console.log(value)
-                               // setPlayer((prevState) => ({ ...prevState, sports: e }));
-                                //setPlayer({[Player.sports]:value})
-                                Player.sports=value;
-                                //     item
-                                //
-                                // })
 
-                                //setPlayer((prevState) => ({ ...prevState, sports: e.label }));
-                                console.log(Player)
 
-                            }}
-                            labelledBy="Select"
-                        />
-                    </div>
+                {/*<div className="form-group col-md-4">*/}
+                {/*    <label>Regions</label>*/}
+                {/*    <MultiSelect*/}
+                {/*        options={Region}*/}
+                {/*        value={selectedreg}*/}
+                {/*        onChange={(e)=>{*/}
+                {/*            setSelectedreg(e);*/}
+                {/*        }}*/}
+                {/*        labelledBy="Select"*/}
+                {/*    />*/}
+                {/*</div>*/}
+                <div className="form-group col-md-4">
+                    <label>Sports</label>
+                    <MultiSelect
+                        options={Sports}
+                        value={selected}
+                        onChange={(e)=>{
+                            setSelected(e);
+                        }}
+                        labelledBy="Select"
+                    />
+                </div>
 
 
 
-                    <label>Gender</label>
-                    <div className="form-check">
-                        <input
-                               className="form-check-input"
-                               type="radio"
-                               name="gender"
-                               id="gender_male"
-                               value="female"
-                               onChange={(e) => {
-                                   Player.gender="female"
-                                   handleChange(e);
-                               }}
-                        />
-                            <label className="form-check-label" htmlFor="Female">
-                                Female
-                            </label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="gender"
-                            id="gender_male"
-                            value="male"
-                            onChange={(e) => {
-                                Player.gender="male"
+                <label>Gender</label>
+                <div className="form-check">
+                    <input
+                        className="form-check-input"
+                        type="radio"
+                        name="gender"
+                        id="gender_male"
+                        value="female"
+                        onChange={(e) => {
+                            Player.gender="female"
+                            handleChange(e);
+                        }}
+                    />
+                    <label className="form-check-label" htmlFor="Female">
+                        Female
+                    </label>
+                </div>
+                <div className="form-check">
+                    <input
+                        className="form-check-input"
+                        type="radio"
+                        name="gender"
+                        id="gender_male"
+                        value="male"
+                        onChange={(e) => {
+                            Player.gender="male"
 
-                                handleChange(e);
-                            }}
-                        />
-                            <label className="form-check-label" htmlFor="Male">
-                                Male
-                            </label>
-                        {/*<ErrorMessage name="gender" render={renderError} />*/}
+                            handleChange(e);
+                        }}
+                    />
+                    <label className="form-check-label" htmlFor="Male">
+                        Male
+                    </label>
+                    {/*<ErrorMessage name="gender" render={renderError} />*/}
 
-                    </div>
-                    <button className="btn btn-primary btn-block mb-2" type="submit"  >Update</button>
-                    </form>
-            <div className="mt-2 w-25 mx-auto alert alert-danger ">
-                {/*{errors.map((key) => {*/}
-
-                {/*    // let message = value.join(",");*/}
-                {/*    return (*/}
-                {/*        <div className=" w-25 mx-auto alert alert-danger">*/}
-                {/*            { key.messege}*/}
-                {/*        </div>*/}
-                {/*    );*/}
-                {/*})}*/}
-                {errors}
-
-            </div>
+                </div>
+                <button className="btn btn-primary btn-block mb-2" type="submit" disabled={isSubmitting}  >Update</button>
+            </form>
+                )}
+            </Formik>
             {/*        // )}*/}
             {/*// </Formik>*/}
         </div>
@@ -402,4 +430,4 @@ let EditProfile = () => {
 
 };
 
-export default EditProfile;
+export default TestProfile;

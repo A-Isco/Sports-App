@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/components/PlayerCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/sportsController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Region.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Sport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/sports.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/regionsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/PlayerAuth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/regions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/PlayerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/PlayerCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/connectDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/connectDB.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Region.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Region.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Sport.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Sport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
@@ -48,20 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rowan/WebstormProjects/Al-Malaab/Sports-App/client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/rowan/WebstormProjects/Al-Malaab/Sports-App/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -75,7 +77,20 @@
       <workItem from="1656930846609" duration="3602000" />
       <workItem from="1656940687005" duration="13728000" />
       <workItem from="1657020646661" duration="2129000" />
-      <workItem from="1657026409218" duration="6474000" />
+      <workItem from="1657026409218" duration="11903000" />
+      <workItem from="1657112768335" duration="3844000" />
+      <workItem from="1657147896519" duration="496000" />
+      <workItem from="1657209870236" duration="1847000" />
+      <workItem from="1657236800542" duration="1850000" />
+      <workItem from="1657281048316" duration="5119000" />
+      <workItem from="1657291126360" duration="2160000" />
+      <workItem from="1657310706591" duration="6471000" />
+      <workItem from="1657324930984" duration="3075000" />
+      <workItem from="1657535297432" duration="4912000" />
+      <workItem from="1657552072126" duration="13443000" />
+      <workItem from="1657580380351" duration="12000" />
+      <workItem from="1657581231555" duration="1795000" />
+      <workItem from="1657625525692" duration="11982000" />
     </task>
     <servers />
   </component>

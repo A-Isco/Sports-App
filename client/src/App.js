@@ -1,7 +1,8 @@
 import React from "react";
 import PlayersList from "./components/playersList";
-import PlayerCard from "./components/PlayerCard";
+import PlayerProfile from "./components/playerProfile";
 import EditProfile from "./components/EditProfile";
+import TestProfile from "./components/TestProfile";
 
 import {
     BrowserRouter as Router,
@@ -13,11 +14,16 @@ import {
 export default function App() {
   return (
 
+
+
+
         <Router>
             {/*<PlayersList />*/}
-            <PlayerCard />
+            {/*<PlayerProfile />*/}
+            {/*<TestProfile></TestProfile>*/}
 
             <Routes>
+                <Route path="/card/:id" element={<PlayerProfile/>} />
                 <Route path="/card/:id/update" element={<EditProfile/>} />
 
             </Routes>

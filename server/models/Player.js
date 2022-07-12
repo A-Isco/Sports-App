@@ -31,7 +31,6 @@ const PlayerSchema = new mongoose.Schema({
   },
   img:
       {
-        data: Buffer,
         contentType: String
       }
 });

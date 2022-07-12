@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const SportSchema = new mongoose.Schema({
+const RegionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
