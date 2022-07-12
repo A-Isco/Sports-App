@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PlaceCard from "./placeCard";
+import React from 'react'
 
 import ReactPaginate from 'react-paginate';
 
