@@ -5,6 +5,10 @@ const PlayerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  password:{
+    type:String,
+    required:true
+  },
   email:{
     type:String,
     required:true,
@@ -20,7 +24,7 @@ const PlayerSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    required: true,
+    //required: true,
   },
   rate: {
     type: Number,

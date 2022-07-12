@@ -95,7 +95,7 @@ let create_account = (e)=>{
     e.preventDefault();
     
     let user = {
-        user_name:username,
+        name:username,
         email:email,
         password:password,
         gender:gender,
@@ -107,7 +107,7 @@ let create_account = (e)=>{
     console.log(user);
     if(password===confirm_password){
 
-        axios.post("http://localhost:8000/signup",user).then((response)=>{
+        axios.post("http://localhost:4000/signup",user).then((response)=>{
             if(response.status ===200){
                 
                 console.log('3aaaaash');

@@ -15,8 +15,8 @@ import NotFound from './components/notFound';
 export default function App(){
 
   return(
+    <div className='container' >
     <BrowserRouter>
-
       <Routes>
       <Route path='/login'element={<GuestRoute component={Login}/>}/>
      <Route path='/signup' element={<GuestRoute component={Signup}/>}/>
@@ -31,7 +31,7 @@ export default function App(){
       <Route path="/chat" element={<ChatComponent/>}/>
       </Routes>
     </BrowserRouter>
-
+    </div>
   )
 
 }

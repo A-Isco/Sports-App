@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const { joiPassword } = require('joi-password');
 let user_validation = Joi.object().keys({
-    user_name:Joi.string().min(3).required(),
+    name:Joi.string().min(3).required(),
     email:Joi.string().email().required(),
     password: joiPassword
                         .string()

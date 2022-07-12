@@ -57,6 +57,7 @@ module.exports = {
         Player.find({"email":req.body.email,"password":req.body.password}).then(player=>{
             if(player !='')
             {
+                console.log(player);
                 id = {"id":player._id}
                 const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET)  
                     //{expiresIn: 100}
