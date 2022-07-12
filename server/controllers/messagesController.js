@@ -1,6 +1,6 @@
-const Chat = require("../models/chat");
-const Player = require("../models/player");
-const Message = require("../models/message");
+const Chat = require("../models/Chat");
+const Player = require("../models/Player");
+const Message = require("../models/Message");
 module.exports={
     async  getMessages(req,res,next){
         let messages= await Message.find({chat:req.params.id}) 
