@@ -28,7 +28,10 @@ const {
   getPlayers,
   getPlayersBySearch,
     getPlayer,
-  updatePlayer
+  updatePlayer,
+  getPlayersByFilter,
+
+
 
 
 } = require("../controllers/playersController");
@@ -38,5 +41,9 @@ router.route("/search").get(getPlayersBySearch);
 router.route("/card/:id").get(getPlayer);
 router.patch("/card/:id/update",upload.single('img'),updatePlayer);
 
+router.route("/filter").get(getPlayersByFilter);
+//
 
 module.exports = router;
+
+

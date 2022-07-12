@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PlaceCard from "./placeCard";
 import React from 'react'
-import PlayerCard from "./playerCard";
 
-let PlayerList = () => {
-    let [players, setPlayers] = useState([]);
+import ReactPaginate from 'react-paginate';
+
+let PlaceList = () => {
+    let [places, setPlaces] = useState([]);
     let [pageNumber, setPageNumber] = useState(0);
     let [numberOfPages, setNumberOfPages] = useState(0);
     let [pages, setPages] = useState([]);
@@ -12,6 +14,8 @@ let PlayerList = () => {
 
     // Search Query
     const [query, setQuery] = useState("");
+    const [sport, setSport] = useState("football");
+
 
     // Filters
     // const [rate, setRate] = useState("");
@@ -21,57 +25,52 @@ let PlayerList = () => {
 
     //Sort
     const [rateSort, setRateSort] = useState("");
-    const [ageSort, setAgeSort] = useState("");
+    const [priceSort, setPriceSort] = useState("");
 
     // default data
     const fetchRetrieveData = async () => {
+
         const res = await axios.get(
-            `http://localhost:4000/api/players?page=${pageNumber}`
+            `http://localhost:4000/api/places/${sport}?page=${pageNumber}`
         );
         setNumberOfPages(res.data.totalPages);
-        setPlayers(res.data.players);
-        console.log(players)
-        console.log(res)
+        setPlaces(res.data.places);
+        console.log("1")
     };
 
     // ****** Search Fn *********
     const fetchSearchData = async () => {
         const res = await axios.get(
-            `http://localhost:4000/api/players/search?q=${query}&page=${
+            `http://localhost:4000/api/places/${sport}/search?q=${query}&page=${
                 pageNumber + 1
             }}`
         );
         setNumberOfPages(res.data.totalPages);
-        setPlayers(res.data.players);
+        setPlaces(res.data.places);
+        console.log("2")
     };
 
     // ****** Filter Fn *********
     const fetchFilteredData = async () => {
         const res = await axios.get(
-            `http://localhost:4000/api/players/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
+            `http://localhost:4000/api/places/${sport}/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
                 pageNumber + 1
             }}`
         );
         setNumberOfPages(res.data.totalPages);
-        setPlayers(res.data.players);
+        setPlaces([].concat(res.data.places));
+        console.log("3")
     };
 
-    // ****** Sort Fn *********
-    const fetchSortedData = async () => {
-        const res = await axios.get(
-            `http://localhost:4000/api/players/sort?rateSort=${rateSort}&ageSort=${ageSort}&page=${
-                pageNumber + 1
-            }}`
-        );
-        setNumberOfPages(res.data.totalPages);
-        setPlayers(res.data.players);
-    };
+
 
     // useEffect number of pages (( Pagination ))
     useEffect(() => {
+
         setPages(new Array(numberOfPages).fill(null).map((v, i) => i));
     }, [numberOfPages]);
 
+    // Retrieve all
     useEffect(() => {
         if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
@@ -91,15 +90,14 @@ let PlayerList = () => {
         }
     }, [pageNumber, searchFlag]);
 
-
     // Next and Previous Functions
     const gotoPrevious = () => {
         setPageNumber(Math.max(0, pageNumber - 1));
     };
     const gotoNext = () => {
         setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+        console.log(sortAttribute)
     };
-
     const handleKeyDown=(e)=>
     { if(e.key==="Enter")
     {
@@ -112,7 +110,9 @@ let PlayerList = () => {
         if (searchFlag === 1) {
             setSearchFlag(0);
         }
-    }}
+    }
+
+    }
 
     // Return Component
     return (
@@ -122,52 +122,52 @@ let PlayerList = () => {
 
 
 
-                {/* Filter Button */}
+            {/* Filter Button */}
                 <div className="d-flex flex-wrap justify-content-around">
 
 
-                    {/*  region drop menu */}
-                    <select className="m-3"
-                            name="region-filter"
-                            id="region-filter"
-                            onChange={(e) => setRegion(e.target.value)}
-                    >
-                        <option value="" disabled selected hidden className="text-center p-3" >filter by region</option>
+            {/*  region drop menu */}
+            <select className="m-3"
+                name="region-filter"
+                id="region-filter"
+                onChange={(e) => setRegion(e.target.value)}
+            >
+                <option value="" disabled selected hidden className="text-center p-3" >filter by region</option>
 
-                        <option value="">
-                            none
-                        </option>
-                        <option value="gleem">gleem</option>
-                        <option value="sidibeshr">sidibeshr</option>
-                    </select>
+                <option value="">
+                    none
+                </option>
+                <option value="gleem">gleem</option>
+                <option value="sidibeshr">sidibeshr</option>
+            </select>
 
-                    {/*   sortAttribute drop menu */}
-                    <select className="m-3"
-                            name="sortAttribute"
-                            id="sortAttribute"
-                            onChange={(e) => setSortAttribute(e.target.value)}
-                    >
-                        <option value="" disabled selected hidden>sort by</option>
-                        <option  value="">
-                            none
-                        </option>
-                        <option value="rate">rate</option>
-                        <option value="age">age</option>
-                    </select>
+            {/*   sortAttribute drop menu */}
+            <select className="m-3"
+                name="sortAttribute"
+                id="sortAttribute"
+                onChange={(e) => setSortAttribute(e.target.value)}
+            >
+                <option value="" disabled selected hidden>sort by</option>
+                <option  value="">
+                    none
+                </option>
+                <option value="rate">rate</option>
+                <option value="price">price</option>
+            </select>
 
-                    {/*   sortWay drop menu */}
-                    <select className="m-3"
-                            name="sortAttribute"
-                            id="sortAttribute"
-                            onChange={(e) => setSortWay(e.target.value)}
-                    >
-                        <option value="" disabled selected hidden className="text-center p-3" >sort way</option>
-                        <option  value="">
-                            none
-                        </option>
-                        <option value="asc">asc</option>
-                        <option value="desc">desc</option>
-                    </select>
+            {/*   sortWay drop menu */}
+            <select className="m-3"
+                name="sortAttribute"
+                id="sortAttribute"
+                onChange={(e) => setSortWay(e.target.value)}
+            >
+                <option value="" disabled selected hidden className="text-center p-3" >sort way</option>
+                <option  value="">
+                    none
+                </option>
+                <option value="asc">asc</option>
+                <option value="desc">desc</option>
+            </select>
 
                     <button className="m-3"
                             onClick={() => {
@@ -200,8 +200,8 @@ let PlayerList = () => {
 
                     <div className="d-flex flex-wrap justify-content-around
                      ">
-                        {players.map((player) => {
-                            return <PlayerCard  key={player._id} player={player} />;
+                        {places.map((place) => {
+                            return <PlaceCard  key={place._id} place={place} />;
                         })}
                     </div>
 
@@ -238,4 +238,4 @@ let PlayerList = () => {
     );
 };
 
-export default PlayerList;
+export default PlaceList;
