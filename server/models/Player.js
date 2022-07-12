@@ -5,9 +5,18 @@ const PlayerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email:{
+    type:String,
+    required:true,
+    unique:true
+  },
   gender: {
     type: String,
     required: true,
+  },
+  birth_date:{
+    type:Date,
+    required:true
   },
   age: {
     type: Number,
@@ -25,6 +34,9 @@ const PlayerSchema = new mongoose.Schema({
   sports: {
     type: [String],
   },
+  profile_image:{
+    type:String
+  }
 });
 
 module.exports = mongoose.model("Player", PlayerSchema);
