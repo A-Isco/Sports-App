@@ -11,15 +11,15 @@ const port = process.env.PORT || 4000;
 
 const startServer = async () => {
   try {
-    console.log(process.env.MONGO_URI);
-    await connectDB(process.env.MONGO_URI);
+   // console.log(process.env.MONGO_URI);
+   // await connectDB(process.env.MONGO_URI);
     const server = app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
 const io = socket(server, {
   cors: {
     origin: "http://localhost:3000",
-    
+
     credentials: true,
   },
 });
@@ -51,7 +51,7 @@ startServer();
 // const io = socket(server, {
 //   cors: {
 //     origin: "http://localhost:3000",
-    
+
 //     credentials: true,
 //   },
 // });

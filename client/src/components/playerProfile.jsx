@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import logo from '../assets/images/logo.jpeg';
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 let PlayerProfile = () => {
@@ -83,28 +82,22 @@ let PlayerProfile = () => {
 
     }, []);
     return (
-        <div className="w-50 mx-5">
-            <h1 className="card-header ">{Card}</h1>
-            <div className="card-body">
-                <span style={mystyle}>
-                    <img style={avatar} src ={`http://localhost:4000/${Player.img}`}/>
-                    <div>
-                <div className="text-primary" style={margin}> {Player.name}</div>
-                <div className="text-primary" style={margin}> {Player.nationalID}</div>
-                <div className="text-primary" style={margin}> {Player.age}</div>
-                        <div className="text-primary" style={margin}> {Player.region}</div>
-                        <div>{Player.region}</div>
-                    </div>
-                <NavLink className="btn-primary align-center" type="button" to={`/card/${Player._id}/update`} style={button}>
-                          Edit Profile
-                </NavLink>
-                </span>
-                <div>
+        <div className="container background py-4 text-center w-25 m-5 ">
+            <div className="card card-width">
+                <div className="card-body place">
+                    <img src={`http://localhost:4000/${Player.img}`} alt={Player.name} width="300" height="250" className="m-5"/>
+                    <h4 className="card-title p-3">{` ${Player.name}`}</h4>
+                    <p>{` ${Player.nationalID}`}</p>
+                    <p>{` ${Player.age}`}</p>
+                    <p>{` ${Player.region}`}</p>
                     {Player.sports.map((sport,index)=>(
-                        <div className="btn btn-primary mx-2">{sport}</div>
+                        <p className="btn btn-primary mx-2">{sport}</p>
                     ))}
-                </div>
+                    <div>
+                        <Link className="btn btn-secondary " to={`/card/${Player._id}/update`}> show more</Link>
+                    </div>
             </div>
+        </div>
         </div>
     );
 };
