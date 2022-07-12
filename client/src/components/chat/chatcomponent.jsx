@@ -15,7 +15,7 @@ let ChatComponent=()=>{
 
     useEffect(()=>{//Fetch API
       let id=String(sessionStorage.getItem('id'))
-        fetch( `http://localhost:8000/api/v1/chat/contacts/${id}`)
+        fetch( `http://localhost:4000/api/v1/chat/contacts/${id}`)
                 .then((response)=>{return response.json()})
                 .then((data)=>{
                   setContacts(data)
@@ -23,7 +23,7 @@ let ChatComponent=()=>{
                 .catch()
                 
 
-                  socket.current = io('http://localhost:8000');
+                  socket.current = io('http://localhost:4000');
                   socket.current.emit("add-user", id);
                   
                 
@@ -42,7 +42,7 @@ let ChatComponent=()=>{
     
     function getChatMessages(item){
       setCurrenContact(item)
-      fetch( `http://localhost:8000/api/v1/message/${item.chat}`)
+      fetch( `http://localhost:4000/api/v1/message/${item.chat}`)
       .then((response)=>{return response.json()})
       .then((data)=>{
         setCurrentChat(data)
@@ -63,7 +63,7 @@ let ChatComponent=()=>{
           
             
             const res = await axios.post(
-              `http://localhost:8000/api/v1/message/`,messageToBeSend
+              `http://localhost:4000/api/v1/message/`,messageToBeSend
             );
             if(res.data.status==true){ 
               socket.current.emit("send-msg",res.data.message );
