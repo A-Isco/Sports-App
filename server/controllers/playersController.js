@@ -147,7 +147,6 @@ const updatePlayer=async (req,res)=>{
 //   // req.body will hold the text fields, if there were any
 // })
 
-module.exports = { createPlayer, getPlayers, getPlayersBySearch,getPlayer,updatePlayer };
 // *********************** Filter ************************
 const getPlayersByFilter = async (req, res) => {
   let region = req.query.region;
@@ -365,6 +364,8 @@ module.exports = {
   getPlayers,
   getPlayersBySearch,
   getPlayersByFilter,
+  getPlayer,
+  updatePlayer
 };
 
 /*
