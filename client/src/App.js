@@ -14,6 +14,7 @@ export default function App(){
       <Routes>
         
       <Route path="/" element={ <PlacesList/> } />
+          <Route path="/players" element={ <PlayersList/> } />
       <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
       <Route path="/chat" element={<ChatComponent/>}/>
       </Routes>
