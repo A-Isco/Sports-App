@@ -12,6 +12,8 @@ const createPlace = async (req, res) => {
             region: req.body.region,
             sport:req.body.sport
         });
+
+        console.log(place);
     
         await place.save();
         res.status(200).json({
