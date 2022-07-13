@@ -10,33 +10,33 @@ const port = process.env.PORT || 4000;
 const startServer = async () => {
   try {
     console.log(process.env.MONGO_URI);
-    await connectDB(process.env.MONGO_URI);
+    connectDB(process.env.MONGO_URI);
     const server = app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
-const io = socket(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    
-    credentials: true,
-  },
-});
-global.onlineUsers = new Map();
-io.on("connection", (socket) => {
-  global.chatSocket = socket;
-  socket.on("add-user", (userId) => {
-    onlineUsers.set(userId, socket.id);
-  });
+    const io = socket(server, {
+      cors: {
+        origin: "http://localhost:3000",
 
-  socket.on("send-msg", (data) => {
-    console.log(data)
-    const sendUserSocket = onlineUsers.get(data.to);
-    console.log(sendUserSocket)
-    if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-recieve", data);
-    }
-  });
-});
+        credentials: true,
+      },
+    });
+    global.onlineUsers = new Map();
+    io.on("connection", (socket) => {
+      global.chatSocket = socket;
+      socket.on("add-user", (userId) => {
+        onlineUsers.set(userId, socket.id);
+      });
+
+      socket.on("send-msg", (data) => {
+        console.log(data)
+        const sendUserSocket = onlineUsers.get(data.to);
+        console.log(sendUserSocket)
+        if (sendUserSocket) {
+          socket.to(sendUserSocket).emit("msg-recieve", data);
+        }
+      });
+    });
 
   } catch (error) {
     console.log(error);
@@ -49,7 +49,7 @@ startServer();
 // const io = socket(server, {
 //   cors: {
 //     origin: "http://localhost:3000",
-    
+
 //     credentials: true,
 //   },
 // });
