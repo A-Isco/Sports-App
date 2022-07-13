@@ -1,4 +1,5 @@
 const express = require("express");
+const middleware=require('./middleware/authenticate_token');
 const app = express();
 require("dotenv").config();
 const cors=require('cors')
@@ -10,6 +11,7 @@ app.use(cors())
 
 // Routers
 auth_routes(app);
+app.use(middleware)
 const playersRouter = require("./routes/players");
 const placesRouter = require("./routes/places");
 

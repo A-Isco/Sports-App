@@ -2,12 +2,13 @@ const Chat = require("../models/Chat");
 const Player = require("../models/Player");
 module.exports={
    async  getContacts(req,res,next){
+            id=req.player_id.id
             let tabs=[]
             let player;
             try {
-                const chats= await Chat.find({$or:[{user1:req.params.id }, {user2:req.params.id }]});
+                const chats= await Chat.find({$or:[{user1:id}, {user2:id}]});
                 for(let i=0 ;i<chats.length;i++){
-                    if(chats[i].user1==req.params.id){
+                    if(chats[i].user1==id){
                         player= await Player.findOne({_id:chats[i].user2})
                         tabs.push({'player':player,'chat':chats[i]._id})
                     }else{
@@ -15,7 +16,7 @@ module.exports={
                          tabs.push({'player':player,'chat':chats[i]._id})
                     }   
                 }
-                 return res.json(tabs);
+                 return res.json({'tabs':tabs,'id':id});
           } catch (ex) {
                  next(ex);
           }

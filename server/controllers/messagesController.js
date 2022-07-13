@@ -9,7 +9,7 @@ module.exports={
     
     async createMessage(req,res,next){
         try {
-            const message= await Message.create({message:req.body.message,from:req.body.from,to:req.body.to,chat:req.body.chat});
+            const message= await Message.create({message:req.body.message,from:req.player_id.id,to:req.body.to,chat:req.body.chat});
             return res.json({ status: true, message },201);
       } catch (ex) {
              next(ex);
