@@ -22,9 +22,9 @@ let PlaceCreatePage = () => {
   function createPlace(event) {
     event.preventDefault();
 
-    let baseUrl = "http://localhost:4000/api/places/";
+    let baseUrl = "http://localhost:4000/api/places/football/create";
     const headers = {
-      "Content-Type": "multipart/form-data",
+      "Content-Type": "application/json",
     };
     axios
       .post(baseUrl, { ...Place }, { headers })
@@ -170,7 +170,7 @@ let PlaceCreatePage = () => {
         </div>
 
         <div className="form-group mb-2">
-          <label>upload photo</label>
+          <label>Upload Photo</label>
           <input
             type="file"
             className="form-control"

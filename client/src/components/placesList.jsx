@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PlaceCard from "./placeCard";
+import React from 'react'
 
 import ReactPaginate from 'react-paginate';
 
@@ -34,6 +35,7 @@ let PlaceList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces(res.data.places);
+        console.log("1")
     };
 
     // ****** Search Fn *********
@@ -45,6 +47,7 @@ let PlaceList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces(res.data.places);
+        console.log("2")
     };
 
     // ****** Filter Fn *********
@@ -56,18 +59,10 @@ let PlaceList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces([].concat(res.data.places));
+        console.log("3")
     };
 
-    // ****** Sort Fn *********
-    // const fetchSortedData = async () => {
-    //     const res = await axios.get(
-    //         `http://localhost:4000/api/players/sort?rateSort=${rateSort}&ageSort=${ageSort}&page=${
-    //             pageNumber + 1
-    //         }}`
-    //     );
-    //     setNumberOfPages(res.data.totalPages);
-    //     setPlayers(res.data.players);
-    // };
+
 
     // useEffect number of pages (( Pagination ))
     useEffect(() => {
@@ -77,14 +72,19 @@ let PlaceList = () => {
 
     // Retrieve all
     useEffect(() => {
-        if (query.length === 0) {
+        if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
         }
+        else if(sortAttribute.length===0|| region.length===0)
+        {
+            fetchFilteredData();
+        }
 
-    }, [pageNumber, query]);
+    }, [pageNumber, query])
 
     // Search
     useEffect(() => {
+
         if (query.length !== 0) {
             fetchSearchData();
         }
@@ -96,6 +96,7 @@ let PlaceList = () => {
     };
     const gotoNext = () => {
         setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
+        console.log(sortAttribute)
     };
     const handleKeyDown=(e)=>
     { if(e.key==="Enter")

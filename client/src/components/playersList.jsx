@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import React from 'react'
+import PlayerCard from "./playerCard";
 
 let PlayerList = () => {
     let [players, setPlayers] = useState([]);
@@ -28,6 +30,8 @@ let PlayerList = () => {
         );
         setNumberOfPages(res.data.totalPages);
         setPlayers(res.data.players);
+        console.log(players)
+        console.log(res)
     };
 
     // ****** Search Fn *********
@@ -68,19 +72,25 @@ let PlayerList = () => {
         setPages(new Array(numberOfPages).fill(null).map((v, i) => i));
     }, [numberOfPages]);
 
-    // Retrieve all
     useEffect(() => {
-        if (query.length === 0) {
+        if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
         }
-    }, [pageNumber, query]);
+        else if(sortAttribute.length===0|| region.length===0)
+        {
+            fetchFilteredData();
+        }
+
+    }, [pageNumber, query])
 
     // Search
     useEffect(() => {
+
         if (query.length !== 0) {
             fetchSearchData();
         }
     }, [pageNumber, searchFlag]);
+
 
     // Next and Previous Functions
     const gotoPrevious = () => {
@@ -90,106 +100,139 @@ let PlayerList = () => {
         setPageNumber(Math.min(numberOfPages - 1, pageNumber + 1));
     };
 
+    const handleKeyDown=(e)=>
+    { if(e.key==="Enter")
+    {
+        if (query.length !== 0) {
+            setPageNumber(0);
+        }
+        if (searchFlag === 0) {
+            setSearchFlag(1);
+        }
+        if (searchFlag === 1) {
+            setSearchFlag(0);
+        }
+    }}
+
     // Return Component
     return (
         <div>
-            <div>Players List </div>
-            <input
-                className="search"
-                placeholder="Search..."
-                onChange={(e) => setQuery(e.target.value.toLowerCase())}
-            />
+            <div className="d-flex flex-wrap justify-content-between m-5">
 
-            {/* Search Button */}
-            <button
-                onClick={() => {
-                    if (query.length !== 0) {
-                        setPageNumber(0);
-                    }
-                    if (searchFlag === 0) {
-                        setSearchFlag(1);
-                    }
-                    if (searchFlag === 1) {
-                        setSearchFlag(0);
-                    }
-                }}
-            >
-                Search
-            </button>
 
-            {/* Filter Button */}
-            <button
-                onClick={() => {
-                    if (region == "" && sortAttribute == "" && sortWay == "") {
-                        console.log("works none");
-                        setPageNumber(0);
-                        fetchRetrieveData();
-                    } else {
-                        setPageNumber(0);
-                        fetchFilteredData();
-                    }
-                }}
-            >
-                Filter
-            </button>
 
-            {/*  region drop menu */}
-            <select
-                name="region-filter"
-                id="region-filter"
-                onChange={(e) => setRegion(e.target.value)}
-            >
-                <option selected value="">
-                    none
-                </option>
-                <option value="roma">Roma</option>
-                <option value="madrid">Madrid</option>
-            </select>
 
-            {/*   sortAttribute drop menu */}
-            <select
-                name="sortAttribute"
-                id="sortAttribute"
-                onChange={(e) => setSortAttribute(e.target.value)}
-            >
-                <option selected value="">
-                    none
-                </option>
-                <option value="rate">rate</option>
-                <option value="age">age</option>
-            </select>
+                {/* Filter Button */}
+                <div className="d-flex flex-wrap justify-content-around">
 
-            {/*   sortWay drop menu */}
-            <select
-                name="sortAttribute"
-                id="sortAttribute"
-                onChange={(e) => setSortWay(e.target.value)}
-            >
-                <option selected value="">
-                    none
-                </option>
-                <option value="asc">asc</option>
-                <option value="desc">desc</option>
-            </select>
 
-            <h3>Page Number : {pageNumber + 1}</h3>
-            {
-                <div className="d-flex justify-content-around
-                    bg-success text-white">
-                    {players.map((item) => (
-                        <div key={item._id}>
-                            <h1>{item.name}</h1>
-                        </div>
-                    ))}
+                    {/*  region drop menu */}
+                    <select className="m-3"
+                            name="region-filter"
+                            id="region-filter"
+                            onChange={(e) => setRegion(e.target.value)}
+                    >
+                        <option value="" disabled selected hidden className="text-center p-3" >filter by region</option>
 
-                    <button onClick={gotoPrevious}>Previous</button>
-                    {pages.map((pageIndex) => (
-                        <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>
-                            {pageIndex + 1}
-                        </button>
-                    ))}
-                    <button onClick={gotoNext}>Next</button>
+                        <option value="">
+                            none
+                        </option>
+                        <option value="gleem">gleem</option>
+                        <option value="sidibeshr">sidibeshr</option>
+                    </select>
+
+                    {/*   sortAttribute drop menu */}
+                    <select className="m-3"
+                            name="sortAttribute"
+                            id="sortAttribute"
+                            onChange={(e) => setSortAttribute(e.target.value)}
+                    >
+                        <option value="" disabled selected hidden>sort by</option>
+                        <option  value="">
+                            none
+                        </option>
+                        <option value="rate">rate</option>
+                        <option value="age">age</option>
+                    </select>
+
+                    {/*   sortWay drop menu */}
+                    <select className="m-3"
+                            name="sortAttribute"
+                            id="sortAttribute"
+                            onChange={(e) => setSortWay(e.target.value)}
+                    >
+                        <option value="" disabled selected hidden className="text-center p-3" >sort way</option>
+                        <option  value="">
+                            none
+                        </option>
+                        <option value="asc">asc</option>
+                        <option value="desc">desc</option>
+                    </select>
+
+                    <button className="m-3"
+                            onClick={() => {
+                                if (region == "" && sortAttribute == "" && sortWay == "") {
+                                    console.log("works none");
+                                    setPageNumber(0);
+                                    fetchRetrieveData();
+                                } else {
+                                    setPageNumber(0);
+                                    fetchFilteredData();
+                                }
+                            }}
+                    >
+                        apply
+                    </button>
                 </div>
+
+                <div>
+                    <input
+                        className="search"
+                        placeholder="Search..."
+                        onChange={(e) => setQuery(e.target.value.toLowerCase())}
+
+                        onKeyDown={handleKeyDown}/>
+                </div>
+            </div>
+
+            {
+                <div>
+
+                    <div className="d-flex flex-wrap justify-content-around
+                     ">
+                        {players.map((player) => {
+                            return <PlayerCard  key={player._id} player={player} />;
+                        })}
+                    </div>
+
+                    <ul className="pagination  pagination-lg justify-content-end m-5 px-5">
+                        <li className="page-item">
+                            <button className="page-link"   onClick={gotoPrevious} aria-label="Previous">
+
+                                <span aria-hidden="true">&laquo;</span>
+
+                            </button>
+                        </li>
+                        {pages.map((pageIndex) => (
+                            <li className="page-item"><button className="page-link" key={pageIndex} onClick={() => setPageNumber(pageIndex)}>{pageIndex + 1}</button></li>
+
+                        ))}
+
+
+                        <li className="page-item">
+                            <button className="page-link" onClick={gotoNext} aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+
+                            </button>
+                        </li>
+                    </ul>
+
+
+
+
+
+                </div>
+
             }
         </div>
     );

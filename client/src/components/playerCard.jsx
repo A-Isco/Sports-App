@@ -6,7 +6,7 @@ import React from 'react'
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 
-let PlaceCard = ({place}) => {
+let PlayerCard = ({player}) => {
     const ratingChanged = (newRating) => {
         console.log(newRating);
     };
@@ -17,28 +17,27 @@ let PlaceCard = ({place}) => {
             <div className="card card-width">
                 <div className="card-body place">
 
-                    <img src={place.profile} alt={place.name} width="300" height="250" className="m-5"/>
-                    <h4 className="card-title p-3">{` ${place.name}`}</h4>
-                    <p>{` ${place.region}`}</p>
-                    <p>{` ${place.address}`}</p>
-                    <p>{` ${place.rate}`}</p>
+                    <img src={player.image} alt={player.name} width="300" height="250" className="m-5"/>
+                    <h4 className="card-title p-3">{` ${player.name}`}</h4>
+                    <p>{` ${player.region}`}</p>
+                    <p>{` ${player.rate}`}</p>
 
                     <div className="d-flex justify-content-center">
 
                         <ReactStars
                             count={5}
-                            // onChange={ratingChanged}
+
                             size={30}
                             edit={false}
-                            value={place.rate}
+                            value={player.rate}
                             isHalf={true}
                             activeColor="#ffd700"
 
                         />
                     </div>
-                    <h6>{` ${place.price} LE/h`}</h6>
+                    <h6> {player.age} </h6>
 
-                    <Link to={`/football/places/${place._id}`}> show more</Link>
+                    {/*<Link to={`/football/places/${place._id}`}> show more</Link>*/}
 
                 </div>
             </div>
@@ -46,4 +45,4 @@ let PlaceCard = ({place}) => {
     );
 };
 
-export default PlaceCard;
+export default PlayerCard;

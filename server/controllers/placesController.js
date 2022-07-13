@@ -83,9 +83,9 @@ const getPlacesByFilter = async (req, res) => {
     let sortAttribute = req.query.sortAttribute;
     let sortWay = req.query.sortWay;
 
-    const PAGE_SIZE = 6;
+    const PAGE_SIZE = 3;
     const page = parseInt(req.query.page || "0");
-    const limit = 6;
+    const limit = 3;
 
     // Region Only
     if (region && sortAttribute == false && sortWay == false) {
@@ -303,6 +303,28 @@ const updatePlace = async (req, res) => {
     })
     res.send(req.body);
 };
+const createProductReview = async (req, res) => {
+
+    const placeId = req.params.id;
+    const { rating, comment } = req.body
+    const place=await Place.findById(placeId)
+    const review = {
+       // name: req.user.name,
+        rating: Number(rating),
+        comment,
+        //user: req.user._id,
+    }
+
+    place.reviews.push(review)
+
+    place.numReviews = place.reviews.length
+
+    place.rate = (place.reviews.reduce((acc, item) => item.rating + acc, 0) / place.numReviews).toFixed(1)
+    await place.save()
+    res.status(201).json({ message: 'Review added' })
+
+};
+
 
 module.exports = {
     createPlace,
@@ -310,7 +332,8 @@ module.exports = {
     getPlacesBySearch,
     getPlacesByFilter,
     getPlaceById,
-    updatePlace
+    updatePlace,
+    createProductReview
 };
 
 /*
