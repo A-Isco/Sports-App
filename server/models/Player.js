@@ -1,5 +1,20 @@
 const mongoose = require("mongoose");
 const {string} = require("joi");
+const reviewSchema = mongoose.Schema(
+    {
+      // name: { type: String, required: true },
+      rating: { type: Number, required: true },
+
+      // user: {
+      //     type: mongoose.Schema.Types.ObjectId,
+      //     required: true,
+      //     ref: 'Player',
+      // },
+    },
+    {
+      timestamps: true,
+    }
+)
 
 const PlayerSchema = new mongoose.Schema({
   name: {
@@ -17,6 +32,12 @@ const PlayerSchema = new mongoose.Schema({
   rate: {
     type: Number,
   },
+  reviews:[reviewSchema],
+  numReviews: {
+    type: Number,
+
+  },
+
   nationalID: {
     type: String,
   },

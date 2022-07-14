@@ -2,6 +2,7 @@ const Player = require("../models/Player");
 
 const {schema}=require("../middleware/PlayerAuth");
 const multer  = require('multer')
+const Place = require("../models/Place");
 
 
 
@@ -359,13 +360,35 @@ const getPlayersByFilter = async (req, res) => {
   }
 };
 
+const createPlayerReview = async (req, res) => {
+
+  const placeId = req.params.id;
+  const { rating} = req.body
+  const player=await Player.findById(placeId)
+  const review = {
+
+    rating: Number(rating)
+
+  }
+
+  player.reviews.push(review)
+
+  player.numReviews = player.reviews.length
+
+  player.rate = (player.reviews.reduce((acc, item) => item.rating + acc, 0) / player.numReviews).toFixed(1)
+  await player.save()
+  res.status(201).json({ message: 'Review added' })
+
+};
+
 module.exports = {
   createPlayer,
   getPlayers,
   getPlayersBySearch,
   getPlayersByFilter,
   getPlayer,
-  updatePlayer
+  updatePlayer,
+  createPlayerReview
 };
 
 /*

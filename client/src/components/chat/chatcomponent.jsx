@@ -54,6 +54,7 @@ let ChatComponent=()=>{
     let sendMessage=async()=>{
       if(typeof currentContact != "undefined" && sendedMessage != ''){
             let id=String(sessionStorage.getItem('id'))
+          console.log(id)
             let messageToBeSend={
               message:sendedMessage,
               from:id,
@@ -99,9 +100,9 @@ let ChatComponent=()=>{
         <div id='myPopup' className="popup">
                   <div className="contacts">
                                 {
-                          contacts.map((item) => (
+                          contacts?.map((item) => (
                             <div className='contact' onClick={()=>{getChatMessages(item)}} key={item.chat} >
-                            <h1  >{item.player.name}</h1>
+                            <h1  >{item.player?.name}</h1>
 
                           </div>
                         ))}

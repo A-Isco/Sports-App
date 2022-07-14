@@ -52,7 +52,7 @@ let PlayerProfile = () => {
     useEffect(() => {
         //let token = window.localStorage.getItem("token");
         //let id = window.localStorage.getItem("id");
-        let id ="62c24c0c0d6372c368cb51ac";
+        let id ="62c5a58d0376e77fb2a9207f";
 
         const headers = {
             // "Content-Type": "application/json",
@@ -85,12 +85,12 @@ let PlayerProfile = () => {
         <div className="container background py-4 text-center w-25 m-5 ">
             <div className="card card-width">
                 <div className="card-body place">
-                    <img src={`http://localhost:4000/${Player.img}`} alt={Player.name} width="300" height="250" className="m-5"/>
+                    <img src={Player.image} alt={Player.name} width="300" height="250" className="m-5"/>
                     <h4 className="card-title p-3">{` ${Player.name}`}</h4>
                     <p>{` ${Player.nationalID}`}</p>
                     <p>{` ${Player.age}`}</p>
                     <p>{` ${Player.region}`}</p>
-                    {Player.sports.map((sport,index)=>(
+                    {Player.sports?.map((sport,index)=>(
                         <p className="btn btn-primary mx-2">{sport}</p>
                     ))}
                     <div>

@@ -25,8 +25,14 @@ let PlayerList = () => {
 
     // default data
     const fetchRetrieveData = async () => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
         const res = await axios.get(
-            `http://localhost:4000/api/players?page=${pageNumber}`
+            `http://localhost:4000/api/players?page=${pageNumber}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlayers(res.data.players);
@@ -36,10 +42,16 @@ let PlayerList = () => {
 
     // ****** Search Fn *********
     const fetchSearchData = async () => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
         const res = await axios.get(
             `http://localhost:4000/api/players/search?q=${query}&page=${
                 pageNumber + 1
-            }}`
+            }}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlayers(res.data.players);
@@ -47,25 +59,31 @@ let PlayerList = () => {
 
     // ****** Filter Fn *********
     const fetchFilteredData = async () => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
         const res = await axios.get(
             `http://localhost:4000/api/players/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
                 pageNumber + 1
-            }}`
+            }}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlayers(res.data.players);
     };
 
     // ****** Sort Fn *********
-    const fetchSortedData = async () => {
-        const res = await axios.get(
-            `http://localhost:4000/api/players/sort?rateSort=${rateSort}&ageSort=${ageSort}&page=${
-                pageNumber + 1
-            }}`
-        );
-        setNumberOfPages(res.data.totalPages);
-        setPlayers(res.data.players);
-    };
+    // const fetchSortedData = async () => {
+    //     const res = await axios.get(
+    //         `http://localhost:4000/api/players/sort?rateSort=${rateSort}&ageSort=${ageSort}&page=${
+    //             pageNumber + 1
+    //         }}`
+    //     );
+    //     setNumberOfPages(res.data.totalPages);
+    //     setPlayers(res.data.players);
+    // };
 
     // useEffect number of pages (( Pagination ))
     useEffect(() => {

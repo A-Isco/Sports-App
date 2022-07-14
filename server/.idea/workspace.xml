@@ -5,93 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/.idea/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../client/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/images/avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/images/avatar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/logo512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/assets/cigarate.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/assets/cigarate.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/assets/images/logo.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/assets/images/logo.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/TestProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/TestProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/placesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playersList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/test.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/test.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/utils/APIRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/utils/APIRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/featureController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/featureController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/messagesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/messagesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/placesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/placesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/regionsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/regionsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/sportsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/sportsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/connectDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/connectDB.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/PlayerAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/PlayerAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ModelTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ModelTemplate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Place.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Place.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Region.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Region.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Sport.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Sport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Teams.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Teams.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/feature.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/feature.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/places.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/places.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/regions.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/regions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/sports.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/sports.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/featureSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/featureSchema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/featureService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/featureService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/1ba22ae141b239c4c31fc403af9e5455" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/1ba22ae141b239c4c31fc403af9e5455" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/243b1d01f746348d0a65ed88d1f464b0" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/243b1d01f746348d0a65ed88d1f464b0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/37c15b52c13158a2dcdb2ccccf607ad9" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/37c15b52c13158a2dcdb2ccccf607ad9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/85e64e33e39b0f496b333a5c7b523298" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/85e64e33e39b0f496b333a5c7b523298" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/898fa60348af08d1c5bc11bd672d5c49" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/898fa60348af08d1c5bc11bd672d5c49" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/96d999bbb9b4129ece0aec19291bcc70" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/96d999bbb9b4129ece0aec19291bcc70" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/a94882eca7945f1d40cd6e9121aed923.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/a94882eca7945f1d40cd6e9121aed923.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/c33003d8e61a7534c256e333029e1765" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/c33003d8e61a7534c256e333029e1765" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/c6e0145bb5934a3151e13b39f4e1f1cd" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/c6e0145bb5934a3151e13b39f4e1f1cd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/dbef25c697c6c602ed804d7e8a64e54b" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/dbef25c697c6c602ed804d7e8a64e54b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/e5afd6e455ca5021074f8c1d022ffc10" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/e5afd6e455ca5021074f8c1d022ffc10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/ebd4b0f2a2c0ef4524f39e883c98dc85" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/ebd4b0f2a2c0ef4524f39e883c98dc85" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/f80b36e44d3642c6de7f0244a1d82cb5" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/f80b36e44d3642c6de7f0244a1d82cb5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/fbb7fea10ffda51e8a0becc4628996a1" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/fbb7fea10ffda51e8a0becc4628996a1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/undefined.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/rowan/WebstormProjects/Al-Malaab/Sports-App/client",
+    "last_opened_file_path": "/home/reham/graduationProject/Sports-App/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -160,6 +85,8 @@
       <workItem from="1657625525692" duration="13352000" />
       <workItem from="1657657221847" duration="754000" />
       <workItem from="1657660065524" duration="769000" />
+      <workItem from="1657667489178" duration="991000" />
+      <workItem from="1657732241626" duration="2721000" />
     </task>
     <servers />
   </component>
