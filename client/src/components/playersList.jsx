@@ -5,6 +5,7 @@ import PlayerCard from "./playerCard";
 
 let PlayerList = () => {
     let [players, setPlayers] = useState([]);
+    let [regions, setRegions] = useState([]);
     let [pageNumber, setPageNumber] = useState(0);
     let [numberOfPages, setNumberOfPages] = useState(0);
     let [pages, setPages] = useState([]);
@@ -91,6 +92,23 @@ let PlayerList = () => {
     }, [numberOfPages]);
 
     useEffect(() => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
+
+        axios
+            .get("http://localhost:4000/api/regions/"  , {
+                headers,
+            })
+            .then((res) => {
+                console.log(res.data)
+
+
+                setRegions(res.data)
+            });
         if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
         }
@@ -155,8 +173,16 @@ let PlayerList = () => {
                         <option value="">
                             none
                         </option>
-                        <option value="gleem">gleem</option>
-                        <option value="sidibeshr">sidibeshr</option>
+                        {regions.length!==0?regions.map((region)=>{
+                           return  <option key={region._id} value={region.name}>{region.name}</option> ;
+
+
+                        }):null
+
+                        }
+
+
+
                     </select>
 
                     {/*   sortAttribute drop menu */}
