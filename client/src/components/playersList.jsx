@@ -5,6 +5,7 @@ import PlayerCard from "./playerCard";
 
 let PlayerList = () => {
     let [players, setPlayers] = useState([]);
+    let [regions, setRegions] = useState([]);
     let [pageNumber, setPageNumber] = useState(0);
     let [numberOfPages, setNumberOfPages] = useState(0);
     let [pages, setPages] = useState([]);
@@ -91,6 +92,22 @@ let PlayerList = () => {
     }, [numberOfPages]);
 
     useEffect(() => {
+
+        axios
+            .get("http://localhost:4000/api/regions/"  , {
+                headers,
+            })
+            .then((res) => {
+                let regions=[]
+                regions=res.data.map((item)=>{
+                    return{
+                        label: item.name,
+                        value: item._id,
+
+                    };
+                });
+                setRegion(regions)
+            });
         if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
         }
