@@ -69,8 +69,8 @@ let EditProfile = () => {
             .then((res) => {
                 console.log(res.data.name);
                 setPlayer(res.data);
-                setRegion(res.data.region)
-                setSports(res.data.sports)
+               // setRegion(res.data.region)
+              //  setSports(res.data.sports)
             });
         axios
             .get(" http://localhost:4000/api/sports/"  , {
@@ -297,7 +297,7 @@ let EditProfile = () => {
                     name={selectedreg}
                     value={selectedreg}
                     options={Region}
-                    onChange={(e)=>{setSelectedreg(e.label);
+                    onChange={(e)=>{setSelectedreg(e);
                         Player.region=e.label
                         setPlayer(Player)
                         console.log(e.label)

@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playersList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
