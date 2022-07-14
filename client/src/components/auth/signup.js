@@ -124,7 +124,7 @@ let create_account = (e)=>{
  
 }
 return(
-    <div>
+    <div className="container">
         {render_form()}
     </div>
 )
