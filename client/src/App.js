@@ -17,7 +17,7 @@ import NotFound from './components/notFound';
 export default function App(){
 
   return(
-    <div className='container' >
+    <div >
     <BrowserRouter>
       <Routes>
       <Route path="/card/:id" element={<PlayerProfile/>} />
