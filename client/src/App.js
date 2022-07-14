@@ -12,14 +12,20 @@ import Logout from './components/auth/logout';
 import GuestRoute from './components/auth/guestRoute';
 import PrivateRoute from './components/auth/privateRoute';
 import Signup from './components/auth/signup';
-import Home from './components/home';
+// import Home from './components/home';
 import NotFound from './components/notFound';
 import Test from './components/auth/test'
+import Home from './pages/home/home'
+import LoginNav from "./components/core/newLogBar"
+import Nav from "./components/core/newHomeBar"
+import Footer from "./components/core/footer"
 export default function App(){
 
   return(
     <div className='' >
     <BrowserRouter>
+      <LoginNav/>
+      <Nav/>
       <Routes>
       <Route path="/card" element={<PlayerProfile/>} />
       <Route path="/card/update" element={<EditProfile/>} />
@@ -36,6 +42,7 @@ export default function App(){
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
       <Route path='*'element={<NotFound/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
     </div>
   )
