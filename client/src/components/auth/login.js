@@ -65,7 +65,7 @@ let   submit = (e)=>{
 }
 
 return(
-    <div>
+    <div className="container">
 {render_form()}
     </div>
     
