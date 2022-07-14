@@ -6,6 +6,7 @@ import PlacesList from "./components/placesList";
 import ChatComponent from './components/chat/chatcomponent.jsx'
 import PlaceDetails from "./components/placeDetails";
 import PlacesCreatePage from "./components/PlacesCreatePage";
+import PlacesEditPage from "./components/placesEditPage";
 
 export default function App(){
 
@@ -18,7 +19,10 @@ export default function App(){
           <Route path="/players" element={ <PlayersList/> } />
       <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
         <Route path="/chat" element={<ChatComponent />} />
-        <Route path = "/football/create-place" element = {< PlacesCreatePage/>}/>
+        <Route path="/football/create-place" element={< PlacesCreatePage />} />
+        < Route path = "/football/:placeId/edit-place"element = { < PlacesEditPage />  }
+          />
+
 
       </Routes>
     </BrowserRouter>
