@@ -39,8 +39,8 @@ const Player = require("../models/Player");
 const {createProductReview} = require("../controllers/placesController");
 router.route("/").post(createPlayer).get(getPlayers);
 router.route("/search").get(getPlayersBySearch);
-router.route("/card/:id").get(getPlayer);
-router.patch("/card/:id/update",upload.single('img'),updatePlayer);
+router.route("/card").get(getPlayer);
+router.patch("/card/update",upload.single('img'),updatePlayer);
 router.route("/:id/review").post(createPlayerReview);
 
 router.route("/filter").get(getPlayersByFilter);

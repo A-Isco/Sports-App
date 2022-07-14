@@ -38,7 +38,7 @@ let EditProfile = () => {
         region:"",
         gender:"",
         rate:"",
-        nationalID:""
+        //nationalID:""
 
     });
     const [Region,setRegion] = useState({
@@ -53,15 +53,17 @@ let EditProfile = () => {
     useEffect(() => {
         //let token = window.localStorage.getItem("token");
         //let id = window.localStorage.getItem("id");
-        let id ="62c24c0c0d6372c368cb51ac";
+       // let id ="62c24c0c0d6372c368cb51ac";
 
+        let token=String(localStorage.getItem('sports_token'))
         const headers = {
             "Content-Type": "application/json",
-            //Authorization: "token " + token,
+            authorization:`token ${token}`
+
         };
 
         axios
-            .get(" http://localhost:4000/api/players/card/" +id , {
+            .get(" http://localhost:4000/api/players/card/" , {
                 headers,
             })
             .then((res) => {
@@ -124,16 +126,16 @@ let EditProfile = () => {
 
         }
         if(event.target.name=="nationalID"){
-            console.log("nationalID")
-            const regex = /^[0-9]\d*$/;
-            const id =event.target.value;
-            if(event.target.value.match(regex)){
-                console.log("match")
-                const i=0;
-                const sum=0;
-                if (id.length != 13) return setValue(id.length);
-                else return setValue("");
-            }
+            // console.log("nationalID")
+            // const regex = /^[0-9]\d*$/;
+            // const id =event.target.value;
+            // if(event.target.value.match(regex)){
+            //     console.log("match")
+            //     const i=0;
+            //     const sum=0;
+            //     if (id.length != 13) return setValue(id.length);
+            //     else return setValue("");
+            // }
         }else {
             if (event.target.name == "img") {
                 Player.img=event.target.files[0];
@@ -160,7 +162,7 @@ let EditProfile = () => {
         formData.append('name',Player.name)
         formData.append('img',Player.img)
         formData.append('region',Player.region)
-        formData.append('nationalID',Player.nationalID)
+        //formData.append('nationalID',Player.nationalID)
         formData.append('sports',Player.sports)
         formData.append('gender',Player.gender)
         formData.append('age',Player.age)
@@ -172,12 +174,13 @@ let EditProfile = () => {
        // event.preventDefault();
         // let token = window.localStorage.getItem("token");
         // let id = window.localStorage.getItem("id");
+        let token=String(localStorage.getItem('sports_token'))
         const headers = {
-             "Content-Type": "multipart/form-data",
-            // Authorization: "token " + token,
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
         };
-        let id ="62c24c0c0d6372c368cb51ac";
-        let baseUrl ="http://localhost:4000/api/players/card/62c24c0c0d6372c368cb51ac/update";
+        let baseUrl ="http://localhost:4000/api/players/card/update";
 
         axios.patch(baseUrl,formData,{headers})
             // .patch(baseUrl, {...Player, sports:selected.map(o=>(o.label) ), region:selectedreg , img:file},{headers}
@@ -224,7 +227,7 @@ let EditProfile = () => {
                 {/*    <form>*/}
 
 
-                <form className="mx-5"  action="http://localhost:4000/api/players/card/62c24c0c0d6372c368cb51ac" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
+                <form className="mx-5"  action="http://localhost:4000/api/players/card" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label htmlFor="inputName">Name</label>
@@ -258,21 +261,21 @@ let EditProfile = () => {
 
 
                     </div>
-                    <div className="form-group col-md-6">
-                        <label htmlFor="inputID">nationalID</label>
-                        <input
-                               name="nationalID"
-                               value={Player.nationalID}
-                               type="text"
-                               className="form-control"
-                               id="inputID"
-                               placeholder=""
-                               onChange={(e) => {
-                                   handleChange(e);
-                               }}
-                        />
-                        <div>{value}</div>
-                    </div>
+                    {/*<div className="form-group col-md-6">*/}
+                    {/*    <label htmlFor="inputID">nationalID</label>*/}
+                    {/*    <input*/}
+                    {/*           name="nationalID"*/}
+                    {/*           value={Player.nationalID}*/}
+                    {/*           type="text"*/}
+                    {/*           className="form-control"*/}
+                    {/*           id="inputID"*/}
+                    {/*           placeholder=""*/}
+                    {/*           onChange={(e) => {*/}
+                    {/*               handleChange(e);*/}
+                    {/*           }}*/}
+                    {/*    />*/}
+                    {/*    <div>{value}</div>*/}
+                    {/*</div>*/}
                 </div>
                 <div className="form-group col-md-6">
                 <label className="form-label" htmlFor="customFile">Update Image</label>

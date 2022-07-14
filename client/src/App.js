@@ -17,11 +17,11 @@ import NotFound from './components/notFound';
 export default function App(){
 
   return(
-    <div className='container' >
+    <div className='' >
     <BrowserRouter>
       <Routes>
-      <Route path="/card/:id" element={<PlayerProfile/>} />
-      <Route path="/card/:id/update" element={<EditProfile/>} />
+      <Route path="/card" element={<PlayerProfile/>} />
+      <Route path="/card/update" element={<EditProfile/>} />
       <Route path='/login'element={<GuestRoute component={Login}/>}/>
      <Route path='/signup' element={<GuestRoute component={Signup}/>}/>
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>
@@ -29,7 +29,7 @@ export default function App(){
      <Route path='/home'element={<PrivateRoute component={Home}/>}/>
 
      <Route path='*'element={<NotFound/>}/>
-      <Route path="/" element={ <PlacesList/> } />
+      <Route path="/places" element={ <PlacesList/> } />
       <Route path="/players" element={ <PlayersList/> } />
       <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
       <Route path="/chat" element={<ChatComponent/>}/>

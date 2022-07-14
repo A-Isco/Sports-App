@@ -79,8 +79,12 @@ const getPlayersBySearch = async (req, res) => {
 //get 1 player
 
 const getPlayer = async (req, res) => {
-  const playerId = req.params.id;
-  const playerid=await Player.findById(req.params.id)
+  console.log(req);
+
+  //const playerId = req.params.id;
+  const playerId=req.player_id.id
+  console.log(playerId)
+  const playerid=await Player.findById(playerId)
   res.send(playerid);
 
 };
@@ -96,7 +100,7 @@ const updatePlayer=async (req,res)=>{
 
   console.log("up")
   console.log(req.file)
-  console.log(req.params.id)
+  //console.log(req.params.id)
   console.log(req.body)
   console.log(req.body)
   try {
@@ -107,9 +111,10 @@ const updatePlayer=async (req,res)=>{
    //  const splitted=req.file.mimetype.split("/");
    //  console.log("llllllllllllllllllllllllllllllllllllllll");
    //  console.log(splitted[1]);
+    id=req.player_id.id
     const my_sports=req.body.sports;
-    console.log("sports");
-    console.log(my_sports)
+    //console.log("sports");
+    //console.log(my_sports)
     sports_arr=my_sports.split(',');
     //console.log("ibsgjfnmdc mcmndmndmncdfdc,dnfkldjlkfjlkdfmf");
 
@@ -122,17 +127,18 @@ const updatePlayer=async (req,res)=>{
 
 
     if(!value.error){
-    const player1= await Player.findByIdAndUpdate(req.params.id,req.body,{new:true,runValidators:true});
-    if (req.file){
+    const player1= await Player.findByIdAndUpdate(id,req.body,{new:true,runValidators:true});
+    const playersports=await Player.findByIdAndUpdate(id,{sports:sports_arr},{new:true,runValidators:true});
+
+      if (req.file){
       const inserted_image=req.file.path;
       console.log(inserted_image)
 
 
-      const playerimg=await Player.findByIdAndUpdate(req.params.id,{img:inserted_image},{new:true,runValidators:true});
+      const playerimg=await Player.findByIdAndUpdate(id,{img:inserted_image},{new:true,runValidators:true});
 
     }
-      const playersports=await Player.findByIdAndUpdate(req.params.id,{sports:sports_arr},{new:true,runValidators:true});
-      res.send(playersports);
+      res.send(player1);
     }else {
    res.status(400);
   res.send(value);

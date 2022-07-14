@@ -23,8 +23,7 @@ const schema = Joi.object({
 
 
     nationalID: Joi.number()
-        .min(2)
-        .required(),
+        .min(2),
     img:Joi.string(),
 })
 module.exports={schema}
