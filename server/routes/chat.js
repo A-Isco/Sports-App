@@ -6,7 +6,7 @@ const {
     createContact,
   
   } = require("../controllers/chat");
-router.route('/contacts/:id').get(getContacts)
+router.route('/contacts/').get(getContacts)
 router.route('/contacts').post(createContact)
 
 

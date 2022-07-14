@@ -1,8 +1,9 @@
 const express = require("express");
+const middleware=require('./middleware/authenticate_token');
 const app = express();
 require("dotenv").config();
 const cors=require('cors')
-
+const auth_routes = require(__dirname+'/routes/auth_routes.js');
 const ChatRoutes=require('./routes/chat')
 const MessageRoutes=require('./routes/message')
 app.use(express.json());
@@ -13,6 +14,8 @@ app.use(express.static('uploads'));
 
 
 // Routers
+auth_routes(app);
+app.use(middleware)
 const playersRouter = require("./routes/players");
 const placesRouter = require("./routes/places");
 const sportsRouter = require("./routes/sports");

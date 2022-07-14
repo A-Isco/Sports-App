@@ -21,13 +21,26 @@ const PlayerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  password:{
+    type:String,
+    required:true
+  },
+  email:{
+    type:String,
+    required:true,
+    unique:true
+  },
   gender: {
     type: String,
     required: true,
   },
+  birth_date:{
+    type:Date,
+    required:true
+  },
   age: {
     type: Number,
-    required: true,
+    //required: true,
   },
   rate: {
     type: Number,
