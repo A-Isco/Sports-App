@@ -32,8 +32,8 @@ module.exports = {
                         Player.create(player_body.value).then(us=>
                             {
                                 id = {"id":us._id}
-                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})
-                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET,{expiresIn: 7200}) 
+                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})
+                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET) 
                                 let obj = {
                                     token : token,
                                     refresh_token:refresh_token
@@ -63,9 +63,10 @@ module.exports = {
             {   
                 bcrypt.compare(req.body.password, player[0].password, function(err, result) {
                     if (result) {
-
+                        console.log("player[0]._id=")
+                        console.log(player[0]._id)
                         id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})   
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})   
                         const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
     
                         let obj = {
