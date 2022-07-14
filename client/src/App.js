@@ -12,6 +12,7 @@ import PrivateRoute from './components/auth/privateRoute';
 import Signup from './components/auth/signup';
 import Home from './components/home';
 import NotFound from './components/notFound';
+import Test from './components/auth/test'
 export default function App(){
 
   return(
@@ -22,13 +23,14 @@ export default function App(){
      <Route path='/signup' element={<GuestRoute component={Signup}/>}/>
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>
      <Route path=''element={<Home/>}/>
-     <Route path='/home'element={<PrivateRoute component={Home}/>}/>
-
-     <Route path='*'element={<NotFound/>}/>
-      <Route path="/" element={ <PlacesList/> } />
-          <Route path="/players" element={ <PlayersList/> } />
-      <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
-      <Route path="/chat" element={<ChatComponent/>}/>
+     <Route path='/home'element={<Home/>}/>
+     
+      <Route path="/places" element={<PrivateRoute component={PlacesList}/>} />
+          <Route path="/players" element={<PrivateRoute component={PlayersList}/>} />
+      <Route path="/football/places/:placeId" element={<PrivateRoute component={PlaceDetails}/>} />
+      <Route path="/chat"   element={<PrivateRoute component={ChatComponent}/>}/>
+      <Route path='/test' element={<PrivateRoute component={Test}/>}/>
+      <Route path='*'element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
     </div>

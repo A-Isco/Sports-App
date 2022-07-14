@@ -111,7 +111,8 @@ let create_account = (e)=>{
             if(response.status ===200){
                 
                 console.log('3aaaaash');
-                localStorage.setItem('sports_token',response.data)
+                localStorage.setItem('sports_token',response.data.token)
+                localStorage.setItem('refresh_sports_token',response.data.refresh_token)
                 navigation('/home')
             }
         })

@@ -4,8 +4,9 @@ import {useNavigate} from 'react-router-dom';
 
 let Login = ()=>{
 let navigation = useNavigate()
-let [email, setEmail] = useState({})
-let [password, setPassword] = useState({})
+let [email, setEmail] = useState('')
+let [password, setPassword] = useState('')
+let [remember_me, setRemember_me] = useState(false)
 let [error, setError] = useState(null)
 
 let render_form = ()=>{
@@ -27,7 +28,7 @@ let render_form = ()=>{
             <span>password </span><br/>
             <input type="password" className="form-control " onChange = {(e)=>setPassword(e.target.value)}/><br/>
             <p className="text-danger">{error}</p>
-            <input className="me-2 mb-2" type="checkbox"/><span className="fw-bold">Remember me</span><br/>
+            <input className="me-2 mb-2" type="checkbox" onChange={(e)=>{console.log(e.target.checked);}} /><span className="fw-bold">Remember me</span><br/>
             <div className="d-flex justify-content-end">
             <button className="btn btn-primary" style={{width:"150px"}} type="submit">Login</button>
             </div>
@@ -43,13 +44,16 @@ let   submit = (e)=>{
     console.log('from auth.js');        
     let user = {
         email:email,
-        password:password
+        password:password,
+        remember_me:remember_me
     }
     axios.post("http://localhost:4000/login",user).then((response)=>{
         if(response.status ===200){
             
             console.log('3aaaaash');
-            localStorage.setItem('sports_token',response.data)
+            console.log(response.data.refresh_token);
+            localStorage.setItem('sports_token',response.data.token)
+            localStorage.setItem('refresh_sports_token',response.data.refresh_token)
             
             navigation('/home') 
             

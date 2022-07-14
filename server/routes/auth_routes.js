@@ -4,7 +4,7 @@ const authenticate_token = require('../middleware/authenticate_token.js')
 
 module.exports=(app)=>{
     app.get('/',authenticate_token,(req,res)=>{
-        res.send('heeey')
+        res.send(req.player_id)
     })
 
     app.get('/login',(req,res)=>{
@@ -21,7 +21,7 @@ module.exports=(app)=>{
 
     app.post('/signup',user_controller.create_player)
     app.post('/login',user_controller.login)
-    app.get('/refresh_token',user_controller.refresh_token)
+    app.post('/refresh_token',user_controller.refresh_token)
 
     
 }

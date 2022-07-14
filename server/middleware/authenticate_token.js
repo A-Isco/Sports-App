@@ -12,11 +12,9 @@ module.exports = (req,res,next)=>{
         if(token_arr.length>1){
             token = auth_header.split(' ')[1]
         
-
-
         
         jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,player_id)=>{
-            if(err) {res.status(403).send('you are not authorized')}
+            if(err) {console.log(err); res.status(403).send('you are not authorized')}
             req.player_id=player_id
             next()
         })
