@@ -114,7 +114,7 @@ let PlaceList = () => {
         if (query.length === 0 && sortAttribute.length===0&& region.length===0) {
             fetchRetrieveData();
         }
-        else if(sortAttribute.length===0|| region.length===0)
+        else if(sortAttribute.length!==0|| region.length!==0)
         {
             fetchFilteredData();
         }

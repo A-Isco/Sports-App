@@ -30,8 +30,8 @@ export default function App(){
       <Routes>
           <Route path="/:Sport/*" element={<PrivateRoute component={Landing}/>} />
           {/*<Route path=":Sport/players" element={<PrivateRoute component={PlayersList}/>} />*/}
-      <Route path="/card" element={<PlayerProfile/>} />
-      <Route path="/card/update" element={<EditProfile/>} />
+      <Route path="/card" element={<PrivateRoute component={PlayerProfile}/>} />
+      <Route path="/card/update" element={<PrivateRoute component={EditProfile}/>} />
       <Route path='/login'element={<GuestRoute component={Login}/>}/>
      <Route path='/signup' element={<GuestRoute component={Signup}/>}/>
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>

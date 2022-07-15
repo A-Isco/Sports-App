@@ -44,7 +44,7 @@ export default function LandingNavbar() {
                         <Link to={"/home/#sports"} className="nav-link">
                             <li className="items">Sports</li>
                         </Link>
-                        <Link to={"home/#about"} className="nav-link">
+                        <Link to={"/home/#about"} className="nav-link">
                             <li className="items">About Us</li>
                         </Link>
                     </ul>

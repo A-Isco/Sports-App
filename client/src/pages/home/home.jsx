@@ -30,13 +30,13 @@ let HomePage = ()=>{
                         <div className="row sports mb-5">
                             <div className="col-lg-6">
                                 <NavLink to={"/football"} className="nav-link">
-                                    <img src="images/football.PNG" alt="football" />
+                                    <img src="/images/football.PNG" alt="football" />
                                     <div className="mt-3">Football</div> 
                                 </NavLink>
                             </div>
                             <div className="col-lg-6">
                                 <NavLink to={"/volleyball/places"} className="nav-link">
-                                    <img src="images/volleyball.PNG" alt="volleyball" />
+                                    <img src="/images/volleyball.PNG" alt="volleyball" />
                                     <div className="mt-3">VOLLEYBALL</div> 
                                 </NavLink>
                             </div>
@@ -44,13 +44,13 @@ let HomePage = ()=>{
                         <div className="row sports">
                             <div className="col-lg-6">
                                 <NavLink to={"/basketball/places"} className="nav-link">
-                                    <img src="images/basketball.PNG" alt="basketball" />
+                                    <img src="/images/basketball.PNG" alt="basketball" />
                                     <div className="mt-3">BASKETBALL</div> 
                                 </NavLink>
                             </div>
                             <div className="col-lg-6">
                                 <NavLink to={"/swimming/places"} className="nav-link">
-                                    <img src="images/swimming.PNG" alt="swimming" />
+                                    <img src="/images/swimming.PNG" alt="swimming" />
                                     <div className="mt-3">SWIMMING</div>
                                 </NavLink> 
                             </div>
@@ -79,7 +79,7 @@ let HomePage = ()=>{
                             </div>
                             
                         </div>
-                        <img src="images/Capture.png" alt="pitch" className="col-lg-5 col-md-12" />
+                        <img src="/images/Capture.png" alt="pitch" className="col-lg-5 col-md-12" />
                     </div>
                     
                     <div className="sec4 text-center">
@@ -95,10 +95,10 @@ let HomePage = ()=>{
                             </div>
                         </div>
                         <div className="row icons">
-                            <img src="images/twitter.PNG" alt="twitter"/>
-                            <img src="images/linkedin.PNG" alt="linkedin" />
-                            <img src="images/facebook.PNG" alt="facebook" />
-                            <img src="images/google.PNG" alt="google" />
+                            <img src="/images/twitter.PNG" alt="twitter"/>
+                            <img src="/images/linkedin.PNG" alt="linkedin" />
+                            <img src="/images/facebook.PNG" alt="facebook" />
+                            <img src="/images/google.PNG" alt="google" />
                         </div>
                     </div>
                 </div> 
@@ -116,7 +116,7 @@ const Container = styled.div`
     }
      
     .sec1{
-        background-image: url("images/background1.jpg");
+        background-image: url("/images/background1.jpg");
         background-size: 1850px;
         height: 782px;
         opacity: 0.8;
@@ -221,7 +221,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 1400px){
         .sec1{
-            background-image: url("images/background1.jpg");
+            background-image: url("/images/background1.jpg");
             background-size: 1400px;
             height: 500px;
             opacity: 0.8;
@@ -248,7 +248,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 1000px){
         .sec1{
-            background-image: url("images/background1.jpg");
+            background-image: url("/images/background1.jpg");
             background-size: 1000px;
             height: 420px;
             opacity: 0.8;
@@ -275,7 +275,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 800px){
         .sec1{
-            background-image: url("images/background1.jpg");
+            background-image: url("/images/background1.jpg");
             background-size: 800px;
             height: 340px;
             opacity: 0.8;
@@ -302,7 +302,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 600px){
         .sec1{
-            background-image: url("images/background1.jpg");
+            background-image: url("/images/background1.jpg");
             background-size: 600px;
             height: 255px;
             opacity: 0.8;

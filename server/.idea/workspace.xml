@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/components/landing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/auth/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/auth/logout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/core/newLogBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/newLogBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/placesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/playersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playersList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/home/home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -11,6 +11,7 @@ import Navbar from "./core/newHomeBar";
 
 
 const validationSchema = Yup.object({
+
     name: Yup.string().required(),
     age: Yup.number().required(),
 });
@@ -191,6 +192,8 @@ let EditProfile = () => {
 
                 console.log(response);
                 SetErrors({});
+                navigate("/card")
+
             })
             .catch((response) => {
                 SetErrors(response.response.data.error.details[0].message);
