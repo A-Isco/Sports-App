@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/auth/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/auth/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validations/player_validations.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validations/player_validations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/PlayerAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/PlayerAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth_routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/undefined.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,20 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/reham/graduationProject/Sports-App/client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/rowan/WebstormProjects/Al-Malaab/Sports-App/client&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -77,6 +88,7 @@
       <workItem from="1657660065524" duration="769000" />
       <workItem from="1657667489178" duration="991000" />
       <workItem from="1657732241626" duration="8786000" />
+      <workItem from="1657918388904" duration="8303000" />
     </task>
     <servers />
   </component>

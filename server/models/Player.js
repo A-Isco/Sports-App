@@ -65,7 +65,7 @@ const PlayerSchema = new mongoose.Schema({
   },
   img:
       {
-        contentType: String
+        type: String
       }
 });
 

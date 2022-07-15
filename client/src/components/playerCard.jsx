@@ -67,7 +67,7 @@ const colors={swimming:"btn-info",football:"btn-warning"};
                 <div className="card-body place">
                     <div className="d-flex justify-content-center">
 
-                    <img src={player.image} alt={player.name} width="300" height="250" className="m-5"/>
+                    <img src={player.img} alt={player.name} width="300" height="250" className="m-5"/>
                     </div>
                     <h4 className="card-title p-3">{` ${player.name}`}</h4>
                     <h6> {player.age} </h6>

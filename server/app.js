@@ -18,6 +18,14 @@ app.use(express.static('uploads'));
 app.use('/uploads', express.static('uploads'));
 
 
+const regionRouter=require("./routes/regions");
+app.use("/api/regions",regionRouter);
+
+const sportsRouter = require("./routes/sports");
+app.use("/api/sports",sportsRouter);
+
+
+
 
 
 // Routers
@@ -25,8 +33,6 @@ auth_routes(app);
 app.use(middleware)
 const playersRouter = require("./routes/players");
 const placesRouter = require("./routes/places");
-const sportsRouter = require("./routes/sports");
-const regionRouter=require("./routes/regions");
 const Player = require("./models/Player");
 const {updatePlayer} = require("./controllers/playersController");
 
@@ -47,8 +53,7 @@ const {updatePlayer} = require("./controllers/playersController");
 // })
 app.use("/api/players", playersRouter);
 
-app.use("/api/sports",sportsRouter);
-app.use("/api/regions",regionRouter);
+
 
 
 
