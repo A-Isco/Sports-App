@@ -1,55 +1,58 @@
 import styled from "styled-components"
 import React, {useState, useEffect} from 'react'
-//import {NavLink, useParams, Link} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import { HashLink as Link } from 'react-router-hash-link';
-// import {Link} from "@mui/material";
-
-export default function Navbar() {
+export default function LandingNavbar() {
 
     const [toggleMenu, setToggleMenu] = useState(false)
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-
+    let {Sport } = useParams();
+    console.log(Sport)
     const toggleNav = () => {
         setToggleMenu(!toggleMenu)
-      }
+    }
 
     useEffect(() => {
 
         console.log()
-    const changeWidth = () => {
-        setScreenWidth(window.innerWidth);
-    }
+        const changeWidth = () => {
+            setScreenWidth(window.innerWidth);
+        }
 
-    window.addEventListener('resize', changeWidth)
+        window.addEventListener('resize', changeWidth)
 
-    return () => {
-        window.removeEventListener('resize', changeWidth)
-    }
+        return () => {
+            window.removeEventListener('resize', changeWidth)
+        }
 
     }, [])
 
     return (
-    <Container>
-    <nav>
-        {(toggleMenu || screenWidth > 600) && (
-            <ul className="list">
-                <Link to={"/home"} className="nav-link">
-                    <li className="items">Home</li>
-                </Link>
+        <Container>
+            <nav>
+                {(toggleMenu || screenWidth > 600) && (
+                    <ul className="list">
+                        <NavLink to={"/home"} className="nav-link">
+                            <li className="items">Home</li>
+                        </NavLink>
+                        <NavLink to={ `/${Sport}/players`} className="nav-link">
+                            <li className="items">players</li>
+                        </NavLink>
+                        <NavLink to={`/${Sport}/places`} className="nav-link">
+                            <li className="items">places</li>
+                        </NavLink>
+                        <Link to={"/home/#sports"} className="nav-link">
+                            <li className="items">Sports</li>
+                        </Link>
+                        <Link to={"home/#about"} className="nav-link">
+                            <li className="items">About Us</li>
+                        </Link>
+                    </ul>
+                )}
 
-                <Link to={"/#sports"} className="nav-link">
-                    <li className="items">Sports</li>
-                </Link>
-                <Link to={"/#about"} className="nav-link">
-                    <li className="items">About Us</li>
-                </Link>
-            </ul>
-        )}
-
-        <button onClick={toggleNav} className="btn"><img src="images/expand1.jpg" alt="expand" /></button>
-    </nav>
-    </Container>
+                <button onClick={toggleNav} className="btn"><img src="images/expand1.jpg" alt="expand" /></button>
+            </nav>
+        </Container>
     )
 }
 

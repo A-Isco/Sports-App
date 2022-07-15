@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from "styled-components"
-import { NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 export default function Navbar() {
   return (
     <Container>
         <nav>
         <ul className="list">
-            <NavLink to={"/login"} className="nav-link"><li className="items">LOGIN</li></NavLink>
-            <NavLink to={"/signup"} className="nav-link"><li className="items">REGISTER <img src="images/bnyadam.png" alt="human" width={"70px"} /></li></NavLink>
+            <Link to={"/login"} className="nav-link"><li className="items">LOGIN</li></Link>
+            <Link to={"/signup"} className="nav-link"><li className="items">REGISTER</li></Link>
+            <Link to={"/card"} className="nav-link">
+                <img src="images/bnyadam.png" alt="human" width={"70px"} />
+
+            </Link>
         </ul>
         </nav>
     </Container>

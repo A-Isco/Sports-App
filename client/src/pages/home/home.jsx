@@ -1,11 +1,12 @@
 import styled from "styled-components"
 import { NavLink } from "react-router-dom";
+import Navbar from "../../components/core/newHomeBar";
 
 let HomePage = ()=>{
     return(
         <>
             <Container>              
-                
+                <Navbar/>
                 <div className="container-fluid cont">
                     <div className="row sec1">
                         <div className="sec1-text text-center">
@@ -20,7 +21,7 @@ let HomePage = ()=>{
                         </div>     
                     </div>  
                     
-                    <div className="sec2 text-center">
+                    <div className="sec2 text-center" id="sports">
                         <div className="mb-5">
                             CHOOSE YOUR SPORT
                         </div>
@@ -34,7 +35,7 @@ let HomePage = ()=>{
                                 </NavLink>
                             </div>
                             <div className="col-lg-6">
-                                <NavLink to={"/volleyball"} className="nav-link">
+                                <NavLink to={"/volleyball/places"} className="nav-link">
                                     <img src="images/volleyball.PNG" alt="volleyball" />
                                     <div className="mt-3">VOLLEYBALL</div> 
                                 </NavLink>
@@ -42,13 +43,13 @@ let HomePage = ()=>{
                         </div>
                         <div className="row sports">
                             <div className="col-lg-6">
-                                <NavLink to={"/basketball"} className="nav-link">
+                                <NavLink to={"/basketball/places"} className="nav-link">
                                     <img src="images/basketball.PNG" alt="basketball" />
                                     <div className="mt-3">BASKETBALL</div> 
                                 </NavLink>
                             </div>
                             <div className="col-lg-6">
-                                <NavLink to={"/swimming"} className="nav-link">
+                                <NavLink to={"/swimming/places"} className="nav-link">
                                     <img src="images/swimming.PNG" alt="swimming" />
                                     <div className="mt-3">SWIMMING</div>
                                 </NavLink> 
@@ -56,7 +57,7 @@ let HomePage = ()=>{
                         </div>
                     </div>
                               
-                    <div className="row sec3">
+                    <div className="row sec3" id="about">
                         <div className="col-lg-7 col-md-12">
                             <div className="quest">
                                 <div>WHO</div>

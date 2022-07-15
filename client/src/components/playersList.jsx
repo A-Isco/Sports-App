@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import React from 'react'
 import PlayerCard from "./playerCard";
+import {useParams} from "react-router-dom";
 
 let PlayerList = () => {
+    const  {Sport}=useParams()
     let [players, setPlayers] = useState([]);
     let [regions, setRegions] = useState([]);
     let [pageNumber, setPageNumber] = useState(0);
@@ -33,7 +35,7 @@ let PlayerList = () => {
 
         };
         const res = await axios.get(
-            `http://localhost:4000/api/players?page=${pageNumber}`,{headers}
+            `http://localhost:4000/api/players/${Sport}?page=${pageNumber}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlayers(res.data.players);
@@ -50,7 +52,7 @@ let PlayerList = () => {
 
         };
         const res = await axios.get(
-            `http://localhost:4000/api/players/search?q=${query}&page=${
+            `http://localhost:4000/api/players/${Sport}/search?q=${query}&page=${
                 pageNumber + 1
             }}`,{headers}
         );
@@ -67,7 +69,7 @@ let PlayerList = () => {
 
         };
         const res = await axios.get(
-            `http://localhost:4000/api/players/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
+            `http://localhost:4000/api/players/${Sport}/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
                 pageNumber + 1
             }}`,{headers}
         );

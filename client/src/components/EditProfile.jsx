@@ -6,6 +6,7 @@ import Select from 'react-select';
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./core/newHomeBar";
 
 
 
@@ -69,8 +70,8 @@ let EditProfile = () => {
             .then((res) => {
                 console.log(res.data.name);
                 setPlayer(res.data);
-                setRegion(res.data.region)
-                setSports(res.data.sports)
+                //setRegion(res.data.region)
+                //setSports(res.data.sports)
             });
         axios
             .get(" http://localhost:4000/api/sports/"  , {
@@ -205,26 +206,10 @@ let EditProfile = () => {
 
     return (
         <div>
-            {/*<Formik*/}
-            {/*    initialValues={initialValues}*/}
-            {/*    validate={values => {*/}
-            {/*        const errors = {};*/}
-            {/*        if (!values.name | !values.age) {*/}
-            {/*            errors.name = 'Required';*/}
-            {/*            errors.age='Required';*/}
-            {/*        }*/}
-            {/*        return errors;*/}
-            {/*    }}*/}
-            {/*    onSubmit={(values, { setSubmitting }) => {*/}
-            {/*        setTimeout(() => {*/}
-            {/*            alert(JSON.stringify(values, null, 2));*/}
-            {/*            setSubmitting(false);*/}
-            {/*        }, 400);*/}
-            {/*    }}*/}
+            <Navbar/>
+            <div  className="d-flex justify-content-center ">
+            <div className="w-75" >
 
-            {/*>*/}
-                {/*{({ isSubmitting }) => (*/}
-                {/*    <form>*/}
 
 
                 <form className="mx-5"  action="http://localhost:4000/api/players/card" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
@@ -261,21 +246,7 @@ let EditProfile = () => {
 
 
                     </div>
-                    {/*<div className="form-group col-md-6">*/}
-                    {/*    <label htmlFor="inputID">nationalID</label>*/}
-                    {/*    <input*/}
-                    {/*           name="nationalID"*/}
-                    {/*           value={Player.nationalID}*/}
-                    {/*           type="text"*/}
-                    {/*           className="form-control"*/}
-                    {/*           id="inputID"*/}
-                    {/*           placeholder=""*/}
-                    {/*           onChange={(e) => {*/}
-                    {/*               handleChange(e);*/}
-                    {/*           }}*/}
-                    {/*    />*/}
-                    {/*    <div>{value}</div>*/}
-                    {/*</div>*/}
+
                 </div>
                 <div className="form-group col-md-6">
                 <label className="form-label" htmlFor="customFile">Update Image</label>
@@ -297,7 +268,7 @@ let EditProfile = () => {
                     name={selectedreg}
                     value={selectedreg}
                     options={Region}
-                    onChange={(e)=>{setSelectedreg(e.label);
+                    onChange={(e)=>{setSelectedreg(e);
                         Player.region=e.label
                         setPlayer(Player)
                         console.log(e.label)
@@ -305,17 +276,7 @@ let EditProfile = () => {
                     }}
                 />
                 </div>
-                    {/*<div className="form-group col-md-4">*/}
-                    {/*    <label>Regions</label>*/}
-                    {/*    <MultiSelect*/}
-                    {/*        options={Region}*/}
-                    {/*        value={selectedreg}*/}
-                    {/*        onChange={(e)=>{*/}
-                    {/*            setSelectedreg(e);*/}
-                    {/*        }}*/}
-                    {/*        labelledBy="Select"*/}
-                    {/*    />*/}
-                    {/*</div>*/}
+
                     <div className="form-group col-md-4">
                         <label>Sports</label>
                         <MultiSelect
@@ -400,6 +361,9 @@ let EditProfile = () => {
             {/*        // )}*/}
             {/*// </Formik>*/}
         </div>
+            </div>
+        </div>
+
     );
 
 
