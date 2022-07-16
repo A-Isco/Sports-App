@@ -39,14 +39,11 @@ const PlaceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-   profile: {
-        type: String,
+    profile: {
+        type: Array,
     },
     address: {
         type: String,
-    },
-    images:{
-        type:Array,
     },
     numReviews: {
         type: Number,

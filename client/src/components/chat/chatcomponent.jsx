@@ -9,22 +9,36 @@ let ChatComponent=()=>{
     let [contacts, setContacts] = useState([]);
     let [currentChat, setCurrentChat] = useState([]);
     let [currentContact, setCurrenContact] = useState();
+    let [currentId, setCurrentId] = useState('');
     let [sendedMessage, setMessage] = useState('');
 
    
 
     useEffect(()=>{//Fetch API
-      let id=String(sessionStorage.getItem('id'))
-        fetch( `http://localhost:4000/api/v1/chat/contacts/${id}`)
+      let token=String(localStorage.getItem('sports_token'))
+      var id
+        fetch( `http://localhost:4000/api/v1/chat/contacts/`,{
+          headers: {
+            authorization:`token ${token}`
+          }
+        })
                 .then((response)=>{return response.json()})
                 .then((data)=>{
-                  setContacts(data)
+                      id=data.id
+                      setCurrentId(id)
+                  setContacts(data.tabs)
+                  socket.current = io('http://localhost:4000',{
+                    headers: {
+                      authorization:`token ${token}`
+                    }
+                  });
+                  
+                  socket.current.emit("add-user",id);
                 })
                 .catch()
                 
 
-                  socket.current = io('http://localhost:4000');
-                  socket.current.emit("add-user", id);
+            
                   
                 
     },[]);
@@ -41,8 +55,13 @@ let ChatComponent=()=>{
     }, [currentChat]);
     
     function getChatMessages(item){
+      let token=String(localStorage.getItem('sports_token'))
       setCurrenContact(item)
-      fetch( `http://localhost:4000/api/v1/message/${item.chat}`)
+      fetch( `http://localhost:4000/api/v1/message/${item.chat}`,{
+        headers: {
+          authorization:`token ${token}`
+        }
+      })
       .then((response)=>{return response.json()})
       .then((data)=>{
         setCurrentChat(data)
@@ -52,18 +71,21 @@ let ChatComponent=()=>{
     }
 
     let sendMessage=async()=>{
+      let token=String(localStorage.getItem('sports_token'))
       if(typeof currentContact != "undefined" && sendedMessage != ''){
-            let id=String(sessionStorage.getItem('id'))
             let messageToBeSend={
               message:sendedMessage,
-              from:id,
               to:currentContact.player._id,
               chat:currentContact.chat
             }
           
             
             const res = await axios.post(
-              `http://localhost:4000/api/v1/message/`,messageToBeSend
+              `http://localhost:4000/api/v1/message/`,messageToBeSend,{
+                headers: {
+                  authorization:`token ${token}`
+                }
+              }
             );
             if(res.data.status==true){ 
               socket.current.emit("send-msg",res.data.message );
@@ -99,9 +121,9 @@ let ChatComponent=()=>{
         <div id='myPopup' className="popup">
                   <div className="contacts">
                                 {
-                          contacts.map((item) => (
+                          contacts?.map((item) => (
                             <div className='contact' onClick={()=>{getChatMessages(item)}} key={item.chat} >
-                            <h1  >{item.player.name}</h1>
+                            <h1  >{item.player?.name}</h1>
 
                           </div>
                         ))}
@@ -112,9 +134,9 @@ let ChatComponent=()=>{
                                         {
                                           currentChat.map((item) => 
                                           {
-                                            let id=String(sessionStorage.getItem('id'))
+                                            let id=currentId
                                             let msgType
-                                            if(item.from==id) msgType='yours'
+                                            if(item.from===id) msgType='yours'
                                             else msgType='notYours'
                                             return (  <div className={msgType} key={item._id} >
                                                     <h5  >{item.message}</h5>

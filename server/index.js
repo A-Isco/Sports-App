@@ -12,7 +12,7 @@ const startServer = async () => {
     console.log(process.env.MONGO_URI);
     connectDB(process.env.MONGO_URI);
     const server = app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
+        console.log(`Server is listening on port ${port}...`)
     );
     const io = socket(server, {
       cors: {

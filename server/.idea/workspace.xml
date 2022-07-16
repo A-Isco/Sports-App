@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/placesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/connectDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/connectDB.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BQu2Ps03J3rlRf2eFD2LqBBXHJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/reham/graduationProject/Sports-App/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="" />
+      <created>1656850421505</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656850421505</updated>
+      <workItem from="1656850422709" duration="805000" />
+      <workItem from="1656896863123" duration="2516000" />
+      <workItem from="1656930846609" duration="3602000" />
+      <workItem from="1656940687005" duration="13728000" />
+      <workItem from="1657020646661" duration="2129000" />
+      <workItem from="1657026409218" duration="11903000" />
+      <workItem from="1657112768335" duration="3844000" />
+      <workItem from="1657147896519" duration="496000" />
+      <workItem from="1657209870236" duration="1847000" />
+      <workItem from="1657236800542" duration="1850000" />
+      <workItem from="1657281048316" duration="5119000" />
+      <workItem from="1657291126360" duration="2160000" />
+      <workItem from="1657310706591" duration="6471000" />
+      <workItem from="1657324930984" duration="3075000" />
+      <workItem from="1657535297432" duration="4912000" />
+      <workItem from="1657552072126" duration="13443000" />
+      <workItem from="1657580380351" duration="12000" />
+      <workItem from="1657581231555" duration="1795000" />
+      <workItem from="1657625525692" duration="13352000" />
+      <workItem from="1657657221847" duration="754000" />
+      <workItem from="1657660065524" duration="769000" />
+      <workItem from="1657667489178" duration="991000" />
+      <workItem from="1657732241626" duration="2721000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

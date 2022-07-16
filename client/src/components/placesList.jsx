@@ -29,9 +29,15 @@ let PlaceList = () => {
 
     // default data
     const fetchRetrieveData = async () => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
 
         const res = await axios.get(
-            `http://localhost:4000/api/places/${sport}?page=${pageNumber}`
+            `http://localhost:4000/api/places/${sport}?page=${pageNumber}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces(res.data.places);
@@ -40,10 +46,16 @@ let PlaceList = () => {
 
     // ****** Search Fn *********
     const fetchSearchData = async () => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
         const res = await axios.get(
             `http://localhost:4000/api/places/${sport}/search?q=${query}&page=${
                 pageNumber + 1
-            }}`
+            }}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces(res.data.places);
@@ -52,10 +64,16 @@ let PlaceList = () => {
 
     // ****** Filter Fn *********
     const fetchFilteredData = async () => {
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
         const res = await axios.get(
             `http://localhost:4000/api/places/${sport}/filter?region=${region}&sortAttribute=${sortAttribute}&sortWay=${sortWay}&page=${
                 pageNumber + 1
-            }}`
+            }}`,{headers}
         );
         setNumberOfPages(res.data.totalPages);
         setPlaces([].concat(res.data.places));
