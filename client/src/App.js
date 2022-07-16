@@ -15,22 +15,40 @@ import Logout from './components/auth/logout';
 import GuestRoute from './components/auth/guestRoute';
 import PrivateRoute from './components/auth/privateRoute';
 import Signup from './components/auth/signup';
-import Home from './components/home';
+// import Home from './components/home';
 import NotFound from './components/notFound';
+import Test from './components/auth/test'
+import Home from './pages/home/home'
+import LoginNav from "./components/core/newLogBar"
+import Nav from "./components/core/newHomeBar"
+import Footer from "./components/core/footer"
+import Landing from "./components/landing";
 export default function App(){
 
   return(
-    <div className='container' >
+    <div className='' >
     <BrowserRouter>
+      <LoginNav/>
+
       <Routes>
-      <Route path="/card/:id" element={<PlayerProfile/>} />
-      <Route path="/card/:id/update" element={<EditProfile/>} />
+          <Route path="/:Sport/*" element={<PrivateRoute component={Landing}/>} />
+          {/*<Route path=":Sport/players" element={<PrivateRoute component={PlayersList}/>} />*/}
+      <Route path="/card" element={<PrivateRoute component={PlayerProfile}/>} />
+      <Route path="/card/update" element={<PrivateRoute component={EditProfile}/>} />
       <Route path='/login'element={<GuestRoute component={Login}/>}/>
      <Route path='/signup' element={<GuestRoute component={Signup}/>}/>
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>
      <Route path=''element={<Home/>}/>
-     <Route path='/home'element={<PrivateRoute component={Home}/>}/>
+     <Route path='/home'element={<Home/>}/>
 
+
+
+     
+
+
+      <Route path='/test' element={<PrivateRoute component={Test}/>}/>
+
+<<<<<<< HEAD
      <Route path='*'element={<NotFound/>}/>
       <Route path="/" element={ <PlacesList/> } />
       <Route path="/players" element={ <PlayersList/> } />
@@ -41,7 +59,11 @@ export default function App(){
           />
 
 
+=======
+      <Route path='*'element={<NotFound/>}/>
+>>>>>>> origin/sportsroutes
       </Routes>
+      <Footer/>
     </BrowserRouter>
     </div>
   )

@@ -6,7 +6,7 @@ let Logout = ()=>{
 let navigation = useNavigate()
 useEffect(()=>{
     localStorage.removeItem('sports_token')
-    navigation('/login')
+    navigation('/home')
 },[])
 
 

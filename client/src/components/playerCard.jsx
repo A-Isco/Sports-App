@@ -15,7 +15,7 @@ let PlayerCard = ({player}) => {
         setrating(newRating);
     };
 
-const colors={swimming:"btn-info",football:"btn-warning"};
+const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger" ,basketball:"btn-success"};
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const customStyles = {
         content: {
@@ -62,11 +62,13 @@ const colors={swimming:"btn-info",football:"btn-warning"};
 
 
     return (
-        <div className="container background py-4 text-center w-25 m-5 ">
+        <div className=" py-4 text-center w-25 m-5 ">
             <div className="card card-width">
                 <div className="card-body place">
+                    <div className="d-flex justify-content-center">
 
                     <img src={player.image} alt={player.name} width="300" height="250" className="m-5"/>
+                    </div>
                     <h4 className="card-title p-3">{` ${player.name}`}</h4>
                     <h6> {player.age} </h6>
                     <p>{` ${player.region}`}</p>

@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const { json } = require('body-parser')
 // import user_validation from '../user_validations'
 const player_validation  = require('../Validations/player_validations')
+const bcrypt = require("bcrypt")
 require('dotenv').config({path: __dirname + '/.env'})
 
 module.exports = {
@@ -16,11 +17,7 @@ module.exports = {
         Player.find({"email":req.body.email}).then((player)=>{
         if (player != '')
                 res.status(400).send('email already exists')
-                
-       
-       
-            
-            
+
             else{
                 let player_body =   player_validation.validate(req.body,{aboutEarly:false})
                 if(player_body.error){
@@ -30,18 +27,25 @@ module.exports = {
                     })
                     res.status(400).send(str);
                 }else{
+                bcrypt.hash(player_body.value['password'], 10, function(err, hash) {
+                        player_body.value['password']=hash
+                        Player.create(player_body.value).then(us=>
+                            {
+                                id = {"id":us._id}
+                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})
+                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET) 
+                                let obj = {
+                                    token : token,
+                                    refresh_token:refresh_token
+                                } 
+                            res.status(200).send(obj)
+                            })
+                        .catch(next)
+                    
+                });
+
 
                 
-                Player.create(player_body.value).then(us=>
-                    {
-                        id = {"id":us._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET)
-                    res.status(200).send(token,)
-                    })
-                .catch(next)
-                
-                //api to refresh token .....
-                //validation joi and yup
                 }
             }
         })
@@ -52,53 +56,79 @@ module.exports = {
         Player.findById({_id}).then(player=>res.status(200).send(player)).catch(next)
     },
     login:(req,res,next)=>{
-        // res.status(200).send(req.body.user_name).catch(next)
-        // res.send(req.body.password)
-        Player.find({"email":req.body.email,"password":req.body.password}).then(player=>{
+
+        console.log(req.body);
+        Player.find({"email":req.body.email}).then(player=>{
             if(player !='')
-            {
-                console.log(player);
-                id = {"id":player._id}
-                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET)  
-                    //{expiresIn: 100}
-                res.status(200).send(token)
+            {   
+                bcrypt.compare(req.body.password, player[0].password, function(err, result) {
+                    if (result) {
+                        console.log("player[0]._id=")
+                        console.log(player[0]._id)
+                        id = {"id":player[0]._id}
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})   
+                        const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
+    
+                        let obj = {
+                            token : token,
+                            refresh_token:refresh_token
+                        }
+
+                        res.status(200).send(obj)
+                   }
+                   else res.status(400).send('email and password dont match')
+                    
+                   
+                   
+                });
+
             } 
-            else {
-                res.status(400).send('wrong playername or password')
-                
-            }
-            
+             
+            else res.status(400).send('you entered a wrong email')
+ 
         })
         .catch(next)
     },
-    refresh_token:(req,res,next)=>{
-        const auth_header = req.headers['authorization']
-        console.log('auth header is');
-        console.log(auth_header);
-        if(auth_header){
-            
-            
-            token_arr = auth_header.split(' ')
-            console.log(token_arr);
-            if(token_arr.length>1){
-                token = auth_header.split(' ')[1]
-            
-    
-            // console.log('from authenticate  '+process.env.ACCESS_TOKEN_SECRET);
-            
-            jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,player)=>{
-                if(err) {res.status(403).send('you are not authorized')}
-                req.player=player
 
-                res.status(200).send(player)
-            })
-        }else{
-            res.status(401).send('you sent a wrong request')
-        }
-        }
-        else {
-            res.status(401).send('you are not authorized you need to login')
-        }
+
+
+    refresh_token:(req,res,next)=>{
+        console.log('from refresh token');           
+            let id
+           token =  req.body.token
+           refresh_token = req.body.refresh_token
+            try{
+            let token_id = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
+                id=token_id
+                }catch(ex){
+                    console.log('from catch exception is');
+                    
+                    if (ex.message === 'jwt expired'){
+                        console.log('if condition works');
+                        try{
+                            let refresh_id = jwt.verify(refresh_token,process.env.REFRESH_TOKEN_SECRET)
+                            console.log(refresh_id.id);
+                            id={"id":refresh_id.id}
+                            
+                        }catch(exception){
+                            console.log('from refresh token catch');
+                            res.status(400).send(exception.message)
+                        }
+                    }else{
+                        res.status(400).send(ex.message)
+                    }
+                }
+                console.log('after catch');
+                if(id != null){
+                    token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})
+                    refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
+                    obj = {
+                        token:token,
+                        refresh_token:refresh_token
+                    }
+                    res.status(200).send(obj)
+                }
+              
     },
 
 

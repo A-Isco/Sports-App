@@ -51,9 +51,9 @@ const PlayerSchema = new mongoose.Schema({
 
   },
 
-  nationalID: {
-    type: String,
-  },
+  // nationalID: {
+  //   type: String,
+  // },
   region: {
     type: String,
   },
