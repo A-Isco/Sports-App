@@ -8,7 +8,7 @@ module.exports = (req,res,next)=>{
         
         
         token_arr = auth_header.split(' ')
-        // console.log(token_arr);
+        console.log("from middle");
         if(token_arr.length>1){
             token = auth_header.split(' ')[1]
         

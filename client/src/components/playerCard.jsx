@@ -8,7 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import { useEffect, useState } from "react";
 
 let PlayerCard = ({player}) => {
-
+    let [sendedMessage, setMessage] = useState('');
     let [rating, setrating] = useState(0);
     const ratingChanged = (newRating) => {
         console.log(newRating);
@@ -17,6 +17,7 @@ let PlayerCard = ({player}) => {
 
 const colors={swimming:"btn-info",football:"btn-warning"};
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [messageModalIsOpen, setMessageModalIsOpen] = React.useState(false);
     const customStyles = {
         content: {
             top: '50%',
@@ -27,6 +28,23 @@ const colors={swimming:"btn-info",football:"btn-warning"};
             transform: 'translate(-50%, -50%)',
         },
     };
+    const messageModalStyles={
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            justifyContent: 'center',
+            alignItems: 'center'
+            
+         
+
+
+        },
+
+    }
     const createReview = (event) => {
         // event.preventDefault();
         let token=String(localStorage.getItem('sports_token'))
@@ -45,7 +63,9 @@ const colors={swimming:"btn-info",football:"btn-warning"};
     };
 
 
-
+    function openMessageModal() {
+        setMessageModalIsOpen(true);
+    }
     function openModal() {
         setIsOpen(true);
     }
@@ -54,12 +74,48 @@ const colors={swimming:"btn-info",football:"btn-warning"};
     //     // references are now sync'd and can be accessed.
     //     subtitle.style.color = '#f00';
     // }
-
+    function closeMessageModal() {
+        setMessageModalIsOpen(false);
+    }
     function closeModal() {
         setIsOpen(false);
     }
 
-
+    async function sendMessage(){
+        let token=String(localStorage.getItem('sports_token'))
+        if(sendedMessage !== ''){
+            let chat={
+                player2:player._id
+            }
+            const chatRes = await axios.post(
+                `http://localhost:4000/api/v1/chat/contacts/`,chat,{
+                  headers: {
+                    authorization:`token ${token}`
+                  }
+                }
+              );
+              let chatId=chatRes.data.chat._id
+              let messageToBeSend={
+                message:sendedMessage,
+                to:player._id,
+                chat:chatId
+              }
+              const msgRes = await axios.post(
+                `http://localhost:4000/api/v1/message/`,messageToBeSend,{
+                  headers: {
+                    authorization:`token ${token}`
+                  }
+                }
+              );
+              
+              if(msgRes.data.status==true){ 
+                sendedMessage=""
+                closeMessageModal()
+              }
+             
+            }
+  
+      }
 
     return (
         <div className=" py-4 text-center w-25 m-5 ">
@@ -92,7 +148,7 @@ const colors={swimming:"btn-info",football:"btn-warning"};
                     </div>
                     <div className="d-flex justify-content-around">
                      <button className="btn btn-primary rounded-pill px-4" onClick={openModal}>  rate</button>
-                        <button className="btn btn-primary rounded-pill"> messege</button>
+                        <button onClick={openMessageModal} className="btn btn-primary rounded-pill"> messege</button>
 
                     </div>
 
@@ -131,6 +187,17 @@ const colors={swimming:"btn-info",football:"btn-warning"};
                     <button  className="btn btn-success m-3" type="submit">submit</button>
 
                 </form>
+            </Modal>
+            <Modal
+                    isOpen={messageModalIsOpen}
+                    onRequestClose={closeModal}
+                    style={messageModalStyles}
+            >
+                
+                    <textarea onChange={(e)=>{setMessage(e.target.value)}} value={sendedMessage} style={{'display':'block',width:'200px',height:'100px'}} id='messageContent' placeholder="Enter Your Message Here" ></textarea>
+                    <button className="btn btn-danger m-3" onClick={closeMessageModal}>close</button>
+                    <button  className="btn btn-success m-3" onClick={sendMessage} type="submit">Send</button>
+                
             </Modal>
         </div>
     );
