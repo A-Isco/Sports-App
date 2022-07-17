@@ -19,27 +19,32 @@ import Home from './pages/home/home'
 import LoginNav from "./components/core/newLogBar"
 import Nav from "./components/core/newHomeBar"
 import Footer from "./components/core/footer"
+import Landing from "./components/landing";
 export default function App(){
 
   return(
     <div className='' >
     <BrowserRouter>
       <LoginNav/>
-      <Nav/>
+
       <Routes>
-      <Route path="/card" element={<PlayerProfile/>} />
-      <Route path="/card/update" element={<EditProfile/>} />
+          <Route path="/:Sport/*" element={<PrivateRoute component={Landing}/>} />
+          {/*<Route path=":Sport/players" element={<PrivateRoute component={PlayersList}/>} />*/}
+      <Route path="/card" element={<PrivateRoute component={PlayerProfile}/>} />
+      <Route path="/card/update" element={<PrivateRoute component={EditProfile}/>} />
       <Route path='/login'element={<GuestRoute component={Login}/>}/>
      <Route path='/signup' element={<GuestRoute component={Signup}/>}/>
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>
      <Route path=''element={<Home/>}/>
      <Route path='/home'element={<Home/>}/>
+
+
+
      
-      <Route path="/places" element={<PrivateRoute component={PlacesList}/>} />
-          <Route path="/players" element={<PrivateRoute component={PlayersList}/>} />
-      <Route path="/football/places/:placeId" element={<PrivateRoute component={PlaceDetails}/>} />
-      <Route path="/chat"   element={<PrivateRoute component={ChatComponent}/>}/>
+
+
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
+
       <Route path='*'element={<NotFound/>}/>
       </Routes>
       <Footer/>

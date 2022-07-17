@@ -1,8 +1,30 @@
 import React, {useEffect, useState} from "react";
+import Schema from 'form-schema-validation';
 import { MultiSelect } from "react-multi-select-component";
 import axios from "axios";
 import Select from 'react-select';
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./core/newHomeBar";
 
+
+
+const validationSchema = Yup.object({
+
+    name: Yup.string().required(),
+    age: Yup.number().required(),
+});
+
+const initialValues = {
+    name: "",
+    age: 0,
+
+};
+
+const onSubmit = (values) => {
+    alert(JSON.stringify(values, null, 2));
+};
 let EditProfile = () => {
     const [Player, setPlayer] = useState({
         sports: [],
@@ -25,6 +47,10 @@ let EditProfile = () => {
     });
 
     useEffect(() => {
+        //let token = window.localStorage.getItem("token");
+        //let id = window.localStorage.getItem("id");
+       // let id ="62c24c0c0d6372c368cb51ac";
+
         let token=String(localStorage.getItem('sports_token'))
         const headers = {
             "Content-Type": "application/json",
@@ -73,6 +99,10 @@ let EditProfile = () => {
             });
 
     }, []);
+
+    // const handleChangeTags = (options) => {
+    //     setPlayer((prevState) => ({ ...prevState, Region: options }));
+    // };
     const [selected, setSelected] = useState([]);
     const [selectedreg, setSelectedreg] = useState([]);
     const [file, setFile] = useState();
@@ -122,6 +152,8 @@ let EditProfile = () => {
 
                 console.log(response);
                 SetErrors({});
+                navigate("/card")
+
             })
             .catch((response) => {
                 SetErrors(response.response.data.error.details[0].message);
@@ -130,6 +162,12 @@ let EditProfile = () => {
     }
     return (
         <div>
+            <Navbar/>
+            <div  className="d-flex justify-content-center ">
+            <div className="w-75" >
+
+
+
                 <form className="mx-5"  action="http://localhost:4000/api/players/card" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -178,7 +216,7 @@ let EditProfile = () => {
                     name={selectedreg}
                     value={selectedreg}
                     options={Region}
-                    onChange={(e)=>{setSelectedreg(e.label);
+                    onChange={(e)=>{setSelectedreg(e);
                         Player.region=e.label
                         setPlayer(Player)
                         console.log(e.label)
@@ -186,6 +224,7 @@ let EditProfile = () => {
                     }}
                 />
                 </div>
+
                     <div className="form-group col-md-4">
                         <label>Sports</label>
                         <MultiSelect
@@ -247,6 +286,9 @@ let EditProfile = () => {
 
             </div>
         </div>
+            </div>
+        </div>
+
     );
 
 
