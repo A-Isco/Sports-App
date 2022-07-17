@@ -15,7 +15,7 @@ let PlayerCard = ({player}) => {
         setrating(newRating);
     };
 
-const colors={swimming:"btn-info",football:"btn-warning"};
+const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger" ,basketball:"btn-success"};
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const customStyles = {
         content: {
