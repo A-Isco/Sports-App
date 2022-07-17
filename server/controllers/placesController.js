@@ -4,21 +4,38 @@ const Place = require("../models/Place");
 const createPlace = async (req, res) => {
     try {
         // Create a new Place
+
+            const images = []
+            const url = req.protocol + '://' + req.get('host');
+            for (var i = 0; i < req.files.length; i++) {
+                images.push(url + '/public/' + req.files[i].filename)
+            }
+            const placeProfile = await Place.findByIdAndUpdate(req.params.id, {
+                profile: images
+            }, {
+                new: true,
+                runValidators: true
+            });
+        
         const place = new Place({
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
             rate: req.body.rate,
             region: req.body.region,
-            sport:req.body.sport
+            profile: images,
+            sport: String(req.body.sport),
         });
-    
+
+        console.log(place);
+
         await place.save();
         res.status(200).json({
             message: `New Place has been Created`,
         });
     } catch (error) {
-        res.status(500).send(error.message);
+        res.status(500).send(error);
+        console.log(error.message)
     }
 };
 
@@ -30,9 +47,13 @@ const getPlaces = async (req, res) => {
 
     const PAGE_SIZE = 3;
     const page = parseInt(req.query.page || "0");
-    const total = await Place.countDocuments({sport:sport});
+    const total = await Place.countDocuments({
+        sport: sport
+    });
 
-    const places = await Place.find({ sport: sport })
+    const places = await Place.find({
+            sport: sport
+        })
         .limit(PAGE_SIZE)
         .skip(PAGE_SIZE * page);
 
@@ -45,12 +66,14 @@ const getPlaces = async (req, res) => {
 // *********************** Search ***********************
 const getPlacesBySearch = async (req, res) => {
     let sport = req.params.sport;
-   const q = req.query.q;
+    const q = req.query.q;
 
     const PAGE_SIZE = 3;
     const page = parseInt(req.query.page || "0");
 
-    const places = await Place.find({sport:sport});
+    const places = await Place.find({
+        sport: sport
+    });
 
     const keys = ["name"];
 
@@ -87,7 +110,10 @@ const getPlacesByFilter = async (req, res) => {
 
     // Region Only
     if (region && sortAttribute == false && sortWay == false) {
-        const places = await Place.find({ region: region ,sport:sport});
+        const places = await Place.find({
+            region: region,
+            sport: sport
+        });
         const total = places.length;
 
         const startIndex = (page - 1) * limit;
@@ -95,14 +121,18 @@ const getPlacesByFilter = async (req, res) => {
 
         res.json({
             totalPages: Math.ceil(total / PAGE_SIZE),
-           places: places.slice(startIndex, endIndex),
+            places: places.slice(startIndex, endIndex),
         });
     }
 
     // Sort only " default desc order "
     if (sortAttribute && region == false && sortWay == false) {
         if (sortAttribute == "rate") {
-            const places = await Place.find({sport:sport}).sort({ rate: -1 });
+            const places = await Place.find({
+                sport: sport
+            }).sort({
+                rate: -1
+            });
             const total = places.length;
 
             const startIndex = (page - 1) * limit;
@@ -114,7 +144,11 @@ const getPlacesByFilter = async (req, res) => {
             });
         }
         if (sortAttribute == "price") {
-            const places= await Place.find({sport:sport}).sort({ price: -1 });
+            const places = await Place.find({
+                sport: sport
+            }).sort({
+                price: -1
+            });
             const total = places.length;
 
             const startIndex = (page - 1) * limit;
@@ -130,7 +164,10 @@ const getPlacesByFilter = async (req, res) => {
     // Region & sortAttribute " default desc order "
     if (sortAttribute && region && sortWay == false) {
         if (sortAttribute == "rate") {
-            const places = await Place.find({ region: region,sport:sport }).sort({
+            const places = await Place.find({
+                region: region,
+                sport: sport
+            }).sort({
                 rate: -1,
             });
             const total = places.length;
@@ -145,7 +182,10 @@ const getPlacesByFilter = async (req, res) => {
         }
 
         if (sortAttribute == "price") {
-            const places = await Place.find({ region: region ,sport:sport }).sort({
+            const places = await Place.find({
+                region: region,
+                sport: sport
+            }).sort({
                 price: -1,
             });
             const total = places.length;
@@ -163,7 +203,9 @@ const getPlacesByFilter = async (req, res) => {
     // sortAttribute && sortType
     if (sortAttribute && sortWay && region == false) {
         if (sortWay == "asc" && sortAttribute == "rate") {
-            const places = await Place.find({sport:sport}).sort({
+            const places = await Place.find({
+                sport: sport
+            }).sort({
                 rate: 1,
             });
             const total = places.length;
@@ -178,7 +220,9 @@ const getPlacesByFilter = async (req, res) => {
         }
 
         if (sortWay == "desc" && sortAttribute == "rate") {
-            const places = await Place.find({sport:sport}).sort({
+            const places = await Place.find({
+                sport: sport
+            }).sort({
                 rate: -1,
             });
             const total = places.length;
@@ -193,10 +237,12 @@ const getPlacesByFilter = async (req, res) => {
         }
 
         if (sortWay == "asc" && sortAttribute == "price") {
-            const places = await Place.find({sport:sport}).sort({
-               price: 1,
+            const places = await Place.find({
+                sport: sport
+            }).sort({
+                price: 1,
             });
-            const total =places.length;
+            const total = places.length;
 
             const startIndex = (page - 1) * limit;
             const endIndex = page * limit;
@@ -208,7 +254,9 @@ const getPlacesByFilter = async (req, res) => {
         }
 
         if (sortWay == "desc" && sortAttribute == "price") {
-            const places = await Place.find({sport:sport}).sort({
+            const places = await Place.find({
+                sport: sport
+            }).sort({
                 price: -1,
             });
             const total = places.length;
@@ -226,7 +274,10 @@ const getPlacesByFilter = async (req, res) => {
     // Region & sortAttribute & sortType
     if (sortAttribute && sortWay && region) {
         if (sortWay == "asc" && sortAttribute == "rate") {
-            const places = await Place.find({ region: region , sport:sport }).sort({
+            const places = await Place.find({
+                region: region,
+                sport: sport
+            }).sort({
                 rate: 1,
             });
             const total = places.length;
@@ -236,12 +287,15 @@ const getPlacesByFilter = async (req, res) => {
 
             res.json({
                 totalPages: Math.ceil(total / PAGE_SIZE),
-               places: places.slice(startIndex, endIndex),
+                places: places.slice(startIndex, endIndex),
             });
         }
 
         if (sortWay == "desc" && sortAttribute == "rate") {
-            const places = await Place.find({ region: region , sport:sport }).sort({
+            const places = await Place.find({
+                region: region,
+                sport: sport
+            }).sort({
                 rate: -1,
             });
             const total = places.length;
@@ -256,7 +310,10 @@ const getPlacesByFilter = async (req, res) => {
         }
 
         if (sortWay == "asc" && sortAttribute == "price") {
-            const places = await Place.find({ region: region , sport:sport}).sort({
+            const places = await Place.find({
+                region: region,
+                sport: sport
+            }).sort({
                 price: 1,
             });
             const total = places.length;
@@ -266,13 +323,16 @@ const getPlacesByFilter = async (req, res) => {
 
             res.json({
                 totalPages: Math.ceil(total / PAGE_SIZE),
-               places: places.slice(startIndex, endIndex),
+                places: places.slice(startIndex, endIndex),
             });
         }
 
         if (sortWay == "desc" && sortAttribute == "price") {
-            const places = await Place.find({ region: region ,sport:sport }).sort({
-               price: -1,
+            const places = await Place.find({
+                region: region,
+                sport: sport
+            }).sort({
+                price: -1,
             });
             const total = places.length;
 
@@ -289,28 +349,43 @@ const getPlacesByFilter = async (req, res) => {
 
 const getPlaceById = async (req, res) => {
     const placeId = req.params.id;
-    const place=await Place.findById(placeId)
+    const place = await Place.findById(placeId)
     res.send(place);
 
 };
 
 const updatePlace = async (req, res) => {
+    if (req.body.profile) {
+        const images = []
+        const url = req.protocol + '://' + req.get('host');
+        for (var i = 0; i < req.files.length; i++) {
+            images.push(url + '/public/' + req.files[i].filename)
+        }
+        const placeProfile = await Place.findByIdAndUpdate(req.params.id, {
+            profile: images
+        }, {
+            new: true,
+            runValidators: true
+        });
+    }
     const place = await Place.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
     })
     res.send(req.body);
+    console.log(place);
 };
 const createProductReview = async (req, res) => {
 
     const placeId = req.params.id;
-    const { rating, comment } = req.body
-    const place=await Place.findById(placeId)
+    const {
+        rating,
+        comment
+    } = req.body
+    const place = await Place.findById(placeId)
     const review = {
-       // name: req.user.name,
         rating: Number(rating),
         comment,
-        //user: req.user._id,
     }
 
     place.reviews.push(review)
@@ -319,7 +394,9 @@ const createProductReview = async (req, res) => {
 
     place.rate = (place.reviews.reduce((acc, item) => item.rating + acc, 0) / place.numReviews).toFixed(1)
     await place.save()
-    res.status(201).json({ message: 'Review added' })
+    res.status(201).json({
+        message: 'Review added'
+    })
 
 };
 

@@ -92,6 +92,15 @@ const getPlayer = async (req, res) => {
 
 };
 const updatePlayer=async (req,res)=>{
+
+
+
+
+
+
+
+
+
   console.log("up")
   console.log(req.file)
   //console.log(req.params.id)

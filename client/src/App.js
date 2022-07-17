@@ -7,6 +7,9 @@ import EditProfile from "./components/EditProfile";
 import TestProfile from "./components/TestProfile";
 import ChatComponent from './components/chat/chatcomponent.jsx'
 import PlaceDetails from "./components/placeDetails";
+import PlacesCreatePage from "./components/PlacesCreatePage";
+import PlacesEditPage from "./components/placesEditPage";
+
 import  Login  from './components/auth/login';
 import Logout from './components/auth/logout';
 import GuestRoute from './components/auth/guestRoute';
@@ -45,7 +48,20 @@ export default function App(){
 
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
 
+<<<<<<< HEAD
+     <Route path='*'element={<NotFound/>}/>
+      <Route path="/" element={ <PlacesList/> } />
+      <Route path="/players" element={ <PlayersList/> } />
+      <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
+        <Route path="/chat" element={<ChatComponent />} />
+        <Route path="/football/create-place" element={< PlacesCreatePage />} />
+        < Route path = "/football/:placeId/edit-place"element = { < PlacesEditPage />  }
+          />
+
+
+=======
       <Route path='*'element={<NotFound/>}/>
+>>>>>>> origin/sportsroutes
       </Routes>
       <Footer/>
     </BrowserRouter>

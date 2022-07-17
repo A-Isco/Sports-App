@@ -5,13 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/components/PlacesCreatePage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/src/components/placesEditPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/3999aa4b-b667-4cb5-a2ef-567669dece6d-soccer-field-small-size-park-43417480_large.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/7d6029eb-ceb9-4604-8d17-9b1f8d8325b5-images.jfif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/placesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/placesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/connectDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/connectDB.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Place.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Place.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/undefined.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/places.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/places.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
