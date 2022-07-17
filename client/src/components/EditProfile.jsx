@@ -8,24 +8,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./core/newHomeBar";
 
-
-
-const validationSchema = Yup.object({
-
-    name: Yup.string().required(),
-    age: Yup.number().required(),
-});
-
-const initialValues = {
-    name: "",
-    age: 0,
-
-};
-
-const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-};
 let EditProfile = () => {
+    const navigate=useNavigate();
     const [Player, setPlayer] = useState({
         sports: [],
         name: "",
@@ -47,17 +31,11 @@ let EditProfile = () => {
     });
 
     useEffect(() => {
-        //let token = window.localStorage.getItem("token");
-        //let id = window.localStorage.getItem("id");
-       // let id ="62c24c0c0d6372c368cb51ac";
-
         let token=String(localStorage.getItem('sports_token'))
         const headers = {
             "Content-Type": "application/json",
             authorization:`token ${token}`
-
         };
-
         axios
             .get(" http://localhost:4000/api/players/card/" , {
                 headers,
@@ -100,9 +78,6 @@ let EditProfile = () => {
 
     }, []);
 
-    // const handleChangeTags = (options) => {
-    //     setPlayer((prevState) => ({ ...prevState, Region: options }));
-    // };
     const [selected, setSelected] = useState([]);
     const [selectedreg, setSelectedreg] = useState([]);
     const [file, setFile] = useState();
@@ -165,9 +140,6 @@ let EditProfile = () => {
             <Navbar/>
             <div  className="d-flex justify-content-center ">
             <div className="w-75" >
-
-
-
                 <form className="mx-5"  action="http://localhost:4000/api/players/card" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
                 <div className="form-row">
                     <div className="form-group col-md-6">
@@ -288,10 +260,7 @@ let EditProfile = () => {
         </div>
             </div>
         </div>
-
     );
-
-
 };
 
 export default EditProfile;

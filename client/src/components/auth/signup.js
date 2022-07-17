@@ -132,7 +132,7 @@ let Signup = ()=>{
                 />
             </div>
             <div className="form-group col-md-6">
-                <label className="form-label" htmlFor="customFile">Update Image</label>
+                <label className="form-label" htmlFor="customFile">Insert Image</label>
                 <input
                     type="file"
                     className="form-control"
@@ -145,12 +145,10 @@ let Signup = ()=>{
             </div>
             <p className="text-danger">{error}</p>
             <br/>
-            {/*<div className="col-4 d-flex align-items-center flex-column">*/}
-            {/*    <span>Player Image</span><br></br>*/}
-            {/*    <img className="pp" src="./pp.jpeg"/>*/}
-            {/*    <button className=" browse btn btn-secondary mt-3 rounded-pill text-dark" >Browse</button>*/}
-            {/*    <button type="submit"  className="btn btn-primary rounded-3 fw-bold mt-auto mb-4">Create Account</button>*/}
-            {/*</div>*/}
+
+            <div className="col-4 d-flex align-items-center flex-column">
+                <button type="submit"  className="btn btn-primary rounded-3 fw-bold mt-auto mb-4">Create Account</button>
+            </div>
         </form>
     </div>
 

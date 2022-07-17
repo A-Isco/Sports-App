@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/auth/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/auth/signup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Validations/player_validations.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validations/player_validations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/PlayerAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/PlayerAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth_routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uploads/undefined.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
