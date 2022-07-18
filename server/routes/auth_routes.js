@@ -1,9 +1,9 @@
 const user_controller = require('../controllers/user_controller.js')
 const authenticate_token = require('../middleware/authenticate_token.js')
-
+const isAdmin = require('../middleware/isAdmin')
 
 module.exports=(app)=>{
-    app.get('/',authenticate_token,(req,res)=>{
+    app.get('/',authenticate_token,isAdmin,(req,res)=>{
         res.send(req.player_id)
     })
 

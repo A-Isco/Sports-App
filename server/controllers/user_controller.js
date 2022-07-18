@@ -61,12 +61,13 @@ module.exports = {
         Player.find({"email":req.body.email}).then(player=>{
             if(player !='')
             {   
+                console.log(player);
                 bcrypt.compare(req.body.password, player[0].password, function(err, result) {
                     if (result) {
                         console.log("player[0]._id=")
                         console.log(player[0]._id)
                         id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})   
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 120})   
                         const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
     
                         let obj = {
@@ -99,7 +100,8 @@ module.exports = {
            refresh_token = req.body.refresh_token
             try{
             let token_id = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
-                id=token_id
+                console.log(token_id);
+                id={"id":token_id.id}
                 }catch(ex){
                     console.log('from catch exception is');
                     
@@ -120,6 +122,7 @@ module.exports = {
                 }
                 console.log('after catch');
                 if(id != null){
+                    console.log(id);
                     token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})
                     refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                     obj = {

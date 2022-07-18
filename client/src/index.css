@@ -38,4 +38,7 @@
   }
   .browse{
     border-radius: 50px;
+  }.sel{
+    border-radius: 10px;
+
   }

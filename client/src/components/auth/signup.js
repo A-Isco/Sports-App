@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState,useContext , useEffect} from "react";
 import axios from 'axios'
 import $ from 'jquery';
+import {appContext} from '../../App'
 import {useNavigate} from 'react-router-dom';
 let Signup = ()=>{
+    let appContextValue = useContext(appContext)
     let navigation = useNavigate()
     let [username, setUsername] = useState({})
     let [email, setEmail] = useState({})
@@ -13,7 +15,18 @@ let Signup = ()=>{
     let [region, setRegion] = useState({})
     let [sport, setSport] = useState({})
     let [error, setError] = useState(null)
+    let [regions,setRegions]= useState({})
 
+    useEffect(()=>{
+        let token = localStorage.getItem('sports_token')
+       axios.get("http://localhost:4000/api/regions/")
+       .then((response)=>{
+        if(response.status===200){
+            setRegions(response.data)
+            console.log(regions);
+        }
+       })
+    },[])
 
 let render_form = ()=>{
     return(
@@ -53,7 +66,11 @@ let render_form = ()=>{
                 </div>
             </div>
             <span>Region</span><br/>
-            <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setRegion(e.target.value)}/>
+            {/* <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setRegion(e.target.value)}/> */}
+        <select className="mb-2 form-control mt-1 sel" style={{width:"46vw"}} onChange={(e)=>setRegion(e.target.value)}>
+            {render_regions()}
+            </select> 
+
             <br/>
             <span>Sport</span><br/>
             <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setSport(e.target.value)}/>
@@ -90,6 +107,15 @@ let change_gender = (e)=>{
     }
   
 }
+let render_regions = ()=>{
+    if(regions[0]){
+        return regions.map((region)=>{
+            return(
+                <option value={region.name} key={region._id} >{region.name}</option>
+            )
+        })
+    }
+}
 
 let create_account = (e)=>{
     e.preventDefault();
@@ -113,6 +139,7 @@ let create_account = (e)=>{
                 console.log('3aaaaash');
                 localStorage.setItem('sports_token',response.data.token)
                 localStorage.setItem('refresh_sports_token',response.data.refresh_token)
+                appContextValue.setIsLoggedIn(true)
                 navigation('/home')
             }
         })
