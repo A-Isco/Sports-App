@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
+import {useParams} from "react-router-dom";
 
 let EditPlace = () => {
+  let { placeId } = useParams();
+  let { Sport } = useParams();
   const [Place, setPlace] = useState({
     name: "",
     description: "",
@@ -23,7 +26,7 @@ let EditPlace = () => {
   });
 
   useEffect(() => {
-    let id = "62cda65df1489097e99c77d3";
+
     let token = window.localStorage.getItem("sports_token");
 
     const headers = {
@@ -32,7 +35,7 @@ let EditPlace = () => {
     };
 
     axios
-      .get(`http://localhost:4000/api/places/football/${id}`, {
+      .get(`http://localhost:4000/api/places/${Sport}/${placeId}`, {
         headers,
       })
       .then((res) => {
@@ -114,7 +117,7 @@ let EditPlace = () => {
       Authorization: "token " + token,
     };
     let id = "62cda65df1489097e99c77d3";
-    let baseUrl = `http://localhost:4000/api/places/football/${id}/update`;
+    let baseUrl = `http://localhost:4000/api/places/${Sport}/${placeId}/update`;
 
     axios
       .patch(baseUrl, formData, { headers })
@@ -133,20 +136,24 @@ let EditPlace = () => {
   }
 
   return (
-    <div className="row">
+      <div className="card min-vh-100 p-5" >
+    <div className="row p-5 m-5">
       <form
-        className="col-4 mx-auto mt-5"
+          className="col-4 mx-auto card  mt-3 p-3  " style={{backgroundColor: "#d7d9db",borderRadius:'10px'}}
         action=""
         onSubmit={(e) => editPlace(e)}
       >
-        <div className="form-row">
-          <div className="form-group mb-2">
+        <div className="text-center p-3">
+          <h3>Edit place</h3>
+        </div>
+        <div className="form-row mt-3">
+          <div className="form-group  mb-2">
             <label htmlFor="inputName">Name</label>
             <input
               name="name"
               value={Place.name}
               type="text"
-              className="form-control"
+              className="form-control  rounded-pill"
               id="inputName"
               placeholder=""
               onChange={(e) => {
@@ -163,7 +170,7 @@ let EditPlace = () => {
               value={Place.description}
               type="textarea"
               row="4"
-              className="form-control"
+              className="form-control  rounded-pill"
               id="inputDescription"
               placeholder=""
               onChange={(e) => {
@@ -177,7 +184,7 @@ let EditPlace = () => {
               name="price"
               value={Place.price}
               type="number"
-              className="form-control"
+              className="form-control  rounded-pill"
               id="inputPrice"
               onChange={(e) => {
                 handleChange(e);
@@ -192,7 +199,7 @@ let EditPlace = () => {
           <input
             multiple
             type="file"
-            className="form-control"
+            className="form-control  rounded-pill"
             id="customFile"
             name="profile"
             onChange={(e) => {
@@ -200,7 +207,7 @@ let EditPlace = () => {
             }}
           />
         </div>
-        <div className="form-group mb-2">
+        <div className="form-group mb-2  rounded-pill">
           <label>Region</label>
           <Select
             name={selectedreg}
@@ -211,9 +218,10 @@ let EditPlace = () => {
               Place.region = e.label;
               setPlace(Place);
             }}
+            className=" form-control rounded-pill"
           />
         </div>
-        <div className="form-group mb-2">
+        <div className="form-group mb-2  rounded-pill">
           <label>Sport</label>
           <Select
             name={selected}
@@ -225,6 +233,7 @@ let EditPlace = () => {
               Place.sport = e.label;
               setPlace(Place);
             }}
+            className=" form-control rounded-pill"
           />
         </div>
 
@@ -234,7 +243,7 @@ let EditPlace = () => {
             name="address"
             value={Place.address}
             type="text"
-            className="form-control"
+            className="form-control  rounded-pill"
             id="inputAddress"
             placeholder=""
             onChange={(e) => {
@@ -243,11 +252,12 @@ let EditPlace = () => {
           />
         </div>
 
-        <button className="btn btn-primary btn-block mb-2" type="submit">
+        <button className=" form-control btn btn-primary btn-block mb-3 mt-3  rounded-pill" type="submit">
           Update
         </button>
       </form>
     </div>
+        </div>
   );
 };
 

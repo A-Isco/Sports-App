@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
+import {useParams} from "react-router-dom";
 
 let PlaceCreatePage = () => {
+  let { Sport } = useParams();
   const [Place, setPlace] = useState({
     name: "",
     description: "",
@@ -97,7 +99,7 @@ let PlaceCreatePage = () => {
     }
 
     let token = window.localStorage.getItem("sports_token");
-    let baseUrl = "http://localhost:4000/api/places/football/create";
+    let baseUrl = "http://localhost:4000/api/places/"+Sport+"/create";
 
     const headers = {
       "Content-Type": "multipart/form-data",
@@ -119,8 +121,9 @@ let PlaceCreatePage = () => {
   }
 
   return (
-    <div className="row">
-      <form className="col-4 mx-auto" onSubmit={(e) => createPlace(e)}>
+      <div className="card min-vh-100 p-5" >
+    <div className="row  p-5  m-5 ">
+      <form className="col-4 mx-auto card p-3"  style={{backgroundColor: "#d7d9db"}} onSubmit={(e) => createPlace(e)}>
         <div className="text-center p-3">
           <h3>Sports Club</h3>
         </div>
@@ -221,7 +224,7 @@ let PlaceCreatePage = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary btn-block mb-2">
+        <button type="submit" className="btn btn-primary btn-block  form-control mt-3 mb-3">
           Add
         </button>
       </form>
@@ -237,6 +240,7 @@ let PlaceCreatePage = () => {
         })}
       </div>
     </div>
+      </div>
   );
 };
 

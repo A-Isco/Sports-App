@@ -50,12 +50,10 @@ export default function App(){
 
      <Route path='*'element={<NotFound/>}/>
       <Route path="/" element={ <PlacesList/> } />
-      <Route path="/players" element={ <PlayersList/> } />
-      <Route path="/football/places/:placeId" element={ <PlaceDetails/> } />
+
+
         <Route path="/chat" element={<ChatComponent />} />
-        <Route path="/football/create-place" element={< PlacesCreatePage />} />
-        < Route path = "/football/:placeId/edit-place"element = { < PlacesEditPage />  }
-          />
+
 
 
 

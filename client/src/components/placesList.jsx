@@ -4,7 +4,7 @@ import PlaceCard from "./placeCard";
 import React from 'react'
 
 import ReactPaginate from 'react-paginate';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 let PlaceList = () => {
     let {Sport}=useParams();
@@ -227,6 +227,9 @@ let PlaceList = () => {
                     >
                         apply
                     </button>
+
+                        <Link to={`/${Sport}/create-place`}className="btn btn-primary m-3"> CREATE PLACE</Link>
+
                 </div>
 
                 <div>
@@ -248,6 +251,7 @@ let PlaceList = () => {
                             return <PlaceCard  key={place._id} place={place} />;
                         })}
                     </div>
+
 
                     <ul className="pagination  pagination-lg justify-content-end m-5 px-5">
                         <li className="page-item">

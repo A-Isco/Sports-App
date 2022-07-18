@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/PlacesCreatePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/PlacesCreatePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/core/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/landing.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/placesEditPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesEditPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/placesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/placesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/placesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/places.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/places.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
