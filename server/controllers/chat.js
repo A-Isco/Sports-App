@@ -3,7 +3,7 @@ const Player = require("../models/Player");
 module.exports={
    async  getContacts(req,res,next){
             id=req.player_id.id
-            console.log(id)
+            console.log(req.player_id.id)
             let tabs=[]
             let player;
             try {

@@ -6,6 +6,7 @@ const cors=require('cors')
 const auth_routes = require(__dirname+'/routes/auth_routes.js');
 const ChatRoutes=require('./routes/chat')
 const MessageRoutes=require('./routes/message')
+const reservationRouter=require("./routes/reservations");
 //const multer  = require('multer');
 app.use(express.json());
 
@@ -16,7 +17,6 @@ app.use(express.static('uploads'));
 
 
 app.use('/uploads', express.static('uploads'));
-
 
 
 
@@ -46,15 +46,12 @@ const {updatePlayer} = require("./controllers/playersController");
 //     res.send(player);
 // })
 app.use("/api/players", playersRouter);
-
 app.use("/api/sports",sportsRouter);
 app.use("/api/regions",regionRouter);
-
-
-
 app.use("/api/places", placesRouter);
 app.use('/api/v1/chat',ChatRoutes)
 app.use('/api/v1/message',MessageRoutes)
+app.use('/api/v1/reservation',reservationRouter)
 
 
 
