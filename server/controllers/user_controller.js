@@ -49,7 +49,7 @@ module.exports = {
                         Player.create(player_obj).then(us=>
                             {
                                 id = {"id":us._id}
-                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})
+                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 40000})
                                 const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                                 let obj = {
                                     token : token,

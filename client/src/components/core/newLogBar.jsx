@@ -3,15 +3,18 @@ import styled from "styled-components"
 import {Link, NavLink} from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {useContext} from "react";
+import {appContext} from "../../App";
 
 export default function Navbar() {
+    let appContextValue = useContext(appContext)
     const [Player, setPlayer] = useState({});
     const [log, setLog] = useState("logout");
 
 
         useEffect(() => {
-        if((localStorage.getItem('sports_token') !== null)) {
-            setLog("login")
+        if(appContextValue.isLoggedIn===true) {
+
             let token = String(localStorage.getItem('sports_token'))
             const headers = {
                 "Content-Type": "application/json",
@@ -31,6 +34,7 @@ export default function Navbar() {
                 })
                 .catch((res) => {
                     console.log(res);
+                    console.log("kkkkkkkk")
 
                     //setPlayer(res.data);
 
@@ -38,15 +42,15 @@ export default function Navbar() {
 
 
         }
-        else
-            setLog("logout")
-        }, []);
+
+
+        }, [appContextValue.isLoggedIn]);
 
   return (
     <Container>
         <nav>
         <ul className="list">
-            { (log==="logout")? <div className="d-flex flex-row align-items-center"><Link to={"/login"} className="nav-link"><li className="items">LOGIN</li></Link>
+            { (appContextValue.isLoggedIn===false)? <div className="d-flex flex-row align-items-center"><Link to={"/login"} className="nav-link"><li className="items">LOGIN</li></Link>
                 <Link to={"/signup"} className="nav-link"><li className="items">REGISTER</li></Link>
                 <Link to={"/card"} className="nav-link">
                 <img src="/images/bnyadam.png" alt="human" width={"70px"} /></Link></div>:  <div className="d-flex flex-row align-items-center"><Link to={"/logout"} className="nav-link"><li className="items">logout</li></Link>

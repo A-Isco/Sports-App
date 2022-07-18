@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {createContext, useEffect, useState} from 'react'
 import PlayersList from "./components/playersList";
 import  {BrowserRouter,Route,Router,Routes } from 'react-router-dom'
 import PlacesList from "./components/placesList";
@@ -32,13 +32,13 @@ export default function App(){
 let [isLoggedIn, setIsLoggedIn] = useState(false)
 const [isLoading, setIsLoading] = useState(true)
 useEffect(()=>{
-const remember_me = localStorage.getItem("REMEMBER_ME")
-if(remember_me === "1"){
-  Refresh_token()
-  setIsLoggedIn(true)
-}
-setIsLoading(false)
-setInterval(intervalFunction,0.5*60*1000)
+    const remember_me = localStorage.getItem("REMEMBER_ME")
+    if(remember_me === "1"){
+      Refresh_token()
+      setIsLoggedIn(true)
+    }
+    setIsLoading(false)
+    setInterval(intervalFunction,0.5*60*1000)
 
 },[])
 
@@ -55,13 +55,14 @@ console.log("Is Logged In", isLoggedIn)
   return(
     <div className='' >
     <BrowserRouter>
-      <LoginNav/>
 
-      <Nav/>
+
+
       <appContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
+          <LoginNav/>
       <Routes>
           <Route path="/:Sport/*" element={<PrivateRoute component={Landing}/>} />
-          {/*<Route path=":Sport/players" element={<PrivateRoute component={PlayersList}/>} />*/}
+
       <Route path="/card" element={<PrivateRoute component={PlayerProfile}/>} />
       <Route path="/card/update" element={<PrivateRoute component={EditProfile}/>} />
       <Route path='/login'element={<GuestRoute component={Login}/>}/>

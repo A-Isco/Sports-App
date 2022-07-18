@@ -5,55 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3896f49-781c-4b5b-ae75-1e4a9be4745c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/src/components/PlacesCreatePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/components/landing.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/components/placesEditPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/21e89da1-5d9f-4941-836a-c11634145fa6-screenshot-from-2022-04-22-04-39-12.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/3999aa4b-b667-4cb5-a2ef-567669dece6d-soccer-field-small-size-park-43417480_large.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/6a0fc576-ccc7-476f-93db-1f41ee9c1be0-default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/7a0f7f3b-e5ae-400f-8d14-2aae0107c60f-lab2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/7d6029eb-ceb9-4604-8d17-9b1f8d8325b5-images.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/87eb7e7c-b622-4b93-94fc-825e35dd2f55-download.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/8dd073e2-61a3-453e-987c-b7c1426d99a6-lab2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/96a54b98-3ae6-4bee-9592-979d0ee3458c-screenshot-from-2022-04-22-04-39-12.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/c192a51d-2e8c-41fb-bbd2-50f486b0ebf2-download.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/f3f29b29-7457-4f9d-9de4-1b2b6fc0ead5-screenshot-from-2022-04-22-04-39-12.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/f41cd294-0c0b-4003-b6c8-86a7b8661f0f-default.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/EditProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/auth/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/auth/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/auth/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/auth/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/core/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/core/newLogBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/newLogBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placesList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placesList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playerProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/playersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/playersList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/home/home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Validations/player_validations.js" beforeDir="false" afterPath="$PROJECT_DIR$/Validations/player_validations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/placesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/placesController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/playersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/playersController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/connectDB.js" beforeDir="false" afterPath="$PROJECT_DIR$/db/connectDB.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/PlayerAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/PlayerAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Place.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Place.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth_routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/places.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/places.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/players.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/players.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/51f92a23-d7e6-4100-a3f2-f90aef34e2a9-download.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
