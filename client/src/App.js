@@ -23,6 +23,7 @@ import LoginNav from "./components/core/newLogBar"
 import Nav from "./components/core/newHomeBar"
 import Footer from "./components/core/footer"
 import Landing from "./components/landing";
+import PaymentCard from "./components/PaymentCard";
 export default function App(){
 
   return(
@@ -40,10 +41,11 @@ export default function App(){
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>
      <Route path=''element={<Home/>}/>
      <Route path='/home'element={<Home/>}/>
+          <Route path='/charge' element={<PaymentCard/>}/>
 
 
 
-     
+
 
 
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
