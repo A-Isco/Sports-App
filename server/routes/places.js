@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require('multer');
-const uuidv4 = require('uuid/v4');
-
+const { v4: uuidv4 } = require('uuid');
 
 const DIR = './uploads/';
 const storage = multer.diskStorage({
@@ -36,6 +35,7 @@ const {
     updatePlace
 } = require("../controllers/placesController");
 
+router.route("/:sport").post(createPlace).get(getPlaces);
 router.post("/:sport/create",upload.array('profile',10),createPlace);
 router.route("/:sport/search").get(getPlacesBySearch);
 router.route("/:sport/filter").get(getPlacesByFilter);

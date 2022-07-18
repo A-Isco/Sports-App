@@ -8,7 +8,7 @@ const createPlace = async (req, res) => {
             const images = []
             const url = req.protocol + '://' + req.get('host');
             for (var i = 0; i < req.files.length; i++) {
-                images.push(url + '/public/' + req.files[i].filename)
+                images.push(url + '/uploads/' + req.files[i].filename)
             }
             const placeProfile = await Place.findByIdAndUpdate(req.params.id, {
                 profile: images
@@ -359,7 +359,7 @@ const updatePlace = async (req, res) => {
         const images = []
         const url = req.protocol + '://' + req.get('host');
         for (var i = 0; i < req.files.length; i++) {
-            images.push(url + '/public/' + req.files[i].filename)
+            images.push(url + '/uploads/' + req.files[i].filename)
         }
         const placeProfile = await Place.findByIdAndUpdate(req.params.id, {
             profile: images

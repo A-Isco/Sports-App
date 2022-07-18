@@ -89,7 +89,7 @@ let PlayerProfile = () => {
                     {/*<p>{` ${Player.nationalID}`}</p>*/}
                     <p>{` ${Player.age}`}</p>
                     <p>{` ${Player.region}`}</p>
-                    <p>{` ${Player.rate}`}</p>
+                    {/*<p>{` ${Player.rate}`}</p>*/}
                     {Player.sports?.map((sport,index)=>(
                         <p className={` btn  mx-2  rounded-pill ${colors[sport]}`} >{sport}</p>
                     ))}

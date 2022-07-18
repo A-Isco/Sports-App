@@ -18,7 +18,7 @@ let PlaceCard = ({place}) => {
                 <div className="card-body place">
                     <div className="d-flex justify-content-center">
 
-                    <img src={place.profile} alt={place.name} width="300" height="250" className="m-5"/>
+                    <img src={place.profile?place.profile[0]:null} alt={place.name} width="300" height="250" className="m-5"/>
                     </div>
                     <h4 className="card-title p-3">{` ${place.name}`}</h4>
                     <p>{` ${place.region}`}</p>

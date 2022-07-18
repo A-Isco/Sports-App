@@ -48,7 +48,6 @@ export default function App(){
 
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
 
-<<<<<<< HEAD
      <Route path='*'element={<NotFound/>}/>
       <Route path="/" element={ <PlacesList/> } />
       <Route path="/players" element={ <PlayersList/> } />
@@ -59,9 +58,9 @@ export default function App(){
           />
 
 
-=======
+
       <Route path='*'element={<NotFound/>}/>
->>>>>>> origin/sportsroutes
+
       </Routes>
       <Footer/>
     </BrowserRouter>
