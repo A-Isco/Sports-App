@@ -37,8 +37,11 @@ auth_routes(app);
 app.use(middleware)
 const playersRouter = require("./routes/players");
 const placesRouter = require("./routes/places");
+// const sportsRouter = require("./routes/sports");
+// const regionRouter=require("./routes/regions");
 const Player = require("./models/Player");
 const {updatePlayer} = require("./controllers/playersController");
+
 
 
 

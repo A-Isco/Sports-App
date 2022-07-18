@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios'
 import $ from 'jquery';
+import {appContext} from '../../App'
 import {useNavigate} from 'react-router-dom';
 import Select from "react-select";
 import {MultiSelect} from "react-multi-select-component";
 
 let Signup = ()=>{
+    let appContextValue = useContext(appContext)
 
     useEffect(()=>{
 
@@ -55,6 +57,7 @@ let Signup = ()=>{
     let [regions, setRegions] = useState({})
     let [Sports, setSports] = useState({})
     let [error, setError] = useState(null)
+
     let [selectedreg, setSelectedreg] = useState([]);
     let [Region,setRegion] = useState({});
     let [selected, setSelected] = useState([]);
@@ -64,7 +67,7 @@ let Signup = ()=>{
 
 
 
-    let render_form = ()=>{
+let render_form = ()=>{
     return(
 
 <div>
@@ -173,7 +176,7 @@ let change_gender = (e)=>{
     else {
         setGender(null);
     }
-
+  
 }
 
 let create_account = (e)=>{
@@ -201,10 +204,11 @@ let create_account = (e)=>{
 
         axios.post("http://localhost:4000/signup",formData).then((response)=>{
             if(response.status ===200){
-
+                
                 console.log('3aaaaash');
                 localStorage.setItem('sports_token',response.data.token)
                 localStorage.setItem('refresh_sports_token',response.data.refresh_token)
+                appContextValue.setIsLoggedIn(true)
                 navigation('/home')
             }
         })
@@ -216,7 +220,7 @@ let create_account = (e)=>{
     }else{
         setError('you should enter the same password twice')
     }
-
+ 
 }
 return(
     <div className="container">

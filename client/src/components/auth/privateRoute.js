@@ -1,11 +1,10 @@
 import React from "react";
 import {Navigate} from "react-router-dom"
-
+import {appContext} from '../../App'
+import { useContext } from "react";
 let PrivateRoute = ({component:Component})=>{
-    let token =  localStorage.getItem("sports_token")
-
-       
-       if(token){
+    let appContextValue = useContext(appContext)   
+       if(appContextValue.isLoggedIn){
         return(
         <Component   /> 
         )

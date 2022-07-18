@@ -1,5 +1,6 @@
 const user_controller = require('../controllers/user_controller.js')
 const authenticate_token = require('../middleware/authenticate_token.js')
+const isAdmin = require('../middleware/isAdmin')
 const multer  = require('multer');
 
 var multerStorage = multer.diskStorage({

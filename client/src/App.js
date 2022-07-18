@@ -24,16 +24,46 @@ import Nav from "./components/core/newHomeBar"
 import Footer from "./components/core/footer"
 import Landing from "./components/landing";
 import PaymentCard from "./components/PaymentCard";
-export default function App(){
+import Refresh_token from "./components/auth/refresh_token"
 
+
+
+export const appContext = createContext({})
+export default function App(){
+let [isLoggedIn, setIsLoggedIn] = useState(false)
+const [isLoading, setIsLoading] = useState(true)
+useEffect(()=>{
+    const remember_me = localStorage.getItem("REMEMBER_ME")
+    if(remember_me === "1"){
+      Refresh_token()
+      setIsLoggedIn(true)
+    }
+    setIsLoading(false)
+    setInterval(intervalFunction,0.5*60*1000)
+
+},[])
+
+const intervalFunction = ()=>{
+  if(isLoggedIn){
+    console.log('from interval function ');
+    Refresh_token()
+  }
+}
+console.log("Is Logged In", isLoggedIn)
+  if (isLoading) {
+    return null;
+  }
   return(
     <div className='' >
     <BrowserRouter>
-      <LoginNav/>
 
+
+
+      <appContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
+          <LoginNav/>
       <Routes>
           <Route path="/:Sport/*" element={<PrivateRoute component={Landing}/>} />
-          {/*<Route path=":Sport/players" element={<PrivateRoute component={PlayersList}/>} />*/}
+
       <Route path="/card" element={<PrivateRoute component={PlayerProfile}/>} />
       <Route path="/card/update" element={<PrivateRoute component={EditProfile}/>} />
       <Route path='/login'element={<GuestRoute component={Login}/>}/>
@@ -51,7 +81,7 @@ export default function App(){
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
 
      <Route path='*'element={<NotFound/>}/>
-      <Route path="/" element={ <PlacesList/> } />
+
 
 
         <Route path="/chat" element={<ChatComponent />} />
@@ -62,6 +92,7 @@ export default function App(){
       <Route path='*'element={<NotFound/>}/>
 
       </Routes>
+      </appContext.Provider>
       <Footer/>
     </BrowserRouter>
     </div>
