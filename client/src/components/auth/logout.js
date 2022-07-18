@@ -10,7 +10,7 @@ useEffect(()=>{
     localStorage.removeItem('refresh_sports_token')
     localStorage.removeItem('REMEMBER_ME')
     appContextValue.setIsLoggedIn(false)
-    navigation('/login')
+    navigation('/home')
 },[])
 
 

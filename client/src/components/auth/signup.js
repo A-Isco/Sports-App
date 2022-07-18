@@ -1,10 +1,52 @@
-import { useState,useContext , useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import axios from 'axios'
 import $ from 'jquery';
 import {appContext} from '../../App'
 import {useNavigate} from 'react-router-dom';
+import Select from "react-select";
+import {MultiSelect} from "react-multi-select-component";
+
 let Signup = ()=>{
     let appContextValue = useContext(appContext)
+
+    useEffect(()=>{
+
+
+        axios
+            .get("http://localhost:4000/api/regions/"  , {
+
+            })
+            .then((res) => {
+                let regions=[]
+                regions=res.data.map((item)=>{
+                    return{
+                        label: item.name,
+                        value: item._id,
+
+                    };
+                });
+                setRegion(regions)
+            });
+
+        axios
+            .get(" http://localhost:4000/api/sports/"  , {
+
+            })
+            .then((res) => {
+                let sports=[]
+                sports=res.data.map((item)=>{
+                    return{
+                        label: item.name,
+                        value: item._id,
+
+                    };
+                });
+                setSports(sports)
+            });
+
+    },[]);
+
+
     let navigation = useNavigate()
     let [username, setUsername] = useState({})
     let [email, setEmail] = useState({})
@@ -12,21 +54,18 @@ let Signup = ()=>{
     let [confirm_password, setConfirm_password] = useState({})
     let [gender, setGender] = useState(null)
     let [birth_date, setBirth_date] = useState({})
-    let [region, setRegion] = useState({})
-    let [sport, setSport] = useState({})
+    let [regions, setRegions] = useState({})
+    let [Sports, setSports] = useState({})
     let [error, setError] = useState(null)
-    let [regions,setRegions]= useState({})
 
-    useEffect(()=>{
-        let token = localStorage.getItem('sports_token')
-       axios.get("http://localhost:4000/api/regions/")
-       .then((response)=>{
-        if(response.status===200){
-            setRegions(response.data)
-            console.log(regions);
-        }
-       })
-    },[])
+    let [selectedreg, setSelectedreg] = useState([]);
+    let [Region,setRegion] = useState({});
+    let [selected, setSelected] = useState([]);
+    let [img,setimg]=useState();
+    let [sports,setsports]=useState();
+
+
+
 
 let render_form = ()=>{
     return(
@@ -35,13 +74,13 @@ let render_form = ()=>{
 
 
 <div>
-   <h2 className="fw-bold mt-5">Create Account</h2> 
+   <h2 className="fw-bold mt-5">Create Account</h2>
    <p className="text-secondary">By creating account you will be able to book any playground you want,
    connect with other players and make a team</p>
 </div>
 <div className="row">
     <div className="col-8">
-        <form className="signup">
+        <form className="signup" onSubmit={(e) => create_account(e)}  enctype="multipart/form-data">
             <span>Name</span><br/>
             <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setUsername(e.target.value)}/>
             <br/>
@@ -65,25 +104,57 @@ let render_form = ()=>{
                 <input onChange={(e)=>setBirth_date(e.target.value)} type="date" style={{width:"10vw"}} className="mt-3 form-control"/>
                 </div>
             </div>
-            <span>Region</span><br/>
-            {/* <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setRegion(e.target.value)}/> */}
-        <select className="mb-2 form-control mt-1 sel" style={{width:"46vw"}} onChange={(e)=>setRegion(e.target.value)}>
-            {render_regions()}
-            </select> 
-
+            <div className="form-group col-md-4">
+                <label>Region</label>
+                <Select
+                    name={selectedreg}
+                    value={selectedreg}
+                    options={Region}
+                    onChange={(e)=>{setSelectedreg(e);
+                        setRegions(e.label);
+                    }}
+                />
+            </div>
             <br/>
-            <span>Sport</span><br/>
-            <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setSport(e.target.value)}/>
+            <div className="form-group col-md-4">
+                <label>Sports</label>
+                <MultiSelect
+                    options={Sports}
+                    value={selected}
+                    onChange={(e)=>{
+                        setSelected(e);
+                        console.log(selected)
+
+                        let value=[]
+                        e.map((item)=>{
+                            console.log(String(item.label));
+                            value.push(String(item.label));
+                        })
+                        setsports(value)
+                    }}
+                />
+            </div>
+            <div className="form-group col-md-6">
+                <label className="form-label" htmlFor="customFile">Insert Image</label>
+                <input
+                    type="file"
+                    className="form-control"
+                    id="customFile"
+                    name="img"
+                    onChange={(e) => {
+                        setimg(e.target.files[0])
+                    }}
+                />
+            </div>
             <p className="text-danger">{error}</p>
             <br/>
+
+            <div className="col-4 d-flex align-items-center flex-column">
+                <button type="submit"  className="btn btn-primary rounded-3 fw-bold mt-auto mb-4">Create Account</button>
+            </div>
         </form>
     </div>
-    <div className="col-4 d-flex align-items-center flex-column">
-        <span>Player Image</span><br></br>
-        <img className="pp" src="./pp.jpeg"/>
-        <button className=" browse btn btn-secondary mt-3 rounded-pill text-dark" >Browse</button>
-        <button type="submit" onClick={create_account} className="btn btn-primary rounded-3 fw-bold mt-auto mb-4">Create Account</button>
-    </div>
+
 
 </div>
 </div>
@@ -107,33 +178,31 @@ let change_gender = (e)=>{
     }
   
 }
-let render_regions = ()=>{
-    if(regions[0]){
-        return regions.map((region)=>{
-            return(
-                <option value={region.name} key={region._id} >{region.name}</option>
-            )
-        })
-    }
-}
 
 let create_account = (e)=>{
+    console.log("before")
     e.preventDefault();
-    
-    let user = {
-        name:username,
-        email:email,
-        password:password,
-        gender:gender,
-        birth_date:birth_date,
-        region:region,
-        sport:sport
-    }
-    // user_schema.validate(user)
-    console.log(user);
+    console.log("after")
+    const formData = new FormData();
+
+
+    formData.append('name',username)
+    formData.append('email',email)
+    formData.append('password',password)
+    formData.append('gender',gender)
+    formData.append('birth_date',birth_date)
+    formData.append('region',regions)
+    formData.append('sports',sports)
+    formData.append('img',img)
+    const headers = {
+        "Content-Type": "application/json",
+       // authorization:`token ${token}`
+
+    };
+
     if(password===confirm_password){
 
-        axios.post("http://localhost:4000/signup",user).then((response)=>{
+        axios.post("http://localhost:4000/signup",formData).then((response)=>{
             if(response.status ===200){
                 
                 console.log('3aaaaash');
@@ -144,7 +213,10 @@ let create_account = (e)=>{
             }
         })
         .then((data)=>{console.log(data);})
-        .catch((err)=>{ setError(err.response.data); console.log(error); })  
+        .catch((err)=>{ setError(err.response.data); console.log(error); })
+
+
+
     }else{
         setError('you should enter the same password twice')
     }

@@ -14,8 +14,14 @@ let user_validation = Joi.object().keys({
     gender:Joi.string().required(),
     birth_date:Joi.date().required(),
     region:Joi.string().min(3).required(),
-    sport:Joi.string(),
+
     isAdmin:Joi.boolean()
+    sports:Joi.allow(),
+    img:Joi.allow(),
+    age:Joi.number()
+        .min(18)
+        .max(100)
+
 
 })
 

@@ -27,18 +27,35 @@ module.exports = {
                     })
                     res.status(400).send(str);
                 }else{
+                    const my_sports=req.body.sports;
+                    const sports_arr=my_sports.split(',');
+                    var ageDifMs = (Date.now() - new Date(req.body.birth_date).getTime());
+                    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+                    var age= Math.abs(ageDate.getUTCFullYear() - 1970);
+
                 bcrypt.hash(player_body.value['password'], 10, function(err, hash) {
                         player_body.value['password']=hash
-                        Player.create(player_body.value).then(us=>
+                    player_obj={
+                        name: req.body.name,
+                        email: req.body.email,
+                        password: player_body.value['password'],
+                        gender: req.body.gender,
+                        birth_date: req.body.birth_date,
+                        region: req.body.region,
+                        sports: sports_arr,
+                        img:req.file.path,
+                        age:age
+                    }
+                        Player.create(player_obj).then(us=>
                             {
                                 id = {"id":us._id}
                                 const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})
-                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET) 
+                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                                 let obj = {
                                     token : token,
                                     refresh_token:refresh_token
-                                } 
-                            res.status(200).send(obj)
+                                }
+                                res.status(200).send(obj)
                             })
                         .catch(next)
                     
@@ -61,13 +78,12 @@ module.exports = {
         Player.find({"email":req.body.email}).then(player=>{
             if(player !='')
             {   
-                console.log(player);
                 bcrypt.compare(req.body.password, player[0].password, function(err, result) {
                     if (result) {
                         console.log("player[0]._id=")
                         console.log(player[0]._id)
                         id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 120})   
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 120})
                         const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
     
                         let obj = {

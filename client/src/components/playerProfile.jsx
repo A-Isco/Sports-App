@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import Navbar from "./core/newHomeBar";
+import ReactStars from "react-rating-stars-component";
+
+
 
 
 let PlayerProfile = () => {
     let [Card, setCard] = useState("Player Card");
-    let [Sports,setSports]=useState(["football","swimming"]);
+    let [Sports,setSports]=useState([]);
+    const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger" ,basketball:"btn-success"};
     const [Player, setPlayer] = useState({
-        sports: [],
-        name: "",
-        age: 0,
-        address: "",
-        img:"",
-        region:"",
-        gender:"",
-        rate:"",
-        nationalID:""
+
 
     });
     const mystyle = {
@@ -65,6 +62,7 @@ let PlayerProfile = () => {
                 headers,
             })
             .then((res) => {
+                console.log("jjjjjjj")
                 console.log(res);
 
                 setPlayer(res.data);
@@ -80,7 +78,10 @@ let PlayerProfile = () => {
 
     }, []);
     return (
-        <div className="container background py-4 text-center w-25 m-5 ">
+       <div>
+        <Navbar/>
+    <div className="d-flex  justify-content-center min-vh-100 " >
+        <div className="  py-4 text-center w-75  m-5 ">
             <div className="card card-width">
                 <div className="card-body place">
                     <img src={`http://localhost:4000/${Player.img}`} alt={Player.name} width="300" height="250" className="m-5"/>
@@ -88,15 +89,31 @@ let PlayerProfile = () => {
                     {/*<p>{` ${Player.nationalID}`}</p>*/}
                     <p>{` ${Player.age}`}</p>
                     <p>{` ${Player.region}`}</p>
+                    {/*<p>{` ${Player.rate}`}</p>*/}
                     {Player.sports?.map((sport,index)=>(
-                        <p className="btn btn-primary mx-2">{sport}</p>
+                        <p className={` btn  mx-2  rounded-pill ${colors[sport]}`} >{sport}</p>
                     ))}
+                    <div className="d-flex justify-content-center">
+
+                        { Player.rate!==undefined?<ReactStars
+                            count={5}
+                            // onChange={ratingChanged}
+                            size={30}
+                            edit={false}
+                            value={Player.rate}
+                            isHalf={true}
+                            activeColor="#ffd700"
+
+                        />:null}
+                    </div>
                     <div>
-                        <Link className="btn btn-secondary " to={`/card/update`}>Edit</Link>
+                        <Link className="btn btn-primary px-3 " to={`/card/update`}>Edit Profile</Link>
                     </div>
             </div>
         </div>
         </div>
+        </div>
+       </div>
     );
 };
 
