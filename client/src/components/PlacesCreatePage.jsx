@@ -94,6 +94,7 @@ let PlaceCreatePage = () => {
     formData.append("sport", Place.sport);
     formData.append("description", Place.description);
     formData.append("price", Place.price);
+   // formData.append("profile",Place.profile);
     for (const key of Object.keys(Place.profile)) {
       formData.append("profile", Place.profile[key]);
     }

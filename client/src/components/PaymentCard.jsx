@@ -10,6 +10,7 @@ let PaymentCard=({
         price:10,
         prooductBy:"ELMALAAB"
     });
+    const [output,setOutput]=useState("")
 
     const makePayment=token=>{
         const body ={

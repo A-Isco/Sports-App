@@ -6,7 +6,6 @@ const chargePayment=async (req,res)=>{
     const {product,token}=req.body;
     console.log("product:",product);
     console.log("price:",product.price);
-    const idempontencyKey=uuidv4( );
     return stripe.customers.create({
       email:token.email,
       source:token.id
@@ -19,7 +18,11 @@ const chargePayment=async (req,res)=>{
         customer:customer.id,
         description:product.name
       })
-    }).then(result=>res.status(200).json(result  ))
+      return customer;
+    }).then(result=> {res.status(200).json(result)
+        console.log(result)
+            //booking
+  })
         .catch(err=>console.log(err))
 
   }
