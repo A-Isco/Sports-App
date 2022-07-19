@@ -24,7 +24,7 @@ let PlaceCard = ({place}) => {
                     <h4 className="card-title p-3">{` ${place.name}`}</h4>
                     <p>{` ${place.region}`}</p>
                     <p>{` ${place.address}`}</p>
-                    <p>{` ${place.rate}`}</p>
+                    {/*<p>{` ${place.rate}`}</p>*/}
 
                     <div className="d-flex justify-content-center">
 

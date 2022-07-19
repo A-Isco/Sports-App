@@ -96,7 +96,11 @@ let PlaceCreatePage = () => {
     formData.append("price", Place.price);
    // formData.append("profile",Place.profile);
     for (const key of Object.keys(Place.profile)) {
-      formData.append("profile", Place.profile[key]);
+      if(Place.profile.length==1 || Place.profile.length==0){
+        formData.append("profile",Place.profile)
+      }else {
+        formData.append("profile", Place.profile[key]);
+      }
     }
 
     let token = window.localStorage.getItem("sports_token");
