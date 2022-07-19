@@ -3,7 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
 let PaymentCard=({
-     product
+     product,childToParent
                  })=>{
     // const [product,setProduct] = useState({
     //     name:"",
@@ -26,7 +26,10 @@ let PaymentCard=({
             console.log("status",status);
 
         })
-            .then((data)=>{console.log(data);})
+            .then((data)=>{
+                // console.log(data);
+                childToParent(token.id)
+            })
             .catch((err)=>{
                 console.log(err)
             })
