@@ -24,6 +24,7 @@ let PlaceDetails = () => {
     let [opponents, setOpponents] = useState([]);
     let [chosenDay, setChosenDay] = useState();
     let [chosenTime, setChosenTime] = useState();
+    const [data, setData] = useState('');
     const [confirmModalIsOpen, setConfirmModalIsOpen] = React.useState(false);
     const [bookModalIsOpen, setBookModalIsOpen] = React.useState(false);
     const bookModalStyles = {
@@ -35,7 +36,7 @@ let PlaceDetails = () => {
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
             width:'400px',
-            height:"250px",
+            height:"300px",
             // display:'flex',
             padding:'5px',
             textAlign:'center',
@@ -82,6 +83,9 @@ let PlaceDetails = () => {
             });
     }, []);
 
+    const childToParent = (childdata) => {
+        setData(childdata);
+      }
 
     const createReview = (event) => {
         // event.preventDefault();
@@ -154,16 +158,19 @@ let PlaceDetails = () => {
 
 
     }
-    let book=async()=>{
+     useEffect(()=>{
+        async function sendOpp(){
         let token=String(localStorage.getItem('sports_token'))
-        if(chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+        if( data!=='undefined' && chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+            // alert('here')
             let timeAndDate={
+            payment_token:data,
             place:place._id,
             date: chosenDay,
             time:chosenTime,
         }
         console.log(timeAndDate)
-        const res = await axios.post(
+        const res =  await axios.post(
             `http://localhost:4000/api/v1/reservation/`,timeAndDate,{
               headers: {
                 authorization:`token ${token}`
@@ -171,18 +178,24 @@ let PlaceDetails = () => {
             }
           );
           if(res.status===201){
-            setChosenDay('Select')
-            setChosenTime('Select')
             setBookModalIsOpen(false);
             setConfirmModalIsOpen(true);
+            setChosenDay('Select')
+            setChosenTime('Select')
             setTimeout(function(){
                 setConfirmModalIsOpen(false);
             }, 1500);
           }
-
         }
-
+        }
+        sendOpp()
+    },[data])
+    let renderPayment=()=>{
+        if(  chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+        return(<PaymentCard   key={place._id} childToParent={childToParent} product={place}/>)
+        }
     }
+  
     return (
         <div className="  d-flex justify-content-center m-5 ">
             <div className="card w-75">
@@ -309,8 +322,10 @@ let PlaceDetails = () => {
                 </div>
                 <button className="btn btn-danger m-3" onClick={closeBookModal}>close</button>
                 {/*<button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>*/}
-                <PaymentCard  key={place._id} product={place}/>
-
+                {
+                    renderPayment()
+                    }
+                
             </Modal>
             <Modal
                     isOpen={confirmModalIsOpen}
