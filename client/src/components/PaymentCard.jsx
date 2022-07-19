@@ -3,13 +3,13 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
 let PaymentCard=({
-    // product
+     product
                  })=>{
-    const [product,setProduct] = useState({
-        name:"",
-        price:10,
-        prooductBy:"ELMALAAB"
-    });
+    // const [product,setProduct] = useState({
+    //     name:"",
+    //     price:10,
+    //     prooductBy:"ELMALAAB"
+    // });
     const [output,setOutput]=useState("")
 
     const makePayment=token=>{
@@ -43,14 +43,6 @@ let PaymentCard=({
 
     return (
         <div>
-            <a
-                className="App-link"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-               Pay
-            </a>
             <StripeCheckout
                 token={makePayment}
                 stripeKey="pk_test_51LMi6TKKFK8Inq32cekQ9ASjQgnbQEvoIGyW8G6tbM0J8fCOKyH9BrLuMYm4P7tYL5tWTmn2wquRlvGJMDj8q38b00olnPxdvt"

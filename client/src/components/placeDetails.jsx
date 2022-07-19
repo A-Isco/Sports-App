@@ -11,6 +11,7 @@ import { Routes, Route, useParams } from "react-router-dom";
 
 import ReactStars from "react-rating-stars-component";
 import PlaceCard from "./placeCard";
+import PaymentCard from "./PaymentCard";
 
 let PlaceDetails = () => {
 
@@ -39,7 +40,7 @@ let PlaceDetails = () => {
             padding:'5px',
             textAlign:'center',
             alignItems: 'center',
-            
+
 
         },
     };
@@ -60,7 +61,7 @@ let PlaceDetails = () => {
             alignItems: 'center',
         },
     }
-    
+
 
     let { placeId } = useParams();
     useEffect(() => {
@@ -119,7 +120,7 @@ let PlaceDetails = () => {
               }
             }
           );
-          if(res.status===200){ 
+          if(res.status===200){
           let result = [];
             result = res.data.opponents.reduce((r, a) => {
                 r[a.date] = r[a.date] || [];
@@ -130,7 +131,7 @@ let PlaceDetails = () => {
             console.log(result);
 
           }
-          
+
           setBookModalIsOpen(true);
     }
     let closeBookModal=()=> {
@@ -140,18 +141,18 @@ let PlaceDetails = () => {
     let closeConfirmModal=()=>{
         setConfirmModalIsOpen(false);
     }
-   
+
     let renderTime=()=>{
         if(typeof chosenDay != "undefined" ){
             if( chosenDay !== 'Select'){
-          return( 
+          return(
              opponents[chosenDay].map((k) => (
                  <option value={k.time._id}>from:{k.time.from}  to:  {k.time.to}</option>
              ))
         )
     }}
 
-          
+
     }
     let book=async()=>{
         let token=String(localStorage.getItem('sports_token'))
@@ -169,7 +170,7 @@ let PlaceDetails = () => {
               }
             }
           );
-          if(res.status===201){ 
+          if(res.status===201){
             setChosenDay('Select')
             setChosenTime('Select')
             setBookModalIsOpen(false);
@@ -178,9 +179,9 @@ let PlaceDetails = () => {
                 setConfirmModalIsOpen(false);
             }, 1500);
           }
-        
+
         }
-        
+
     }
     return (
         <div className="  d-flex justify-content-center m-5 ">
@@ -287,14 +288,14 @@ let PlaceDetails = () => {
                 <select   style={{width:'150px',height:'50px'}} className="m-3" id='day'  onClick={(evt)=>setChosenDay(evt.target.value)}>
                     <option value={null} >Select</option>
                 {
-                        
+
                           Object.keys(opponents).map((k,index) => (
                                 <option value={k} >{k}</option>
                         ))
-                       
+
                         }
                 </select>
-              
+
                 </div>
                 <div>
                 <label for="day" >Choose The Time</label>
@@ -307,8 +308,9 @@ let PlaceDetails = () => {
                 </select>
                 </div>
                 <button className="btn btn-danger m-3" onClick={closeBookModal}>close</button>
-                <button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>
-                
+                {/*<button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>*/}
+                <PaymentCard  key={place._id} product={place}/>
+
             </Modal>
             <Modal
                     isOpen={confirmModalIsOpen}
