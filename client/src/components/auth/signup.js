@@ -7,7 +7,7 @@ import Select from "react-select";
 import {MultiSelect} from "react-multi-select-component";
 
 let Signup = ()=>{
-    let appContextValue = useContext(appContext)
+    let appContextValue = appContext(appContext)
 
     useEffect(()=>{
 

@@ -107,11 +107,11 @@ let ChatComponent=()=>{
     }
     let chatPop= ()=>{
         var popup = document.getElementById("myPopup");
-        if(popup.className=='container') {
+        if(popup.className=='container1') {
           popup.className='popup'
         }
         else{ 
-          popup.className='container'
+          popup.className='container1'
 
       }
     }
@@ -194,8 +194,8 @@ const Container = styled.div`
   .popup{
          visibility: hidden;
    }
-  .container {
-    height: 75vh;
+  .container1 {
+    height: 85vh;
     width: 65vw;
     background-color:#131324;
     display: flex;
