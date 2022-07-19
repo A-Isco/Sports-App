@@ -6,6 +6,8 @@ const cors=require('cors')
 const auth_routes = require(__dirname+'/routes/auth_routes.js');
 const ChatRoutes=require('./routes/chat')
 const MessageRoutes=require('./routes/message')
+const reservationRouter=require("./routes/reservations");
+//const multer  = require('multer');
 
 const stripe=require("stripe")("sk_test_51LMi6TKKFK8Inq32lMnO6GjkFl7GwPU7mga770q2lsblwXlkDsZBDQ7ypz2dmqKsYbSSJKcCCIsoRjXzgce1PXSz00qpisbQms")
 const { v4: uuidv4 } = require('uuid');
@@ -64,8 +66,9 @@ app.use("/api/players", playersRouter);
 
 
 app.use("/api/places", placesRouter);
-app.use('/api/v1/chat',ChatRoutes);
-app.use('/api/v1/message',MessageRoutes);
+app.use('/api/v1/chat',ChatRoutes)
+app.use('/api/v1/message',MessageRoutes)
+app.use('/api/v1/reservation',reservationRouter)
 
 
 

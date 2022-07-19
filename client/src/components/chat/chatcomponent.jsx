@@ -40,7 +40,7 @@ let ChatComponent=()=>{
                 
 
             
-                  
+             
                 
     },[]);
 
@@ -102,7 +102,9 @@ let ChatComponent=()=>{
 
     }
 
-
+    let setHeader=()=>{
+                         if(typeof currentContact != "undefined")  return (<div><h3>{currentContact.player.name}</h3></div>)
+    }
     let chatPop= ()=>{
         var popup = document.getElementById("myPopup");
         if(popup.className=='container') {
@@ -116,6 +118,7 @@ let ChatComponent=()=>{
     return (
       <>
       <Container>
+        
         <div   id='popupIcon'  onClick={chatPop} >
                <p >Chat</p>
         </div>
@@ -130,7 +133,11 @@ let ChatComponent=()=>{
                         ))}
               
                   </div>  
+                  <div className='chatHeader'>
+                    {setHeader()}
+                  </div>
                   <div className='chatContent'>
+                    
                             <div className='messages'>
                                         {
                                           currentChat.map((item) => 
@@ -149,11 +156,12 @@ let ChatComponent=()=>{
                                     )}
         
                     </div>
-                            <div className='sendTools'>
+                        
+              </div>
+              <div className='sendTools'>
                               <input   onChange={(e)=>{setMessage(e.target.value)}} value={sendedMessage} className='inputsend' type='text'/>
                               <button onClick={()=>{sendMessage()}}>send</button>
                             </div>
-              </div>
               </div> 
       
         
@@ -229,11 +237,24 @@ const Container = styled.div`
       color:white;
     }
   }
-  
+  .chatHeader{
+    position: absolute; 
+    left: 20%;
+    text-align:center;
+    border-bottom-style: solid;
+    // background-color:#fffffff4;
+    width: 35vw;
+    // height:10px;
+    h3{
+      color:white;
+    }
+  }
   .chatContent{
     height: 75vh;
     width: 35vw;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x:hidden;
+    position:relative;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -248,11 +269,12 @@ const Container = styled.div`
   .sendTools{
     border-top-style: solid;
     text-align:center;
-    position: fixed;
-    top: 82%;
-    width: 100%;
+    position: absolute; 
+    bottom: 0; left: 20%;
+    // top: 82%;
+    // width: 100%;
     border-radius: 2rem;
-    display: flex;
+    // display: flex;
     align-items: center;
     gap: 2rem;
     background-color: #ffffff34;
@@ -298,7 +320,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x:hidden;
 
 }
 .yours{
@@ -322,6 +345,7 @@ const Container = styled.div`
   left:50%;
   width:50%;
   margin:10px;
+  margin-bottom: 50px;
   background-color: gray;
   border-radius: 10px;
   text-align:center;

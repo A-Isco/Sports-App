@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
+import Select from 'react-select';
 
 import { Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
+import Modal from 'react-modal';
 
 import axios from "axios";
 import { Routes, Route, useParams } from "react-router-dom";
@@ -18,6 +20,47 @@ let PlaceDetails = () => {
     let [place, setPlace] = useState([]);
     let [rating, setrating] = useState(0);
     let [comment, setcomment] = useState("");
+    let [opponents, setOpponents] = useState([]);
+    let [chosenDay, setChosenDay] = useState();
+    let [chosenTime, setChosenTime] = useState();
+    const [confirmModalIsOpen, setConfirmModalIsOpen] = React.useState(false);
+    const [bookModalIsOpen, setBookModalIsOpen] = React.useState(false);
+    const bookModalStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width:'400px',
+            height:"250px",
+            // display:'flex',
+            padding:'5px',
+            textAlign:'center',
+            alignItems: 'center',
+            
+
+        },
+    };
+    const confirmModalStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width:'200px',
+            height:"200px",
+            display:'flex',
+            padding:'5px',
+            justifyContent: 'center',
+            textAlign:'center',
+            alignItems: 'center',
+        },
+    }
+    
 
     let { placeId } = useParams();
     useEffect(() => {
@@ -67,7 +110,78 @@ let PlaceDetails = () => {
 
         console.log(comment);
     };
+    let bookPlace=async ()=>{
+        let token=String(localStorage.getItem('sports_token'))
+        const res = await axios.get(
+            `http://localhost:4000/api/v1/reservation/${place._id}`,{
+              headers: {
+                authorization:`token ${token}`
+              }
+            }
+          );
+          if(res.status===200){ 
+          let result = [];
+            result = res.data.opponents.reduce((r, a) => {
+                r[a.date] = r[a.date] || [];
+                r[a.date].push(a);
+                return r;
+            }, Object.create(null));
+            setOpponents(result)
+            console.log(result);
 
+          }
+          
+          setBookModalIsOpen(true);
+    }
+    let closeBookModal=()=> {
+        setBookModalIsOpen(false);
+    }
+
+    let closeConfirmModal=()=>{
+        setConfirmModalIsOpen(false);
+    }
+   
+    let renderTime=()=>{
+        if(typeof chosenDay != "undefined" ){
+            if( chosenDay !== 'Select'){
+          return( 
+             opponents[chosenDay].map((k) => (
+                 <option value={k.time._id}>from:{k.time.from}  to:  {k.time.to}</option>
+             ))
+        )
+    }}
+
+          
+    }
+    let book=async()=>{
+        let token=String(localStorage.getItem('sports_token'))
+        if(chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+            let timeAndDate={
+            place:place._id,
+            date: chosenDay,
+            time:chosenTime,
+        }
+        console.log(timeAndDate)
+        const res = await axios.post(
+            `http://localhost:4000/api/v1/reservation/`,timeAndDate,{
+              headers: {
+                authorization:`token ${token}`
+              }
+            }
+          );
+          if(res.status===201){ 
+            setChosenDay('Select')
+            setChosenTime('Select')
+            setBookModalIsOpen(false);
+            setConfirmModalIsOpen(true);
+            setTimeout(function(){
+                setConfirmModalIsOpen(false);
+            }, 1500);
+          }
+        
+        }
+        
+    }
     return (
         <div className="  d-flex justify-content-center m-5 ">
             <div className="card w-75">
@@ -99,7 +213,7 @@ let PlaceDetails = () => {
 
                     </div>
                     <h6>{` ${place.price} LE/h`}</h6>
-                        <button className="btn-primary btn w-100">
+                        <button onClick={bookPlace} className="btn-primary btn w-100">
                             book now
                         </button>
 
@@ -163,6 +277,46 @@ let PlaceDetails = () => {
                 </div>
                 </div>
             </div>
+            <Modal
+                    isOpen={bookModalIsOpen}
+                    onRequestClose={closeBookModal}
+                    style={bookModalStyles}
+            >
+                <div>
+                <label for="day" >Choose The Day</label>
+                <select   style={{width:'150px',height:'50px'}} className="m-3" id='day'  onClick={(evt)=>setChosenDay(evt.target.value)}>
+                    <option value={null} >Select</option>
+                {
+                        
+                          Object.keys(opponents).map((k,index) => (
+                                <option value={k} >{k}</option>
+                        ))
+                       
+                        }
+                </select>
+              
+                </div>
+                <div>
+                <label for="day" >Choose The Time</label>
+                <select style={{width:'150px',height:'50px'}}  className="m-3"  onClick={(evt)=>setChosenTime(evt.target.value)}>
+                <option value={null} >Select</option>
+
+                {
+                    renderTime()
+                        }
+                </select>
+                </div>
+                <button className="btn btn-danger m-3" onClick={closeBookModal}>close</button>
+                <button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>
+                
+            </Modal>
+            <Modal
+                    isOpen={confirmModalIsOpen}
+                    onRequestClose={closeConfirmModal}
+                    style={confirmModalStyles}
+            >
+                <h1>Done</h1>
+            </Modal>
         </div>
     );
 };

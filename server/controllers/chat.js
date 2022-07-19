@@ -4,7 +4,7 @@ module.exports={
    async  getContacts(req,res,next){
     // console.log(req);
             id=req.player_id.id
-            console.log(id)
+            console.log(req.player_id.id)
             let tabs=[]
             let player;
             try {
@@ -25,9 +25,15 @@ module.exports={
      },
 
      async createContact(req,res,next){
+        id=req.player_id.id
         try {
-            const chat= await Chat.create({user1:req.body.player1,user2:req.body.player2});
-            return res.json({ status: true, chat },201);
+                 let  chat= await Chat.findOne({user1:id,user2:req.body.player2})
+            if(chat==null)
+             {
+                  chat= await Chat.create({user1:id,user2:req.body.player2});
+                  return res.json({ status: true, chat },201);
+            }else return res.json({ status: false, chat },200);
+
       } catch (ex) {
              next(ex);
              return res.json({ status: false },505);
