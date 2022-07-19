@@ -38,8 +38,10 @@ module.exports={
     },
 
     async createReservation(req,res,next){
+        console.log(req.body.payment_token)
         try{
             let reservation=await Reservation.create({
+                payment_token:req.body.payment_token,
                 user:req.player_id.id,
                 place:req.body.place,
                 date: req.body.date,

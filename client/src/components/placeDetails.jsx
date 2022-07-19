@@ -11,6 +11,7 @@ import { Routes, Route, useParams } from "react-router-dom";
 
 import ReactStars from "react-rating-stars-component";
 import PlaceCard from "./placeCard";
+import PaymentCard from "./PaymentCard";
 
 let PlaceDetails = () => {
 
@@ -23,6 +24,7 @@ let PlaceDetails = () => {
     let [opponents, setOpponents] = useState([]);
     let [chosenDay, setChosenDay] = useState();
     let [chosenTime, setChosenTime] = useState();
+    const [data, setData] = useState('');
     const [confirmModalIsOpen, setConfirmModalIsOpen] = React.useState(false);
     const [bookModalIsOpen, setBookModalIsOpen] = React.useState(false);
     const bookModalStyles = {
@@ -34,12 +36,12 @@ let PlaceDetails = () => {
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
             width:'400px',
-            height:"250px",
+            height:"300px",
             // display:'flex',
             padding:'5px',
             textAlign:'center',
             alignItems: 'center',
-            
+
 
         },
     };
@@ -60,7 +62,7 @@ let PlaceDetails = () => {
             alignItems: 'center',
         },
     }
-    
+
 
     let { placeId } = useParams();
     useEffect(() => {
@@ -81,6 +83,9 @@ let PlaceDetails = () => {
             });
     }, []);
 
+    const childToParent = (childdata) => {
+        setData(childdata);
+      }
 
     const createReview = (event) => {
         // event.preventDefault();
@@ -119,7 +124,7 @@ let PlaceDetails = () => {
               }
             }
           );
-          if(res.status===200){ 
+          if(res.status===200){
           let result = [];
             result = res.data.opponents.reduce((r, a) => {
                 r[a.date] = r[a.date] || [];
@@ -130,7 +135,7 @@ let PlaceDetails = () => {
             console.log(result);
 
           }
-          
+
           setBookModalIsOpen(true);
     }
     let closeBookModal=()=> {
@@ -140,48 +145,57 @@ let PlaceDetails = () => {
     let closeConfirmModal=()=>{
         setConfirmModalIsOpen(false);
     }
-   
+
     let renderTime=()=>{
         if(typeof chosenDay != "undefined" ){
             if( chosenDay !== 'Select'){
-          return( 
+          return(
              opponents[chosenDay].map((k) => (
                  <option value={k.time._id}>from:{k.time.from}  to:  {k.time.to}</option>
              ))
         )
     }}
 
-          
+
     }
-    let book=async()=>{
+     useEffect(()=>{
+        async function sendOpp(){
         let token=String(localStorage.getItem('sports_token'))
-        if(chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+        if( data!=='undefined' && chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+            // alert('here')
             let timeAndDate={
+            payment_token:data,
             place:place._id,
             date: chosenDay,
             time:chosenTime,
         }
         console.log(timeAndDate)
-        const res = await axios.post(
+        const res =  await axios.post(
             `http://localhost:4000/api/v1/reservation/`,timeAndDate,{
               headers: {
                 authorization:`token ${token}`
               }
             }
           );
-          if(res.status===201){ 
-            setChosenDay('Select')
-            setChosenTime('Select')
+          if(res.status===201){
             setBookModalIsOpen(false);
             setConfirmModalIsOpen(true);
+            setChosenDay('Select')
+            setChosenTime('Select')
             setTimeout(function(){
                 setConfirmModalIsOpen(false);
             }, 1500);
           }
-        
         }
-        
+        }
+        sendOpp()
+    },[data])
+    let renderPayment=()=>{
+        if(  chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+        return(<PaymentCard   key={place._id} childToParent={childToParent} product={place}/>)
+        }
     }
+  
     return (
         <div className="  d-flex justify-content-center m-5 ">
             <div className="card w-75">
@@ -287,14 +301,14 @@ let PlaceDetails = () => {
                 <select   style={{width:'150px',height:'50px'}} className="m-3" id='day'  onClick={(evt)=>setChosenDay(evt.target.value)}>
                     <option value={null} >Select</option>
                 {
-                        
+
                           Object.keys(opponents).map((k,index) => (
                                 <option value={k} >{k}</option>
                         ))
-                       
+
                         }
                 </select>
-              
+
                 </div>
                 <div>
                 <label for="day" >Choose The Time</label>
@@ -307,7 +321,10 @@ let PlaceDetails = () => {
                 </select>
                 </div>
                 <button className="btn btn-danger m-3" onClick={closeBookModal}>close</button>
-                <button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>
+                {/*<button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>*/}
+                {
+                    renderPayment()
+                    }
                 
             </Modal>
             <Modal

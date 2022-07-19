@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const   ReservationSchema = new mongoose.Schema({
+  payment_token:{
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
   place:{
     type: mongoose.Schema.Types.String,
     ref: "Place",

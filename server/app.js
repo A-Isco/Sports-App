@@ -62,10 +62,16 @@ const {updatePlayer} = require("./controllers/playersController");
 app.use("/api/players", playersRouter);
 app.use("/api/sports",sportsRouter);
 app.use("/api/regions",regionRouter);
+
+
+
+
+
 app.use("/api/places", placesRouter);
 app.use('/api/v1/chat',ChatRoutes)
 app.use('/api/v1/message',MessageRoutes)
 app.use('/api/v1/reservation',reservationRouter)
+
 
 
 

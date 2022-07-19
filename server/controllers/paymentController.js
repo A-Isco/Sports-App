@@ -4,14 +4,16 @@ const {custom} = require("joi");
 const chargePayment=async (req,res)=>{
   try {
     const {product,token}=req.body;
-    console.log("product:",product);
-    console.log("price:",product.price);
+    // console.log("product:",product);
+    // console.log("price:",product.price);
+    // console.log(req.body)
     return stripe.customers.create({
       email:token.email,
       source:token.id
 
     }).then(customer=>{
-      console.log("customer",customer);
+      // console.log("customer",customer);
+      // console.log("token",token.id)
       stripe.charges.create({
         amount:product.price*100,
         currency:'usd',
@@ -20,8 +22,9 @@ const chargePayment=async (req,res)=>{
       })
       return customer;
     }).then(result=> {res.status(200).json(result)
-        console.log(result)
+        //console.log(result)
             //booking
+      console.log(token.id)
   })
         .catch(err=>console.log(err))
 

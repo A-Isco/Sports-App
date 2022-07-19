@@ -16,7 +16,7 @@ const createPlace = async (req, res) => {
                 new: true,
                 runValidators: true
             });
-        
+
         const place = new Place({
             name: req.body.name,
             description: req.body.description,
@@ -355,7 +355,8 @@ const getPlaceById = async (req, res) => {
 };
 
 const updatePlace = async (req, res) => {
-    if (req.body.profile) {
+
+    if (req.files) {
         const images = []
         const url = req.protocol + '://' + req.get('host');
         for (var i = 0; i < req.files.length; i++) {
@@ -368,12 +369,14 @@ const updatePlace = async (req, res) => {
             runValidators: true
         });
     }
+
+
     const place = await Place.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
     })
     res.send(req.body);
-    console.log(place);
+    //console.log(place);
 };
 const createProductReview = async (req, res) => {
 
