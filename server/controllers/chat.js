@@ -2,6 +2,7 @@ const Chat = require("../models/Chat");
 const Player = require("../models/Player");
 module.exports={
    async  getContacts(req,res,next){
+    // console.log(req);
             id=req.player_id.id
             console.log(req.player_id.id)
             let tabs=[]

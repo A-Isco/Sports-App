@@ -8,6 +8,11 @@ const ChatRoutes=require('./routes/chat')
 const MessageRoutes=require('./routes/message')
 const reservationRouter=require("./routes/reservations");
 //const multer  = require('multer');
+
+const stripe=require("stripe")("sk_test_51LMi6TKKFK8Inq32lMnO6GjkFl7GwPU7mga770q2lsblwXlkDsZBDQ7ypz2dmqKsYbSSJKcCCIsoRjXzgce1PXSz00qpisbQms")
+const { v4: uuidv4 } = require('uuid');
+
+
 app.use(express.json());
 
 app.use(cors());
@@ -19,14 +24,23 @@ app.use(express.static('uploads'));
 app.use('/uploads', express.static('uploads'));
 
 
+const regionRouter=require("./routes/regions");
+app.use("/api/regions",regionRouter);
+
+const sportsRouter = require("./routes/sports");
+app.use("/api/sports",sportsRouter);
+
+
+const paymentRouter=require("./routes/Payment");
+app.use('/charge',paymentRouter);
 
 // Routers
 auth_routes(app);
 app.use(middleware)
 const playersRouter = require("./routes/players");
 const placesRouter = require("./routes/places");
-const sportsRouter = require("./routes/sports");
-const regionRouter=require("./routes/regions");
+// const sportsRouter = require("./routes/sports");
+// const regionRouter=require("./routes/regions");
 const Player = require("./models/Player");
 const {updatePlayer} = require("./controllers/playersController");
 

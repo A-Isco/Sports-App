@@ -27,18 +27,35 @@ module.exports = {
                     })
                     res.status(400).send(str);
                 }else{
+                    const my_sports=req.body.sports;
+                    const sports_arr=my_sports.split(',');
+                    var ageDifMs = (Date.now() - new Date(req.body.birth_date).getTime());
+                    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+                    var age= Math.abs(ageDate.getUTCFullYear() - 1970);
+
                 bcrypt.hash(player_body.value['password'], 10, function(err, hash) {
                         player_body.value['password']=hash
-                        Player.create(player_body.value).then(us=>
+                    player_obj={
+                        name: req.body.name,
+                        email: req.body.email,
+                        password: player_body.value['password'],
+                        gender: req.body.gender,
+                        birth_date: req.body.birth_date,
+                        region: req.body.region,
+                        sports: sports_arr,
+                        img:req.file.path,
+                        age:age
+                    }
+                        Player.create(player_obj).then(us=>
                             {
                                 id = {"id":us._id}
-                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})
-                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET) 
+                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 40000})
+                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                                 let obj = {
                                     token : token,
                                     refresh_token:refresh_token
-                                } 
-                            res.status(200).send(obj)
+                                }
+                                res.status(200).send(obj)
                             })
                         .catch(next)
                     
@@ -66,7 +83,7 @@ module.exports = {
                         console.log("player[0]._id=")
                         console.log(player[0]._id)
                         id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 3600})   
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 120})
                         const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
     
                         let obj = {
@@ -99,7 +116,8 @@ module.exports = {
            refresh_token = req.body.refresh_token
             try{
             let token_id = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
-                id=token_id
+                console.log(token_id);
+                id={"id":token_id.id}
                 }catch(ex){
                     console.log('from catch exception is');
                     
@@ -120,6 +138,7 @@ module.exports = {
                 }
                 console.log('after catch');
                 if(id != null){
+                    console.log(id);
                     token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})
                     refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                     obj = {

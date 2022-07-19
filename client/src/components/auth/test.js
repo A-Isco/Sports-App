@@ -9,7 +9,6 @@ let Test = ()=>{
         
         
         let send_req = ()=>{
-            Refresh_token()
                 let token=localStorage.getItem('sports_token')
                 axios.get("http://localhost:4000/",{
                     headers:{'authorization':'token '+token}

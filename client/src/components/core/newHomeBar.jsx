@@ -1,10 +1,14 @@
 import styled from "styled-components"
 import React, {useState, useEffect} from 'react'
-import { NavLink } from "react-router-dom";
+//import {NavLink, useParams, Link} from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
+// import {Link} from "@mui/material";
 
 export default function Navbar() {
+
     const [toggleMenu, setToggleMenu] = useState(false)
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
 
     const toggleNav = () => {
         setToggleMenu(!toggleMenu)
@@ -12,6 +16,7 @@ export default function Navbar() {
 
     useEffect(() => {
 
+        console.log()
     const changeWidth = () => {
         setScreenWidth(window.innerWidth);
     }
@@ -29,15 +34,16 @@ export default function Navbar() {
     <nav>
         {(toggleMenu || screenWidth > 600) && (
             <ul className="list">
-                <NavLink to={"/home"} className="nav-link">
+                <Link to={"/home"} className="nav-link">
                     <li className="items">Home</li>
-                </NavLink>
-                <NavLink to={"/sports"} className="nav-link">
+                </Link>
+
+                <Link to={"/#sports"} className="nav-link">
                     <li className="items">Sports</li>
-                </NavLink>
-                <NavLink to={"/about-us"} className="nav-link">
+                </Link>
+                <Link to={"/#about"} className="nav-link">
                     <li className="items">About Us</li>
-                </NavLink>
+                </Link>
             </ul>
         )}
 

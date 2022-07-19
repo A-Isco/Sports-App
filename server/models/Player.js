@@ -51,9 +51,10 @@ const PlayerSchema = new mongoose.Schema({
 
   },
 
-  // nationalID: {
-  //   type: String,
-  // },
+  isAdmin: {
+    type: Boolean,
+    required:false
+  },
   region: {
     type: String,
   },
@@ -65,7 +66,7 @@ const PlayerSchema = new mongoose.Schema({
   },
   img:
       {
-        contentType: String
+        type: String
       }
 });
 

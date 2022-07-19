@@ -12,7 +12,7 @@ const schema = Joi.object({
         .required(),
 
     age:Joi.number()
-    .min(18)
+    .min(0)
     .max(100),
 
     rate:Joi.number(),

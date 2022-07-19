@@ -187,7 +187,7 @@ let PlaceDetails = () => {
             <div className="card w-75">
                 <div className="card-body place d-flex flex-wrap justify-content-around m-5">
                      <div >
-                    <img src={place.profile} alt={place.name} width="400" height="300" className="m-5"/>
+                    <img src={place.profile?place.profile[0]:null} alt={place.name} width="400" height="300" className="m-5"/>
                      </div>
                     <div className="text-center ">
                     <h4 className="card-title p-3">{` ${place.name}`}</h4>
@@ -221,10 +221,10 @@ let PlaceDetails = () => {
 
                 </div>
                 <div className="d-flex flex-wrap justify-content-around">
-                    {  place.images?.map((image)=>{
+                    {  (place.profile?.length>0)? place.profile.slice(1).map((image)=>{
                          return <img className="m-5 p-5"  src={image} width="300" height="250"/>
 
-                    })}
+                    }):null}
 
                 </div>
                 <div className="review form-control">

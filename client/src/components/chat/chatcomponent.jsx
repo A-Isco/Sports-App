@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useEffect, useState,useRef } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
-import Refresh_token from "../auth/refresh_token"
+
 let ChatComponent=()=>{
     let socket = useRef();
     let [contacts, setContacts] = useState([]);
@@ -14,8 +14,7 @@ let ChatComponent=()=>{
 
    
 
-    useEffect(()=>{//Fetch API
-      Refresh_token()
+    useEffect(()=>{
       let token=String(localStorage.getItem('sports_token'))
       var id
       
