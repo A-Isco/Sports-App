@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="merge book">
-      <change beforePath="$PROJECT_DIR$/../client/src/components/PaymentCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/PaymentCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/paymentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/paymentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="merge book" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +77,7 @@
       <workItem from="1657918388904" duration="8303000" />
       <workItem from="1658141227064" duration="1872000" />
       <workItem from="1658148586426" duration="9719000" />
-      <workItem from="1658240258217" duration="2516000" />
+      <workItem from="1658240258217" duration="6463000" />
     </task>
     <task id="LOCAL-00001" summary="merge book">
       <created>1658242277548</created>

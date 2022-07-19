@@ -66,7 +66,8 @@ const PlayerSchema = new mongoose.Schema({
   },
   img:
       {
-        type: String
+        type: String,
+        default:"http://localhost:4000/uploads/undefined.png"
       }
 });
 

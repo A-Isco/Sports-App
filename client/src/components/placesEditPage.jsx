@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 let EditPlace = () => {
+  const navigate=useNavigate();
   let { placeId } = useParams();
   let { Sport } = useParams();
   const [Place, setPlace] = useState({
@@ -107,7 +108,11 @@ let EditPlace = () => {
     formData.append("description", Place.description);
     formData.append("price", Place.price);
     for (const key of Object.keys(Place.profile)) {
-      formData.append("profile", Place.profile[key]);
+      if(Place.profile.length==1 || Place.profile.length==0){
+        formData.append("profile",Place.profile)
+      }else {
+        formData.append("profile", Place.profile[key]);
+      }
     }
 
     let token = window.localStorage.getItem("sports_token");
@@ -124,6 +129,7 @@ let EditPlace = () => {
 
       .then((response) => {
         console.log("res");
+        navigate(`/${Sport}/places/${placeId}`)
 
         console.log(response);
         SetErrors({});

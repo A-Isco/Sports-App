@@ -30,6 +30,7 @@ const PlaceSchema = new mongoose.Schema({
     },
     rate: {
         type: Number,
+        default:0
     },
     region: {
         type: String,
@@ -41,6 +42,7 @@ const PlaceSchema = new mongoose.Schema({
     },
     profile: {
         type: Array,
+        required:true
     },
     address: {
         type: String,
