@@ -65,6 +65,36 @@ let PlaceDetails = () => {
 
 
     let { placeId } = useParams();
+    useEffect(()=>{
+        async function sendOpp(){
+        let token=String(localStorage.getItem('sports_token'))
+        if( data!=='undefined' && chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+            let timeAndDate={
+            payment_token:data,
+            place:place._id,
+            date: chosenDay,
+            time:chosenTime,
+        }
+        setBookModalIsOpen(false);
+        const res =  await axios.post(
+            `http://localhost:4000/api/v1/reservation/`,timeAndDate,{
+              headers: {
+                authorization:`token ${token}`
+              }
+            }
+          );
+          if(res.status===201){
+            setConfirmModalIsOpen(true);
+            setChosenDay('Select')
+            setChosenTime('Select')
+            setTimeout(function(){
+                setConfirmModalIsOpen(false);
+            }, 1500);
+          }
+        }
+        }
+        sendOpp()
+    },[data])
     useEffect(() => {
         let token=String(localStorage.getItem('sports_token'))
         const headers = {
@@ -158,41 +188,10 @@ let PlaceDetails = () => {
 
 
     }
-     useEffect(()=>{
-        async function sendOpp(){
-        let token=String(localStorage.getItem('sports_token'))
-        if( data!=='undefined' && chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
-            // alert('here')
-            let timeAndDate={
-            payment_token:data,
-            place:place._id,
-            date: chosenDay,
-            time:chosenTime,
-        }
-        console.log(timeAndDate)
-        const res =  await axios.post(
-            `http://localhost:4000/api/v1/reservation/`,timeAndDate,{
-              headers: {
-                authorization:`token ${token}`
-              }
-            }
-          );
-          if(res.status===201){
-            setBookModalIsOpen(false);
-            setConfirmModalIsOpen(true);
-            setChosenDay('Select')
-            setChosenTime('Select')
-            setTimeout(function(){
-                setConfirmModalIsOpen(false);
-            }, 1500);
-          }
-        }
-        }
-        sendOpp()
-    },[data])
+   
     let renderPayment=()=>{
         if(  chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
-        return(<PaymentCard   key={place._id} childToParent={childToParent} product={place}/>)
+        return(<PaymentCard onClick={()=>{        setBookModalIsOpen(false)}}  key={place._id} childToParent={childToParent} product={place}/>)
         }
     }
   

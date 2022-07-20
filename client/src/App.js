@@ -22,6 +22,8 @@ import Home from './pages/home/home'
 import LoginNav from "./components/core/newLogBar"
 import Nav from "./components/core/newHomeBar"
 import Footer from "./components/core/footer"
+import Chat from "./components/chat/chatcomponent"
+
 import Landing from "./components/landing";
 import PaymentCard from "./components/PaymentCard";
 import Refresh_token from "./components/auth/refresh_token"
@@ -96,7 +98,7 @@ console.log("Is Logged In", isLoggedIn)
 
 
 
-        <Route path="/chat" element={<ChatComponent />} />
+      <Route path="/chat" element={<PrivateRoute component={ChatComponent} />} />
 
 
 
@@ -106,7 +108,6 @@ console.log("Is Logged In", isLoggedIn)
       </Routes>
       </div>
       </appContext.Provider>
-      
       
       <Footer/>
     </BrowserRouter>
