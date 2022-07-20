@@ -4,8 +4,98 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="">
+    <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="merge book">
+      <change afterPath="$PROJECT_DIR$/uploads/0082265c-dc3d-495a-add1-201df65800ef-foo1_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/05ec70ee-1cac-4112-bdff-fde16aa7a291-foo14_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/09c371ea-547c-4698-9e30-fa84173e5575-sw8_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/0b04623c-ad42-4c05-bfc0-5b9259adca44-foo4_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/0da34db2-bea8-4737-a44d-14f30cebe0cc-download.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/0e476943-3741-430a-8d12-01aabfab6bc9-foo7_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/149742b1-7a10-4e1a-80ec-d8d5ac4a7958-sw20_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1785e411-873e-4200-aac3-04b11e909cc0-foo3_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1790e0fc-503c-4540-af05-2816530851c8-foo1_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1a269966-eda8-44f9-87ab-a11da9ef3c60-vo7_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1d887110-cf92-40a9-b538-cb0f7d433799-foo9_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1dee34c9-08bb-49e1-9e89-f9f0f271338f-foo3_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/20b864b9-e13c-488c-bf09-b0118b4decfa-foo1_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/215a5aa6-2d09-4975-8761-f52c81544493-foo12_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/22c49c0c-55bb-424a-9d70-a76f263dd315-foo2_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/263317ae-063d-44a1-94af-d1903fa05da3-sw19_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/281e4690-873d-4938-92ee-77e5e5f75dab-sw5_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/282c1bd0-d584-442e-b0ea-2ae9fb3761a0-default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/2926906b-7a07-4279-aeff-67847af0fd86-vo3_a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/2b2584a9-39f2-4245-ae66-d818c4e6bc4d-foo14_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/3825d54b-8900-4508-b0dc-c842d105a91e-foo13_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/3b7734b8-56e9-4075-b508-c659301f8657-vo4_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/3c590f0b-85b0-4523-8dc4-fa32f259b1a7-vo4_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/3f413728-05df-4007-8c80-8044ef624049-foo14_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/4694ccc2-fc57-41e7-af3a-8fcfc835d7bb-vo7_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/47008167-ed8f-409f-ae17-430c27a68829-foo13_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/48170b4b-24e5-427f-9634-23fad041f7be-sw6_a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/4897fb2d-861a-4b25-aab7-17cf6abb14da-vo4_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/4b79380b-cb29-48f9-b39b-a8aa8095d73f-vo9_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/4d082409-8f71-408d-a236-f55b7c2627d4-foo11_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/5103933e-4c1b-42d4-8a54-11291e0646bb-foo2_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/51ff83dc-af14-47d0-a131-896c372a580d-foo20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/540407c2-e6bc-4e0d-854d-27a6331b2572-foo12_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/55d83184-e6e0-4c81-9c14-e9b519e6b458-foo5_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/57e64a02-1968-499c-8b02-1b8be611c1c9-foo4_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/5c947f8b-5a74-4d99-9e08-f6adfa573893-vo8_a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/5f512068-edc0-4f97-9fd4-4a5d30dd6336-sw1_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/60ca69b0-7215-4567-97d7-8fe65159041e-sw6_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/6774d1ed-ac91-4ba2-a5d6-53615da9052e-foo21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/6d513f2f-c64e-4626-8581-1b480908d417-sw1_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/6f101d1e-1203-472e-b5b2-cafa6a943aa7-sw9_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/700da5ce-a7b2-40d9-8bd5-5db371c46bc5-foo10_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/71e46d51-995c-4308-87e1-350f983c1bd1-foo11_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/78e87aa9-196c-4a18-9a53-8ca33f112392-vo10_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/7b2f566e-35a4-476d-9d42-4308803b34d4-sw10_a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/80290fad-5c91-42aa-9f2f-7dba488f905d-vo4_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/817fd3b7-0fb4-4e21-b7d0-d593e2b12e3a-sw10_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/8d5bacaf-b071-4c5d-ba43-0ceb6e5fedb6-vo7_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/91d84539-8d06-4cf9-ac96-1e2e90151580-foo3_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/93013e3c-dba8-417b-ba7e-66230b668786-foo5_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/94ac2be3-ce98-412d-afa1-d8428c302ae5-vo7_c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/a4f734dc-5f99-46b4-a493-6ce33775e031-vo7_c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/a76560b7-0fbf-405a-93db-58003a1c964a-sw19_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/a9464766-eaba-4439-ab7f-ae72e1a160d3-foo13_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/aa255dd9-d81b-4cb7-8ebb-17e72d170f10-foo12_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ad5eaef0-c6c9-4a35-afe7-38923db64947-foo7_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/b21ad079-d75e-42e9-96b6-157066b68c2e-vo5_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/b244ee6e-b14c-4b3d-9417-e07ddf8365b1-foo1_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/b90b3b88-2ff5-4bea-855f-e0ed1ce61946-foo2_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/bbe0a830-4589-4d9d-8905-f4bdc8f7745a-foo10_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/bce1a1fb-b25c-459c-be6a-78cc8dec4c08-sw20_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/bf815ae6-5788-49f4-bd12-850ddb2d7138-vo7_c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/c0322ef7-639a-4605-9be5-4fc9fa190019-sw10_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/c37d529b-6213-46db-b8da-f809c014368c-vo12_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/c91acb76-264f-4c9b-9bf9-ccb26791fdf9-sw19_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ca175986-c1f6-4d37-9784-d447d58e1839-foo4_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/d24891fe-8be7-49e6-8e62-3d3ccd6e9b1d-foo14_c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/d83811da-0875-4219-9ecb-c6851a0aa311-foo12_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/d943aaae-cc9f-4054-ab85-d2cf94f3a024-foo6_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/dae641b8-f151-42cb-a992-48d717f398c9-foo5_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/df436a5e-e26b-468a-baee-ddfe3a341dcf-sw8_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/e003db8d-5a18-4517-ac48-3ded80d9184d-foo9_a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/e0ff0ed1-e728-4b48-80a0-a935e2ec425b-foo5_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/e5b044cd-21db-42a7-b8ff-2e34d30b785d-vo7_b.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ec894dc9-d027-465e-8d00-2fe17a0ffd0b-foo17_a.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/f013a41b-615a-4b6b-835d-3ac804802393-foo3_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/f6832919-af2d-4799-8dcc-7863b29bc4d3-foo4_c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/fc06f5ce-ae3f-4300-b1fd-14e6095b2393-foo4_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/fd214e36-b2f9-4940-9596-2cd9a775f00e-foo8_a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ffd8ada1-acfd-4699-b409-f28d94529ac1-foo14_c.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/PlacesCreatePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/PlacesCreatePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/placeDetails.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/placesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/placesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Place.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Place.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth_routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/places.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/places.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,20 +122,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/rowan/WebstormProjects/Al-Malaab/Sports-App/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/rowan/WebstormProjects/Al-Malaab/Sports-App/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -81,6 +171,7 @@
       <workItem from="1658141227064" duration="1872000" />
       <workItem from="1658148586426" duration="9719000" />
       <workItem from="1658240258217" duration="6463000" />
+      <workItem from="1658349510714" duration="1088000" />
     </task>
     <task id="LOCAL-00001" summary="merge book">
       <created>1658242277548</created>

@@ -49,11 +49,13 @@ const getPlaces = async (req, res) => {
     const PAGE_SIZE = 3;
     const page = parseInt(req.query.page || "0");
     const total = await Place.countDocuments({
-        sport: sport
+        sport: sport,
+        available:true
     });
 
     const places = await Place.find({
-            sport: sport
+            sport: sport,
+           available:true
         })
         .limit(PAGE_SIZE)
         .skip(PAGE_SIZE * page);
@@ -73,7 +75,8 @@ const getPlacesBySearch = async (req, res) => {
     const page = parseInt(req.query.page || "0");
 
     const places = await Place.find({
-        sport: sport
+        sport: sport,
+        available:true
     });
 
     const keys = ["name"];
@@ -113,7 +116,8 @@ const getPlacesByFilter = async (req, res) => {
     if (region && sortAttribute == false && sortWay == false) {
         const places = await Place.find({
             region: region,
-            sport: sport
+            sport: sport,
+            available:true
         });
         const total = places.length;
 
@@ -130,7 +134,8 @@ const getPlacesByFilter = async (req, res) => {
     if (sortAttribute && region == false && sortWay == false) {
         if (sortAttribute == "rate") {
             const places = await Place.find({
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 rate: -1
             });
@@ -146,7 +151,8 @@ const getPlacesByFilter = async (req, res) => {
         }
         if (sortAttribute == "price") {
             const places = await Place.find({
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 price: -1
             });
@@ -167,7 +173,8 @@ const getPlacesByFilter = async (req, res) => {
         if (sortAttribute == "rate") {
             const places = await Place.find({
                 region: region,
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 rate: -1,
             });
@@ -185,7 +192,8 @@ const getPlacesByFilter = async (req, res) => {
         if (sortAttribute == "price") {
             const places = await Place.find({
                 region: region,
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 price: -1,
             });
@@ -205,7 +213,8 @@ const getPlacesByFilter = async (req, res) => {
     if (sortAttribute && sortWay && region == false) {
         if (sortWay == "asc" && sortAttribute == "rate") {
             const places = await Place.find({
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 rate: 1,
             });
@@ -222,7 +231,8 @@ const getPlacesByFilter = async (req, res) => {
 
         if (sortWay == "desc" && sortAttribute == "rate") {
             const places = await Place.find({
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 rate: -1,
             });
@@ -239,7 +249,8 @@ const getPlacesByFilter = async (req, res) => {
 
         if (sortWay == "asc" && sortAttribute == "price") {
             const places = await Place.find({
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 price: 1,
             });
@@ -256,7 +267,8 @@ const getPlacesByFilter = async (req, res) => {
 
         if (sortWay == "desc" && sortAttribute == "price") {
             const places = await Place.find({
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 price: -1,
             });
@@ -277,7 +289,8 @@ const getPlacesByFilter = async (req, res) => {
         if (sortWay == "asc" && sortAttribute == "rate") {
             const places = await Place.find({
                 region: region,
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 rate: 1,
             });
@@ -295,7 +308,8 @@ const getPlacesByFilter = async (req, res) => {
         if (sortWay == "desc" && sortAttribute == "rate") {
             const places = await Place.find({
                 region: region,
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 rate: -1,
             });
@@ -313,7 +327,8 @@ const getPlacesByFilter = async (req, res) => {
         if (sortWay == "asc" && sortAttribute == "price") {
             const places = await Place.find({
                 region: region,
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 price: 1,
             });
@@ -331,7 +346,8 @@ const getPlacesByFilter = async (req, res) => {
         if (sortWay == "desc" && sortAttribute == "price") {
             const places = await Place.find({
                 region: region,
-                sport: sport
+                sport: sport,
+                available:true
             }).sort({
                 price: -1,
             });
@@ -379,6 +395,22 @@ const updatePlace = async (req, res) => {
     res.send(req.body);
     //console.log(place);
 };
+const deletePlace = async (req, res) => {
+
+
+
+
+    const place = await Place.findByIdAndUpdate(req.params.id, {available:false},{
+        new:true
+        }
+
+    )
+    res.status(200).send("deleted");
+
+
+
+
+};
 const createProductReview = async (req, res) => {
 
     const placeId = req.params.id;
@@ -412,7 +444,8 @@ module.exports = {
     getPlacesByFilter,
     getPlaceById,
     updatePlace,
-    createProductReview
+    createProductReview,
+    deletePlace
 };
 
 /*

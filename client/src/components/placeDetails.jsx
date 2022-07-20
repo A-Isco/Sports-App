@@ -18,7 +18,7 @@ let PlaceDetails = () => {
 
 
 
-    let [place, setPlace] = useState([]);
+    let [place, setPlace] = useState({});
     let [rating, setrating] = useState(0);
     let [comment, setcomment] = useState("");
     let [opponents, setOpponents] = useState([]);
@@ -208,7 +208,7 @@ let PlaceDetails = () => {
                     <p>{` ${place.address}`}</p>
                     <p>{` description:
                      ${place.description}`}</p>
-                    <p>{` ${place.rate}`}</p>
+                    {/*<p>{` ${place.rate}`}</p>*/}
 
                     <div  className="d-flex justify-content-center">
 

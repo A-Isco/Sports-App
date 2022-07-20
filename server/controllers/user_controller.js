@@ -46,10 +46,11 @@ module.exports = {
                         img:req.file.path,
                         age:age
                     }
+                    console.log(player_obj);
                         Player.create(player_obj).then(us=>
                             {
                                 id = {"id":us._id}
-                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: '1h'})
+                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
                                 const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                                 let obj = {
                                     token : token,
@@ -83,7 +84,7 @@ module.exports = {
                         console.log("player[0]._id=")
                         console.log(player[0]._id)
                         id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: '1h'})
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 120})
                         const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
 
                         let obj = {
@@ -139,7 +140,7 @@ module.exports = {
                 console.log('after catch');
                 if(id != null){
                     console.log(id);
-                    token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: "1h"})
+                    token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})
                     refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                     obj = {
                         token:token,
