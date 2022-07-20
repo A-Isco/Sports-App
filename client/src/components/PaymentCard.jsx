@@ -50,7 +50,7 @@ let PaymentCard=({
                 token={makePayment}
                 stripeKey="pk_test_51LMi6TKKFK8Inq32cekQ9ASjQgnbQEvoIGyW8G6tbM0J8fCOKyH9BrLuMYm4P7tYL5tWTmn2wquRlvGJMDj8q38b00olnPxdvt"
                 name="Buy"
-                amount={product.price*100}
+                amount={product.price*0.0528853*100}
             >
 
                <button   className="btn-lg btn-primary "> Buy </button>
