@@ -5,39 +5,43 @@ import Navbar from "../../components/core/newHomeBar";
 let HomePage = ()=>{
     return(
         <>
-            <Container>              
+            <Container>
                 <Navbar/>
                 <div className="container-fluid cont">
                     <div className="row sec1">
                         <div className="sec1-text text-center">
                             <div className="slogan">
                                 WE MAKE THE STRONGEST SERVICE ABOVE THE WORLD
-                            </div> 
+                            </div>
 
                             <div className="desc mt-lg-5">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel voluptates consectetur ad. Veniam ducimus sunt explicabo tempora, repellendus saepe? Voluptatibus molestias, ipsum porro quisquam rerum autem praesentium architecto blanditiis ullam.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, voluptas temporibus cumque voluptatibus corporis explicabo in aliquam repellat architecto quas ipsum a magni. Aliquam veritatis temporibus debitis error ad reiciendis?</p>
+                                <p>The website is designed to help sports lovers who face problems in ‎finding the right place that meet their expectation by providing all ‎available playgrounds around them with all details about it
+                                    The website provides them all available players around them who share their interests‎
+                                     ‎</p>
+                                <p>  You can book the perfect spot from any of these playgrounds with a touch of a button.
+                                    You can chat with players to connect with them, ‎to build a team.
+                                </p>
                             </div>
-                        </div>     
-                    </div>  
-                    
+                        </div>
+                    </div>
+
                     <div className="sec2 text-center" id="sports">
                         <div className="mb-5">
                             CHOOSE YOUR SPORT
                         </div>
-                        
+
 
                         <div className="row sports mb-5">
                             <div className="col-lg-6">
                                 <NavLink to={"/football"} className="nav-link">
                                     <img src="/images/football.PNG" alt="football" />
-                                    <div className="mt-3">Football</div> 
+                                    <div className="mt-3">Football</div>
                                 </NavLink>
                             </div>
                             <div className="col-lg-6">
                                 <NavLink to={"/volleyball/places"} className="nav-link">
                                     <img src="/images/volleyball.PNG" alt="volleyball" />
-                                    <div className="mt-3">VOLLEYBALL</div> 
+                                    <div className="mt-3">VOLLEYBALL</div>
                                 </NavLink>
                             </div>
                         </div>
@@ -45,18 +49,18 @@ let HomePage = ()=>{
                             <div className="col-lg-6">
                                 <NavLink to={"/basketball/places"} className="nav-link">
                                     <img src="/images/basketball.PNG" alt="basketball" />
-                                    <div className="mt-3">BASKETBALL</div> 
+                                    <div className="mt-3">BASKETBALL</div>
                                 </NavLink>
                             </div>
                             <div className="col-lg-6">
                                 <NavLink to={"/swimming/places"} className="nav-link">
                                     <img src="/images/swimming.PNG" alt="swimming" />
                                     <div className="mt-3">SWIMMING</div>
-                                </NavLink> 
+                                </NavLink>
                             </div>
                         </div>
                     </div>
-                              
+
                     <div className="row sec3" id="about">
                         <div className="col-lg-7 col-md-12">
                             <div className="quest">
@@ -74,14 +78,14 @@ let HomePage = ()=>{
                                     build your team with people who have the same interests
                                 </div>
                                 <div>
-                                    connect with other players 
+                                    connect with other players
                                 </div>
                             </div>
-                            
+
                         </div>
                         <img src="/images/Capture.png" alt="pitch" className="col-lg-5 col-md-12" />
                     </div>
-                    
+
                     <div className="sec4 text-center">
                         <div className="sec4-title text-center">
                             SPORTS BUBBLE
@@ -101,13 +105,13 @@ let HomePage = ()=>{
                             <img src="/images/google.PNG" alt="google" />
                         </div>
                     </div>
-                </div> 
+                </div>
             </Container>
 
         </>
     )
 
-    
+
 }
 
 const Container = styled.div`

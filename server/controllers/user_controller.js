@@ -83,7 +83,7 @@ module.exports = {
                         console.log("player[0]._id=")
                         console.log(player[0]._id)
                         id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 360})
+                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 40000})
                         const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
 
                         let obj = {

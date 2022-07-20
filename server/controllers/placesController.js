@@ -25,6 +25,7 @@ const createPlace = async (req, res) => {
             region: req.body.region,
             profile: images,
             sport: String(req.body.sport),
+            address:req.body.address
         });
 
         console.log(place);
