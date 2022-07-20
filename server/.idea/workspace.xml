@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/PlayerAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/PlayerAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/undefined.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/undefined.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/undefined.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
