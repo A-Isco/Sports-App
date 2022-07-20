@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 let PlaceCreatePage = () => {
+  const navigate=useNavigate();
   let { Sport } = useParams();
   const [Place, setPlace] = useState({
     name: "",
@@ -97,7 +98,7 @@ let PlaceCreatePage = () => {
    // formData.append("profile",Place.profile);
     for (const key of Object.keys(Place.profile)) {
       if(Place.profile.length==1 || Place.profile.length==0){
-        formData.append("profile",Place.profile)
+        formData.append("profile",Place.profile[0])
       }else {
         formData.append("profile", Place.profile[key]);
       }
@@ -116,6 +117,7 @@ let PlaceCreatePage = () => {
         SetErrors({});
         console.log(response);
         SetErrors({});
+        navigate(`/${Sport}/places`)
       })
       .catch((response) => {
         console.log(response);
@@ -236,7 +238,7 @@ let PlaceCreatePage = () => {
       <div className="mt-2 ">
         {Object.keys(errors).map((key) => {
           let value = errors[key];
-          let message = value.join(",");
+          let message = value?.join(",");
           return (
             <div className=" w-25 mx-auto alert alert-danger">
               {key} : {message}

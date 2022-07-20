@@ -32,7 +32,8 @@ const {
     getPlacesByFilter,
     createProductReview,
     getPlaceById,
-    updatePlace
+    updatePlace,
+    deletePlace
 } = require("../controllers/placesController");
 
 router.route("/:sport").post(createPlace).get(getPlaces);
@@ -41,7 +42,9 @@ router.route("/:sport/search").get(getPlacesBySearch);
 router.route("/:sport/filter").get(getPlacesByFilter);
 router.route("/:sport/:id").get(getPlaceById);
 router.patch("/:sport/:id/update",upload.array('profile',10),updatePlace);
+
 router.route("/:sport/:id/review").post(createProductReview);
+router.route("/:id/delete").delete(deletePlace);
 
 
 
