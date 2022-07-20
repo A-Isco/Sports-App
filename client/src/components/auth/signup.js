@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from 'axios'
 import $ from 'jquery';
 import {appContext} from '../../App'
@@ -7,7 +7,7 @@ import Select from "react-select";
 import {MultiSelect} from "react-multi-select-component";
 
 let Signup = ()=>{
-    let appContextValue = appContext(appContext)
+    let appContextValue = useContext(appContext)
 
     useEffect(()=>{
 
@@ -176,7 +176,7 @@ let change_gender = (e)=>{
     else {
         setGender(null);
     }
-  
+
 }
 
 let create_account = (e)=>{
@@ -204,7 +204,7 @@ let create_account = (e)=>{
 
         axios.post("http://localhost:4000/signup",formData).then((response)=>{
             if(response.status ===200){
-                
+
                 console.log('3aaaaash');
                 localStorage.setItem('sports_token',response.data.token)
                 localStorage.setItem('refresh_sports_token',response.data.refresh_token)
@@ -220,7 +220,7 @@ let create_account = (e)=>{
     }else{
         setError('you should enter the same password twice')
     }
- 
+
 }
 return(
     <div className="container">
