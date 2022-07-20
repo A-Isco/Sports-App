@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const reviewSchema = mongoose.Schema(
+
+//soft_delete = import mongoose-softdelete from  'mongoose-softdelete';
+const reviewSchema = new mongoose.Schema(
     {
         // name: { type: String, required: true },
         rating: { type: Number, required: true },
@@ -51,8 +53,14 @@ const PlaceSchema = new mongoose.Schema({
         type: Number,
 
     },
+    available: {
+        type: Boolean,
+        default: true,
+
+    },
     reviews: [reviewSchema],
 
 });
+//PlaceSchema.plugin(soft_delete);
 
 module.exports = mongoose.model("Place", PlaceSchema);

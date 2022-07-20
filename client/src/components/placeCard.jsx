@@ -5,11 +5,49 @@ import React from 'react'
 
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
+import Modal from "react-modal";
 
 let PlaceCard = ({place}) => {
     let {Sport}=useParams();
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
+    function openModal() {
+        setIsOpen(true);
+    }
+
+
+
+    function closeModal() {
+        setIsOpen(false);
+    }
     const ratingChanged = (newRating) => {
         console.log(newRating);
+    };
+    const deletePlace = (event) => {
+      //event.preventDefault();
+        let token=String(localStorage.getItem('sports_token'))
+        const headers = {
+            "Content-Type": "application/json",
+            authorization:`token ${token}`
+
+        };
+        axios
+            .delete(`http://127.0.0.1:4000/api/places/${place._id}/delete`, { headers })
+            .then((res) => {
+                console.log(res);
+            });
+
+
     };
 
 
@@ -43,7 +81,30 @@ let PlaceCard = ({place}) => {
                      <div> <Link to={`/${Sport}/places/${place._id}`}> show more</Link></div>
                    <div>
                     <Link to={`/${Sport}/${place._id}/edit-place`}className="btn btn-primary m-3"> Edit PLACE</Link>
+                       <button className="btn btn-danger m-3" onClick={openModal}>  delete </button>
                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        // onAfterOpen={afterOpenModal}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+                        {/*<h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>*/}
+
+
+                        <form onSubmit={deletePlace}>
+
+                            <div className= "d-flex justify-content-center " >
+
+
+                                <p> do you want delete {place.name} ?</p>
+                            </div>
+                            <button className="btn btn-danger m-3" onClick={closeModal}>close</button>
+                            <button  className="btn btn-success m-3" type="submit">ok</button>
+
+                        </form>
+                    </Modal>
                 </div>
             </div>
         </div>
