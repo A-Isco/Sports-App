@@ -3,13 +3,10 @@ const {string} = require("joi");
 
 const schema = Joi.object({
     name: Joi.string()
-        .alphanum()
         .min(2)
-        .max(30)
-        .required(),
+        .max(30),
 
-    gender: Joi.string().valid('female','male')
-        .required(),
+    gender: Joi.string().valid('female','male'),
 
     age:Joi.number()
     .min(0)

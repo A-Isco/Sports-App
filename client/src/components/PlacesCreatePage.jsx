@@ -97,7 +97,7 @@ let PlaceCreatePage = () => {
    // formData.append("profile",Place.profile);
     for (const key of Object.keys(Place.profile)) {
       if(Place.profile.length==1 || Place.profile.length==0){
-        formData.append("profile",Place.profile)
+        formData.append("profile",Place.profile[0])
       }else {
         formData.append("profile", Place.profile[key]);
       }

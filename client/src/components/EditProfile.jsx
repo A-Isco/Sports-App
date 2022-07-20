@@ -138,11 +138,13 @@ let EditProfile = () => {
     return (
         <div>
             <Navbar/>
-            <div  className="d-flex justify-content-center ">
-            <div className="w-75" >
-                <form className="mx-5"  action="http://localhost:4000/api/players/card" onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
-                <div className="form-row">
-                    <div className="form-group col-md-6">
+            <div  className="card min-vh-100 p-5">
+            <div className="row  p-5  m-5 ">
+                <form className="mx-5"  action="http://localhost:4000/api/players/card"style={{backgroundColor: "#d7d9db"}} onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
+                    <div className="text-center p-3">
+                        <h3>Edit Profile</h3>
+                    </div>
+                    <div className="form-group mb-2">
                         <label htmlFor="inputName">Name</label>
                         <input name="name"
                                value={Player.name}
@@ -155,7 +157,7 @@ let EditProfile = () => {
                                }}
                         />
                     </div>
-                    <div className="form-group col-md-6">
+                    <div className="form-group mb-2">
                         <label htmlFor="inputAge">Age</label>
                         <input name="age"
                                value={Player.age}
@@ -168,8 +170,7 @@ let EditProfile = () => {
                                }}
                         />
                     </div>
-                </div>
-                <div className="form-group col-md-6">
+                <div className="form-group mb-2">
                 <label className="form-label" htmlFor="customFile">Update Image</label>
                 <input
                     type="file"
@@ -182,7 +183,7 @@ let EditProfile = () => {
                     }}
                 />
                 </div>
-                <div className="form-group col-md-4">
+                <div className="form-group mb-2">
                     <label>Region</label>
                 <Select
                     name={selectedreg}
@@ -197,7 +198,7 @@ let EditProfile = () => {
                 />
                 </div>
 
-                    <div className="form-group col-md-4">
+                    <div className="form-group mb-2">
                         <label>Sports</label>
                         <MultiSelect
                             options={Sports}
@@ -251,7 +252,7 @@ let EditProfile = () => {
                                 Male
                             </label>
                     </div>
-                    <button className="btn btn-primary btn-block mb-2" type="submit"  >Update</button>
+                    <button className="btn btn-primary btn-block  form-control mt-3 mb-3" type="submit"  >Update</button>
                     </form>
             <div className="mt-2 w-25 mx-auto alert alert-danger ">
                 {errors}

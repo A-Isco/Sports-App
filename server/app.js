@@ -60,6 +60,8 @@ const {updatePlayer} = require("./controllers/playersController");
 //     res.send(player);
 // })
 app.use("/api/players", playersRouter);
+app.use("/api/sports",sportsRouter);
+app.use("/api/regions",regionRouter);
 
 
 

@@ -9,7 +9,7 @@ import ChatComponent from './components/chat/chatcomponent.jsx'
 import PlaceDetails from "./components/placeDetails";
 import PlacesCreatePage from "./components/PlacesCreatePage";
 import PlacesEditPage from "./components/placesEditPage";
-
+import AboutUs from "./pages/about_us"
 import  Login  from './components/auth/login';
 import Logout from './components/auth/logout';
 import GuestRoute from './components/auth/guestRoute';
@@ -22,10 +22,13 @@ import Home from './pages/home/home'
 import LoginNav from "./components/core/newLogBar"
 import Nav from "./components/core/newHomeBar"
 import Footer from "./components/core/footer"
+import Chat from "./components/chat/chatcomponent"
+
 import Landing from "./components/landing";
 import PaymentCard from "./components/PaymentCard";
 import Refresh_token from "./components/auth/refresh_token"
 import { createContext, useState ,useEffect } from "react";
+import styled from "styled-components"
 
 
 export const appContext = createContext({})
@@ -43,6 +46,13 @@ useEffect(()=>{
 
 },[])
 
+// useEffect(() => {
+//   let height = window.innerHeight-212;
+//   let cont = document.getElementsByClassName("content")[0];
+//   console.log(cont)
+//   cont.style.minHeight = String(height+'px');  
+// }, []);
+
 const intervalFunction = ()=>{
   if(isLoggedIn){
     console.log('from interval function ');
@@ -54,6 +64,8 @@ console.log("Is Logged In", isLoggedIn)
     return null;
   }
   return(
+    
+    <Container>
     <div className='' >
     <BrowserRouter>
 
@@ -61,6 +73,7 @@ console.log("Is Logged In", isLoggedIn)
 
       <appContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
           <LoginNav/>
+          <div className='content'>
       <Routes>
           <Route path="/:Sport/*" element={<PrivateRoute component={Landing}/>} />
 
@@ -71,7 +84,8 @@ console.log("Is Logged In", isLoggedIn)
      <Route path='/logout' element={<PrivateRoute component={Logout}/>}/>
      <Route path=''element={<Home/>}/>
      <Route path='/home'element={<Home/>}/>
-          <Route path='/charge' element={<PaymentCard/>}/>
+      <Route path='/charge' element={<PaymentCard/>}/>
+      {/* <Route path="/about-us" element={<AboutUs />} /> */}
 
 
 
@@ -84,7 +98,7 @@ console.log("Is Logged In", isLoggedIn)
 
 
 
-        <Route path="/chat" element={<ChatComponent />} />
+      <Route path="/chat" element={<PrivateRoute component={ChatComponent} />} />
 
 
 
@@ -92,11 +106,21 @@ console.log("Is Logged In", isLoggedIn)
       <Route path='*'element={<NotFound/>}/>
 
       </Routes>
+      </div>
       </appContext.Provider>
+      
       <Footer/>
     </BrowserRouter>
     </div>
+    </Container>
+   
   )
 
 
 }
+const Container = styled.div`
+.content{
+  min-height: 780px
+}
+`
+
