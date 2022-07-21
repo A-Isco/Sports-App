@@ -122,10 +122,10 @@ let ChatComponent=()=>{
       <Container>
 
         
-        <div   id='popupIcon'  onClick={chatPop} >
+        {/* <div   id='popupIcon'  onClick={chatPop} >
                <p >Chat</p>
-        </div>
-        <div id='myPopup' className="popup">
+        </div> */}
+        <div id='myPopup' className="container1">
                   <div className="contacts">
                                 {
                           contacts?.map((item) => (
