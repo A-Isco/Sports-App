@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { useEffect, useState,useRef } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
+import Navbar from "../core/newHomeBar";
 
 let ChatComponent=()=>{
     let socket = useRef();
@@ -117,7 +118,9 @@ let ChatComponent=()=>{
     }
     return (
       <>
+          <Navbar/>
       <Container>
+
         
         <div   id='popupIcon'  onClick={chatPop} >
                <p >Chat</p>

@@ -79,10 +79,12 @@ let PlaceCard = ({place}) => {
                     </div>
                     <h6>{` ${place.price} LE/h`}</h6>
                      <div> <Link to={`/${Sport}/places/${place._id}`}> show more</Link></div>
-                   <div>
-                    <Link to={`/${Sport}/${place._id}/edit-place`}className="btn btn-primary m-3"> Edit PLACE</Link>
-                       <button className="btn btn-danger m-3" onClick={openModal}>  delete </button>
-                   </div>
+                    {(localStorage.getItem('admin') === "true") ?
+                        <div>
+                            <Link to={`/${Sport}/${place._id}/edit-place`} className="btn btn-primary m-3"> Edit </Link>
+                            <button className="btn btn-danger m-3" onClick={openModal}> delete</button>
+                        </div> : null
+                    }
                     <Modal
                         isOpen={modalIsOpen}
                         // onAfterOpen={afterOpenModal}

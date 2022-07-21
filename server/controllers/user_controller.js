@@ -139,7 +139,7 @@ module.exports = {
                 console.log('after catch');
                 if(id != null){
                     console.log(id);
-                    token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 100})
+                    token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
                     refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
                     obj = {
                         token:token,

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {useContext} from "react";
 import {appContext} from "../../App";
+import Login from "../auth/login";
 
 export default function Navbar() {
     let appContextValue = useContext(appContext)
@@ -30,6 +31,9 @@ export default function Navbar() {
                     console.log(res);
 
                     setPlayer(res.data);
+                    console.log(Player);
+
+
 
                 })
                 .catch((res) => {
@@ -40,11 +44,24 @@ export default function Navbar() {
 
                 });
 
+            console.log(Player);
+
 
         }
 
 
         }, [appContextValue.isLoggedIn]);
+
+    useEffect(() => {
+
+            console.log(Player);
+
+        window.localStorage.setItem('admin', Player.isAdmin);
+        console.log(Player.isAdmin)
+
+
+
+    }, [Player]);
 
   return (
     <Container>

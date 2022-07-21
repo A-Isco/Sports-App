@@ -227,8 +227,12 @@ let PlaceList = () => {
                     >
                         apply
                     </button>
+                    {  (localStorage.getItem('admin') === "true") ?
+                        <Link to={`/${Sport}/create-place`}className="btn btn-primary m-3"> CREATE PLACE</Link>:null
 
-                        <Link to={`/${Sport}/create-place`}className="btn btn-primary m-3"> CREATE PLACE</Link>
+                    }
+
+
 
                 </div>
 

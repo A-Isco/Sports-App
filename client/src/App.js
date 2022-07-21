@@ -94,7 +94,8 @@ console.log("Is Logged In", isLoggedIn)
 
       <Route path='/test' element={<PrivateRoute component={Test}/>}/>
 
-     <Route path='*'element={<NotFound/>}/>
+     <Route path='/*'element={<NotFound/>}/>
+          <Route path='/notfound'element={<NotFound/>}/>
 
 
 
