@@ -49,14 +49,16 @@ module.exports = {
                     console.log(player_obj);
                         Player.create(player_obj).then(us=>
                             {
-                                id = {"id":us._id}
-                                const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
-                                const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
-                                let obj = {
-                                    token : token,
-                                    refresh_token:refresh_token
-                                }
-                                res.status(200).send(obj)
+                                const id = {"id":us._id}
+                                jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'}, (err, token) => {
+                                    jwt.sign(id, process.env.REFRESH_TOKEN_SECRET, {}, (err2, refresh_token) => {
+                                        const obj = {
+                                            token: token,
+                                            refresh_token: refresh_token
+                                        }
+                                        res.status(200).send(obj)
+                                    })
+                                });
                             })
                         .catch(next)
 
@@ -83,16 +85,16 @@ module.exports = {
                     if (result) {
                         console.log("player[0]._id=")
                         console.log(player[0]._id)
-                        id = {"id":player[0]._id}
-                        const token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn: 120})
-                        const refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
-
-                        let obj = {
-                            token : token,
-                            refresh_token:refresh_token
-                        }
-
-                        res.status(200).send(obj)
+                        const id = {"id":player[0]._id}
+                        jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'}, (err, token) => {
+                            jwt.sign(id, process.env.REFRESH_TOKEN_SECRET, {}, (err2, refresh_token) => {
+                                const obj = {
+                                    token: token,
+                                    refresh_token: refresh_token
+                                }
+                                res.status(200).send(obj)
+                            })
+                        });
                    }
                    else res.status(400).send('email and password dont match')
 
@@ -139,14 +141,15 @@ module.exports = {
                 }
                 console.log('after catch');
                 if(id != null){
-                    console.log(id);
-                    token = jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'})
-                    refresh_token = jwt.sign(id,process.env.REFRESH_TOKEN_SECRET)
-                    obj = {
-                        token:token,
-                        refresh_token:refresh_token
-                    }
-                    res.status(200).send(obj)
+                    jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'}, (err, token) => {
+                        jwt.sign(id, process.env.REFRESH_TOKEN_SECRET, {}, (err2, refresh_token) => {
+                            const obj = {
+                                token: token,
+                                refresh_token: refresh_token
+                            }
+                            res.status(200).send(obj)
+                        })
+                    });
                 }
 
     },

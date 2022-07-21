@@ -10,10 +10,12 @@ import { useEffect, useState } from "react";
 let PlayerCard = ({player}) => {
     let [sendedMessage, setMessage] = useState('');
     let [rating, setrating] = useState(0);
+    const [playerRate, setPlayerRate] = useState(player.rate);
     const ratingChanged = (newRating) => {
         console.log(newRating);
         setrating(newRating);
     };
+
 
 const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger" ,basketball:"btn-success"};
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -46,7 +48,7 @@ const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger
 
     }
     const createReview = (event) => {
-        // event.preventDefault();
+       event.preventDefault();
         let token=String(localStorage.getItem('sports_token'))
         const headers = {
             "Content-Type": "application/json",
@@ -57,6 +59,9 @@ const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger
             .post(`http://127.0.0.1:4000/api/players/${player._id}/review`, {rating},{ headers })
             .then((res) => {
                 console.log(res);
+                 closeModal()
+                setPlayerRate(rating)
+
             });
 
 
@@ -137,10 +142,9 @@ const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger
 
                         <ReactStars
                             count={5}
-
                             size={30}
                             edit={false}
-                            value={player.rate}
+                            value={playerRate}
                             isHalf={true}
                             activeColor="#ffd700"
 
