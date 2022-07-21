@@ -2,6 +2,7 @@ import styled from "styled-components"
 import React, {useState, useEffect} from 'react'
 //import {NavLink, useParams, Link} from "react-router-dom";
 import { HashLink as Link } from 'react-router-hash-link';
+import {NavLink} from "react-router-dom";
 // import {Link} from "@mui/material";
 
 export default function Navbar() {
@@ -44,6 +45,9 @@ export default function Navbar() {
                 <Link to={"/#about"} className="nav-link">
                     <li className="items">About Us</li>
                 </Link>
+                <NavLink to={`/chat`} className="nav-link">
+                    <li className="items">Chat</li>
+                </NavLink>
             </ul>
         )}
 
