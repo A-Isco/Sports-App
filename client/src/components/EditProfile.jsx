@@ -136,11 +136,12 @@ let EditProfile = () => {
         console.log(Player);
     }
     return (
-        <div>
+        <div >
             <Navbar/>
+            <div>
             <div  className="card min-vh-100 p-5">
             <div className="row  p-5  m-5 ">
-                <form className="mx-5"  action="http://localhost:4000/api/players/card"style={{backgroundColor: "#d7d9db"}} onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
+                <form className="col-4 mx-auto card  mt-3 p-3 "  action="http://localhost:4000/api/players/card"style={{backgroundColor: "#d7d9db"}} onSubmit={(e) => editPlayer(e)}  enctype="multipart/form-data">
                     <div className="text-center p-3">
                         <h3>Edit Profile</h3>
                     </div>
@@ -253,12 +254,16 @@ let EditProfile = () => {
                             </label>
                     </div>
                     <button className="btn btn-primary btn-block  form-control mt-3 mb-3" type="submit"  >Update</button>
-                    </form>
-            <div className="mt-2 w-25 mx-auto alert alert-danger ">
-                {errors}
+                    {(errors.length > 0) ?
+                        <div className="mt-2  form-control mx-auto alert alert-danger ">
+                            {errors}
 
-            </div>
+                        </div>:null
+                    }
+                    </form>
+
         </div>
+            </div>
             </div>
         </div>
     );

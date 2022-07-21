@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom';
 import {appContext} from '../../App'
+
 let Login = ()=>{
 let appContextValue = useContext(appContext)
 let navigation = useNavigate()
@@ -12,30 +13,37 @@ let [error, setError] = useState(null)
 
 let render_form = ()=>{
     return (
+        <div className=" min-vh-100 p-5" >
         
-            <div className="d-flex justify-content-center ">
+            <div className="d-flex justify-content-center  row p-5 m-5 ">
 
             <div className="login">
 
             
-        <form  onSubmit={submit} >
-            <div className="headers">
-            <h3 className="fw-bold">Log in</h3>
+        <form  onSubmit={submit}   style={{backgroundColor: "#d7d9db",borderRadius:'10px'}} >
+            <div className="text-center p-3">
+                <h3>Login</h3>
             </div>
-            
+
+            <div className="m-3">
             <span >Email  </span><br/>
-            <input type="email"  className="mb-2 form-control" onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="email"  className="  form-control" onChange={(e)=>setEmail(e.target.value)}/>
             <br/>
+            </div>
+            <div className="m-3">
             <span>password </span><br/>
-            <input type="password" className="form-control " onChange = {(e)=>setPassword(e.target.value)}/><br/>
+            <input type="password" className="form-control  " onChange = {(e)=>setPassword(e.target.value)}/><br/>
             <p className="text-danger">{error}</p>
-            <input className="me-2 mb-2" type="checkbox" onChange={(e)=>{setRemember_me(e.target.checked);}} /><span className="fw-bold">Remember me</span><br/>
+
+            <input className=" mb-2 m-3" type="checkbox" onChange={(e)=>{setRemember_me(e.target.checked);}} /><span className="fw-bold">Remember me</span><br/>
+            </div>
             <div className="d-flex justify-content-end">
-            <button className="btn btn-primary" style={{width:"150px"}} type="submit">Login</button>
+            <button className="btn btn-primary m-3" style={{width:"150px"}} type="submit">Login</button>
             </div>
             
          
         </form>
+        </div>
         </div>
         </div>
     )

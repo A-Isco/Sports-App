@@ -70,28 +70,31 @@ let Signup = ()=>{
 let render_form = ()=>{
     return(
 
-<div>
+<div className="card min-vh-100 p-5">
 
 
-<div>
-   <h2 className="fw-bold mt-5">Create Account</h2>
-   <p className="text-secondary">By creating account you will be able to book any playground you want,
-   connect with other players and make a team</p>
-</div>
-<div className="row">
-    <div className="col-8">
-        <form className="signup" onSubmit={(e) => create_account(e)}  enctype="multipart/form-data">
+
+
+<div className="row p-5 m-5" >
+
+    <div className="">
+        <form className="signup col-5 mx-auto   mt-3 p-3 " style={{backgroundColor: "#d7d9db",borderRadius:'10px'}} onSubmit={(e) => create_account(e)}   enctype="multipart/form-data">
+            <div>
+                <h2 className="fw-bold mt-5">Create Account</h2>
+                <p className="text-secondary">By creating account you will be able to book any playground you want,
+                    connect with other players and make a team</p>
+            </div>
             <span>Name</span><br/>
-            <input type="text"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setUsername(e.target.value)}/>
+            <input type="text"  className="mb-2 form-control mt-1"  onChange={(e)=>setUsername(e.target.value)}/>
             <br/>
             <span>Email</span><br/>
-            <input type="email"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="email"  className="mb-2 form-control mt-1"  onChange={(e)=>setEmail(e.target.value)}/>
             <br/>
             <span>Password</span><br/>
-            <input type="password"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setPassword(e.target.value)}/>
+            <input type="password"  className="mb-2 form-control mt-1"  onChange={(e)=>setPassword(e.target.value)}/>
             <br/>
             <span>Confirm Password</span><br/>
-            <input type="password"  className="mb-2 form-control mt-1" style={{width:"46vw"}} onChange={(e)=>setConfirm_password(e.target.value)}/>
+            <input type="password"  className="mb-2 form-control mt-1"  onChange={(e)=>setConfirm_password(e.target.value)}/>
             <br/>
             <div className="row">
                 <div className="col-7 ">
@@ -101,7 +104,7 @@ let render_form = ()=>{
                 </div>
                 <div className="col-5">
                 <span>Birth Date</span><br/>
-                <input onChange={(e)=>setBirth_date(e.target.value)} type="date" style={{width:"10vw"}} className="mt-3 form-control"/>
+                <input onChange={(e)=>setBirth_date(e.target.value)} type="date" className="mt-3 form-control"/>
                 </div>
             </div>
             <div className="form-group col-md-4">
@@ -149,8 +152,8 @@ let render_form = ()=>{
             <p className="text-danger">{error}</p>
             <br/>
 
-            <div className="col-4 d-flex align-items-center flex-column">
-                <button type="submit"  className="btn btn-primary rounded-3 fw-bold mt-auto mb-4">Create Account</button>
+            <div className=" d-flex justify-content-end">
+                <button type="submit"  className="btn btn-primary rounded-3 fw-bold mt-auto mb-4 mx-3">Create Account</button>
             </div>
         </form>
     </div>
@@ -223,7 +226,7 @@ let create_account = (e)=>{
 
 }
 return(
-    <div className="container">
+    <div>
         {render_form()}
     </div>
 )
