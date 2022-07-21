@@ -35,9 +35,9 @@ const getPlayers = async (req, res) => {
   let sport = req.params.sport;
   const PAGE_SIZE = 3;
   const page = parseInt(req.query.page || "0");
-  const total = await Player.countDocuments({sports:sport});
+  const total = await Player.countDocuments({sports:sport, _id: { $ne: req.player_id.id }});
 
-  const players = await Player.find({sports:sport})
+  const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }})
       .limit(PAGE_SIZE)
       .skip(PAGE_SIZE * page);
 
@@ -54,7 +54,7 @@ const getPlayersBySearch = async (req, res) => {
   const PAGE_SIZE = 3;
   const page = parseInt(req.query.page || "0");
 
-  const players = await Player.find({sports:sport});
+  const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }});
 
   const keys = ["name"];
 
@@ -170,7 +170,7 @@ const getPlayersByFilter = async (req, res) => {
 
   // Region Only
   if (region && sortAttribute == false && sortWay == false) {
-    const players = await Player.find({ region: region ,sports:sport});
+    const players = await Player.find({ region: region ,sports:sport, _id: { $ne: req.player_id.id }});
     const total = players.length;
 
     const startIndex = (page - 1) * limit;
@@ -185,7 +185,7 @@ const getPlayersByFilter = async (req, res) => {
   // Sort only " default desc order "
   if (sortAttribute && region == false && sortWay == false) {
     if (sortAttribute == "rate") {
-      const players = await Player.find({sports:sport}).sort({ rate: -1 });
+      const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }}).sort({ rate: -1 });
       const total = players.length;
 
       const startIndex = (page - 1) * limit;
@@ -197,7 +197,7 @@ const getPlayersByFilter = async (req, res) => {
       });
     }
     if (sortAttribute == "age") {
-      const players = await Player.find({sports:sport}).sort({ age: -1 });
+      const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }}).sort({ age: -1 });
       const total = players.length;
 
       const startIndex = (page - 1) * limit;
@@ -213,7 +213,7 @@ const getPlayersByFilter = async (req, res) => {
   // Region & sortAttribute " default desc order "
   if (sortAttribute && region && sortWay == false) {
     if (sortAttribute == "rate") {
-      const players = await Player.find({ region: region ,sports:sport }).sort({
+      const players = await Player.find({ region: region ,sports:sport, _id: { $ne: req.player_id.id } }).sort({
         rate: -1,
       });
       const total = players.length;
@@ -228,7 +228,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortAttribute == "age") {
-      const players = await Player.find({ region: region  ,sports:sport}).sort({
+      const players = await Player.find({ region: region  ,sports:sport, _id: { $ne: req.player_id.id }}).sort({
         age: -1,
       });
       const total = players.length;
@@ -246,7 +246,7 @@ const getPlayersByFilter = async (req, res) => {
   // sortAttribute && sortType
   if (sortAttribute && sortWay && region == false) {
     if (sortWay == "asc" && sortAttribute == "rate") {
-      const players = await Player.find({sports:sport}).sort({
+      const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }}).sort({
         rate: 1,
       });
       const total = players.length;
@@ -261,7 +261,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortWay == "desc" && sortAttribute == "rate") {
-      const players = await Player.find({sports:sport}).sort({
+      const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }}).sort({
         rate: -1,
       });
       const total = players.length;
@@ -276,7 +276,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortWay == "asc" && sortAttribute == "age") {
-      const players = await Player.find({sports:sport}).sort({
+      const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }}).sort({
         age: 1,
       });
       const total = players.length;
@@ -291,7 +291,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortWay == "desc" && sortAttribute == "age") {
-      const players = await Player.find({sports:sport}).sort({
+      const players = await Player.find({sports:sport, _id: { $ne: req.player_id.id }}).sort({
         age: -1,
       });
       const total = players.length;
@@ -309,7 +309,7 @@ const getPlayersByFilter = async (req, res) => {
   // Region & sortAttribute & sortType
   if (sortAttribute && sortWay && region) {
     if (sortWay == "asc" && sortAttribute == "rate") {
-      const players = await Player.find({ region: region ,sports:sport }).sort({
+      const players = await Player.find({ region: region ,sports:sport , _id: { $ne: req.player_id.id }}).sort({
         rate: 1,
       });
       const total = players.length;
@@ -324,7 +324,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortWay == "desc" && sortAttribute == "rate") {
-      const players = await Player.find({ region: region ,sports:sport}).sort({
+      const players = await Player.find({ region: region ,sports:sport, _id: { $ne: req.player_id.id }}).sort({
         rate: -1,
       });
       const total = players.length;
@@ -339,7 +339,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortWay == "asc" && sortAttribute == "age") {
-      const players = await Player.find({ region: region ,sports:sport }).sort({
+      const players = await Player.find({ region: region ,sports:sport, _id: { $ne: req.player_id.id } }).sort({
         age: 1,
       });
       const total = players.length;
@@ -354,7 +354,7 @@ const getPlayersByFilter = async (req, res) => {
     }
 
     if (sortWay == "desc" && sortAttribute == "age") {
-      const players = await Player.find({ region: region ,sports:sport }).sort({
+      const players = await Player.find({ region: region ,sports:sport , _id: { $ne: req.player_id.id }}).sort({
         age: -1,
       });
       const total = players.length;
