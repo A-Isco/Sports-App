@@ -46,6 +46,7 @@ module.exports = {
                         img:req.file.path,
                         age:age
                     }
+                    console.log(player_obj);
                         Player.create(player_obj).then(us=>
                             {
                                 id = {"id":us._id}
