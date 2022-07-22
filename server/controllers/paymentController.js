@@ -1,4 +1,4 @@
-const stripe=require("stripe")("sk_test_51LMi6TKKFK8Inq32lMnO6GjkFl7GwPU7mga770q2lsblwXlkDsZBDQ7ypz2dmqKsYbSSJKcCCIsoRjXzgce1PXSz00qpisbQms")
+const stripe=require("stripe")("sk_test_51LMaQlGTWFnAgsr5dwZFnsDCRycMLfe5Q8sisAFYuk9I1vmIHA1D5wHjmjAr3AyEZSvm2Mtry5o25EwGU8Mkcn6V00gd0RQKH6")
 const { v4: uuidv4 } = require('uuid');
 const {custom} = require("joi");
 const chargePayment=async (req,res)=>{
@@ -18,11 +18,12 @@ const chargePayment=async (req,res)=>{
         amount:product.price*100,
         currency:'usd',
         customer:customer.id,
-        description:product.name
+        description:product.name,
+        receipt_email:token.email,
       })
       return customer;
     }).then(result=> {res.status(200).json(result)
-        //console.log(result)
+      console.log("hhhhh",token.email)
             //booking
       console.log(token.id)
   })

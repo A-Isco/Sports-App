@@ -4,6 +4,29 @@ const {Player} = require("../models/Player");
 const Place = require("../models/Place");
 const Hour = require("../models/Hour");
 const Reservation = require("../models/Reservation");
+require('dotenv').config();
+
+const nodemailer = require('nodemailer');
+const mongoose = require("mongoose");
+
+
+// Step 1
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user:  'elmal3ab123@gmail.com', // TODO: your gmail account
+        pass: 'pepjoranujfqrkkg' // TODO: your gmail password
+    }
+});
+
+// Step 2
+let mailOptions = {
+    from: 'elmal3ab123@gmail.com', // TODO: email sender
+    to: 'Rehamnader0123@gmail.com', // TODO: email receiver
+    subject: 'Nodemailer - Test',
+    text: 'Wooohooo it works!!'
+};
+
 module.exports={
     
     async getReservations(req,res,next){
@@ -38,17 +61,35 @@ module.exports={
     },
 
     async createReservation(req,res,next){
-        console.log(req.body.payment_token)
+        console.log("kkkkkk",req.body.payment_token)
         try{
             let reservation=await Reservation.create({
-                payment_token:req.body.payment_token,
+                payment_token:req.body.payment_token.id,
                 user:req.player_id.id,
                 place:req.body.place,
                 date: req.body.date,
                 time:req.body.time,
     
             })
+            let hours= await Hour.findById(req.body.time);
+            console.log(hours)
+            let mailOptions = {
+                from: 'elmal3ab123@gmail.com', // TODO: email sender
+                to:req.body.payment_token.email, // TODO: email receiver
+                subject: 'sports booking',
+                text: ` this email to confirm that you booked the ${req.body.placeName} with ${req.body.price} LE at  ${req.body.date}   ${ hours.from} to ${ hours.to} we wish you enjoy with your team 
+                                                                           thanks
+                                                                          Elmal3ab
+                `
+            };
+            transporter.sendMail(mailOptions, (err, data) => {
+                if (err) {
+                    console.log(err)
+                }
+
+            });
             return res.json({ status: true, reservation },201);
+
         }catch (ex) {
             next(ex);
             return res.json({ status: false },400);

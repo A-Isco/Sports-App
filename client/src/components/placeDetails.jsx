@@ -72,11 +72,15 @@ let PlaceDetails = () => {
         async function sendOpp(){
         let token=String(localStorage.getItem('sports_token'))
         if( data!=='undefined' && chosenTime !=='Select' && chosenTime!=='Select' && typeof chosenTime != "undefined" && typeof chosenDay != "undefined" ){
+            console.log( chosenTime)
             let timeAndDate={
             payment_token:data,
             place:place._id,
             date: chosenDay,
             time:chosenTime,
+                placeName:place.name,
+                price:place.price,
+
         }
         setBookModalIsOpen(false);
         const res =  await axios.post(

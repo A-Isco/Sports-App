@@ -28,7 +28,7 @@ let PaymentCard=({
         })
             .then((data)=>{
                 // console.log(data);
-                childToParent(token.id)
+                childToParent(token)
             })
             .catch((err)=>{
                 console.log(err)
@@ -48,7 +48,7 @@ let PaymentCard=({
         <div>
             <StripeCheckout
                 token={makePayment}
-                stripeKey="pk_test_51LMi6TKKFK8Inq32cekQ9ASjQgnbQEvoIGyW8G6tbM0J8fCOKyH9BrLuMYm4P7tYL5tWTmn2wquRlvGJMDj8q38b00olnPxdvt"
+                stripeKey="pk_test_51LMaQlGTWFnAgsr5Ajkh5kgPLm1KLYAkXKm40JYiZs8pX5y9JgdrJ2MlcLtLlWrCVPve1bzbc4Gd130X71WcMprg00TK0rcQtK"
                 name="Buy"
                 amount={product.price*0.0528853*100}
             >
