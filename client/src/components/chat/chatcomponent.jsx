@@ -241,6 +241,8 @@ const Container = styled.div`
     }
   }
   .chatHeader{
+    padding:5px;
+    margin:1px;
     position: absolute; 
     left: 20%;
     text-align:center;
@@ -253,6 +255,7 @@ const Container = styled.div`
     }
   }
   .chatContent{
+    margin-top:55px;
     height: 75vh;
     width: 35vw;
     overflow-y: auto;
