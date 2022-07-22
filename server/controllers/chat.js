@@ -1,5 +1,5 @@
 const Chat = require("../models/Chat");
-const Player = require("../models/Player");
+const {Player} = require("../models/Player");
 module.exports={
    async  getContacts(req,res,next){
     // console.log(req);

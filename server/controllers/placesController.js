@@ -1,4 +1,5 @@
 const Place = require("../models/Place");
+const {Player} = require("../models/Player");
 
 //*********************** Create Place ***********************
 const createPlace = async (req, res) => {
@@ -414,15 +415,21 @@ const deletePlace = async (req, res) => {
 const createProductReview = async (req, res) => {
 
     const placeId = req.params.id;
+    const playerId=req.player_id.id
+
+
     const {
         rating,
-        comment
+        comment,
+        player,
     } = req.body
     const place = await Place.findById(placeId)
     const review = {
         rating: Number(rating),
         comment,
+       Player:player,
     }
+    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",review)
 
     place.reviews.push(review)
 

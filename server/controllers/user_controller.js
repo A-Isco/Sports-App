@@ -1,4 +1,4 @@
-const Player = require('../models/Player.js')
+const {Player} = require('../models/Player.js')
 const jwt = require('jsonwebtoken')
 const { json } = require('body-parser')
 // import user_validation from '../user_validations'

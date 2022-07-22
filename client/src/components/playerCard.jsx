@@ -48,7 +48,7 @@ const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger
 
     }
     const createReview = (event) => {
-       event.preventDefault();
+      // event.preventDefault();
         let token=String(localStorage.getItem('sports_token'))
         const headers = {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const colors={swimming:"btn-info",football:"btn-warning" ,volleyball:"btn-danger
             .post(`http://127.0.0.1:4000/api/players/${player._id}/review`, {rating},{ headers })
             .then((res) => {
                 console.log(res);
-                 closeModal()
+                // closeModal()
                 setPlayerRate(rating)
 
             });

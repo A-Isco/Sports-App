@@ -1,5 +1,5 @@
 const Chat = require("../models/Chat");
-const Player = require("../models/Player");
+const {Player} = require("../models/Player");
 const Message = require("../models/Message");
 module.exports={
     async  getMessages(req,res,next){

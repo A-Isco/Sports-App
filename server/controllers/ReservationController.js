@@ -1,6 +1,6 @@
 var  dra  =  require('date-range-array')
 const dateLib = require('date-and-time')
-const Player = require("../models/Player");
+const {Player} = require("../models/Player");
 const Place = require("../models/Place");
 const Hour = require("../models/Hour");
 const Reservation = require("../models/Reservation");

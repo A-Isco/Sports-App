@@ -1,4 +1,4 @@
-const Player = require("../models/Player");
+const {Player} = require("../models/Player");
 
 const {schema}=require("../middleware/PlayerAuth");
 const multer  = require('multer')

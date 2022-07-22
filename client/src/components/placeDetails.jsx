@@ -21,6 +21,9 @@ let PlaceDetails = () => {
     let [place, setPlace] = useState({});
     let [rating, setrating] = useState(0);
     let [comment, setcomment] = useState("");
+    let [player, setPlayer] = useState({});
+
+
     let [opponents, setOpponents] = useState([]);
     let [chosenDay, setChosenDay] = useState();
     let [chosenTime, setChosenTime] = useState();
@@ -110,7 +113,25 @@ let PlaceDetails = () => {
             .get(`http://127.0.0.1:4000/api/places/football/${placeId}`, { headers })
             .then((res) => {
                 setPlace(res.data);
+
+
             });
+        axios
+            .get(" http://localhost:4000/api/players/card/", {
+                headers,
+            })
+            .then((res) => {
+                console.log("jjjjjjj")
+                console.log(res);
+
+                setPlayer(res.data);
+
+
+
+
+            })
+
+
     }, []);
 
     const childToParent = (childdata) => {
@@ -126,7 +147,7 @@ let PlaceDetails = () => {
 
         };
         axios
-            .post(`http://127.0.0.1:4000/api/places/football/${placeId}/review`, {rating,comment},{ headers })
+            .post(`http://127.0.0.1:4000/api/places/football/${placeId}/review`, {rating,comment,player},{ headers })
             .then((res) => {
                 console.log(res);
             });
@@ -274,6 +295,10 @@ let PlaceDetails = () => {
                         <ListGroup.Item key={review._id}>
                             {/*<strong>{review.name}</strong>*/}
                             {/*<p>{review.rating}</p>*/}
+                            {review.Player!==undefined?
+                            <div> <img src={`http://localhost:4000/${review.Player.img}`} alt={review.Player.name}  className="rounded-circle" width="50" height="30"/>
+                                <div>{review.Player.name}</div>
+                            </div>:null}
                             <div className="">
                             {review.rating!==undefined?
                             <ReactStars value={review.rating} isHalf={true} edit={false} />:null}
@@ -283,6 +308,7 @@ let PlaceDetails = () => {
                                 </div>
                             <p>{review.comment}</p>
                         </ListGroup.Item>
+
                     ))}
                     </div>
                 </ListGroup>
