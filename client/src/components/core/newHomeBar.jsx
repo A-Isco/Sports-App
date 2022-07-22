@@ -46,12 +46,12 @@ export default function Navbar() {
                     <li className="items">About Us</li>
                 </Link>
                 <NavLink to={`/chat`} className="nav-link">
-                    <li className="items">Chat</li>
+                    <img src="/images/chati.png" alt="human" width={"70px"} />
                 </NavLink>
             </ul>
         )}
 
-        <button onClick={toggleNav} className="btn"><img src="images/expand1.jpg" alt="expand" /></button>
+        <button onClick={toggleNav} className="btn"><img src="/images/expand1.jpg" alt="expand" /></button>
     </nav>
     </Container>
     )

@@ -53,7 +53,7 @@ let PaymentCard=({
                 amount={product.price*0.0528853*100}
             >
 
-               <button   className="btn-lg btn-primary "> Buy </button>
+               <button   className="btn-lg btn-primary p-2 "> Buy </button>
 
             </StripeCheckout>
         </div>

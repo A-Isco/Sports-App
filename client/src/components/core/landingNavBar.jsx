@@ -41,15 +41,16 @@ export default function LandingNavbar() {
                         <NavLink to={`/${Sport}/places`} className="nav-link">
                             <li className="items">places</li>
                         </NavLink>
-                        <NavLink to={`/chat`} className="nav-link">
-                            <li className="items">Chat</li>
-                        </NavLink>
+
                         <Link to={"/home/#sports"} className="nav-link">
                             <li className="items">Sports</li>
                         </Link>
                         <Link to={"/home/#about"} className="nav-link">
                             <li className="items">About Us</li>
                         </Link>
+                        <NavLink to={`/chat`} className="nav-link">
+                            <img src="/images/chati.png" alt="human" width={"70px"} />
+                        </NavLink>
                     </ul>
                 )}
 

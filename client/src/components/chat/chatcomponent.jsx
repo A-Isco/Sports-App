@@ -104,7 +104,9 @@ let ChatComponent=()=>{
     }
 
     let setHeader=()=>{
-                         if(typeof currentContact != "undefined")  return (<div><h3>{currentContact.player.name}</h3></div>)
+                         if(typeof currentContact != "undefined")  return (<div className="d-flex justify-content-start flex-row align-items-center"><img src={`http://localhost:4000/${currentContact.player.img}`} alt={currentContact.player.name}  className="rounded-circle" width="50" height="50"/>
+            <h1 className="m-2 text-light" >{currentContact.player.name}</h1>
+        </div>)
     }
     let chatPop= ()=>{
         var popup = document.getElementById("myPopup");
@@ -129,8 +131,11 @@ let ChatComponent=()=>{
                   <div className="contacts">
                                 {
                           contacts?.map((item) => (
-                            <div className='contact' onClick={()=>{getChatMessages(item)}} key={item.chat} >
-                            <h1  >{item.player?.name}</h1>
+                            <div className='contact d-flex justify-content-start m-3' onClick={()=>{getChatMessages(item)}} key={item.chat} >
+
+
+                                <img src={`http://localhost:4000/${item.player?.img}`} alt={item.player?.name}  className="rounded-circle m-2" width="50" height="50"/>
+                                <h1 className="m-2" >{item.player?.name}</h1>
 
                           </div>
                         ))}

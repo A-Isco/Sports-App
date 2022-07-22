@@ -56,7 +56,7 @@ let PlaceDetails = () => {
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-            width:'200px',
+            width:'600px',
             height:"200px",
             display:'flex',
             padding:'5px',
@@ -349,19 +349,22 @@ let PlaceDetails = () => {
                         }
                 </select>
                 </div>
-                <button className="btn btn-danger m-3" onClick={closeBookModal}>close</button>
+                <div className="d-flex justify-content-center flex-row align-items-center">
+                <button className="btn btn-danger  p-2 m-3" onClick={closeBookModal}>close</button>
                 {/*<button  className="btn btn-success m-3" onClick={book} type="submit">Book</button>*/}
                 {
                     renderPayment()
                     }
-                
+                </div>
             </Modal>
             <Modal
                     isOpen={confirmModalIsOpen}
                     onRequestClose={closeConfirmModal}
                     style={confirmModalStyles}
-            >
-                <h1>Done</h1>
+            >  <div className="d-flex">
+                <h1 className="text-success"> you booked the {place.name} sucessfully</h1>
+                <img src="/images/check.jpg" alt="check" width={"70px"} />
+            </div>
             </Modal>
         </div>
     );
