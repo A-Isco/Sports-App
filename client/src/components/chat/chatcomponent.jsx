@@ -122,10 +122,10 @@ let ChatComponent=()=>{
       <Container>
 
         
-        <div   id='popupIcon'  onClick={chatPop} >
+        {/* <div   id='popupIcon'  onClick={chatPop} >
                <p >Chat</p>
-        </div>
-        <div id='myPopup' className="popup">
+        </div> */}
+        <div id='myPopup' className="container1">
                   <div className="contacts">
                                 {
                           contacts?.map((item) => (
@@ -241,6 +241,8 @@ const Container = styled.div`
     }
   }
   .chatHeader{
+    padding:5px;
+    margin:1px;
     position: absolute; 
     left: 20%;
     text-align:center;
@@ -253,6 +255,7 @@ const Container = styled.div`
     }
   }
   .chatContent{
+    margin-top:55px;
     height: 75vh;
     width: 35vw;
     overflow-y: auto;
