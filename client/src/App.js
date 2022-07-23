@@ -6,6 +6,7 @@ import PlayerProfile from "./components/playerProfile";
 import EditProfile from "./components/EditProfile";
 import TestProfile from "./components/TestProfile";
 import ChatComponent from './components/chat/chatcomponent.jsx'
+import CalenderComponent from './components/calender/calendercomponent'
 import PlaceDetails from "./components/placeDetails";
 import PlacesCreatePage from "./components/PlacesCreatePage";
 import PlacesEditPage from "./components/placesEditPage";
@@ -100,6 +101,8 @@ console.log("Is Logged In", isLoggedIn)
 
 
       <Route path="/chat" element={<PrivateRoute component={ChatComponent} />} />
+      <Route path="/calender" element={<PrivateRoute component={CalenderComponent} />} />
+
 
 
 

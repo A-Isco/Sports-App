@@ -41,6 +41,10 @@ export default function LandingNavbar() {
                         <NavLink to={`/${Sport}/places`} className="nav-link">
                             <li className="items">places</li>
                         </NavLink>
+                        <NavLink to={`/calender`} className="nav-link">
+                            <li className="items">Calender</li>
+                        </NavLink>
+                        
 
                         <Link to={"/home/#sports"} className="nav-link">
                             <li className="items">Sports</li>

@@ -20,14 +20,19 @@ let transporter = nodemailer.createTransport({
 });
 
 // Step 2
-
+let mailOptions = {
+    from: 'elmal3ab123@gmail.com', // TODO: email sender
+    to: 'Rehamnader0123@gmail.com', // TODO: email receiver
+    subject: 'Nodemailer - Test',
+    text: 'Wooohooo it works!!'
+};
 
 module.exports={
-
+    
     async getReservations(req,res,next){
         var date_time = new Date();
         date_time.setDate(new Date().getDate() + 1)
-        hours= await Hour.find({})
+        hours= await Hour.find({}) 
         const value = dateLib.addDays(date_time, 6);
         let date1=formDate(date_time)
         let date2=formDate(value)
@@ -41,7 +46,7 @@ module.exports={
                     date: day,
                     time:hour
                 }
-                opponents.push(opponent)
+                opponents.push(opponent)  
             });
         });
         reservedOpponents.forEach(reElement => {
@@ -50,7 +55,7 @@ module.exports={
                     opponents.splice(opponents.indexOf(element), 1);
                 }
             });
-
+            
         });
         return res.json({'opponents':opponents},200);
     },
@@ -64,7 +69,7 @@ module.exports={
                 place:req.body.place,
                 date: req.body.date,
                 time:req.body.time,
-
+    
             })
             let hours= await Hour.findById(req.body.time);
             console.log(hours)
@@ -90,11 +95,24 @@ module.exports={
             return res.json({ status: false },400);
      }
 
+    },
+
+    async getReservedOpponent(req,res,next){
+        console.log('kkkl')
+        try{
+            let reservedOpponents=await Reservation.find({user:req.player_id.id}).populate('time').populate('place')
+            return res.json({'reservedOpponents':reservedOpponents},200);
+        }catch (ex) {
+            next(ex);
+            return res.json({ status: false },400);
+     }
+
     }
 
 
 
-
+  
+    
 
 }
 function formDate(date_time){
