@@ -46,7 +46,7 @@ export default function Navbar() {
                     <li className="items">About Us</li>
                 </Link>
                 <NavLink to={`/calender`} className="nav-link">
-                <li className="items">Calender</li>
+                    <img src="/images/calenderi.png" alt="human" width={"60px"} />
                 </NavLink>
                 <NavLink to={`/chat`} className="nav-link">
                     <img src="/images/chati.png" alt="human" width={"70px"} />

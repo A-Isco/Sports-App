@@ -41,9 +41,7 @@ export default function LandingNavbar() {
                         <NavLink to={`/${Sport}/places`} className="nav-link">
                             <li className="items">places</li>
                         </NavLink>
-                        <NavLink to={`/calender`} className="nav-link">
-                            <li className="items">Calender</li>
-                        </NavLink>
+
                         
 
                         <Link to={"/home/#sports"} className="nav-link">
@@ -52,6 +50,9 @@ export default function LandingNavbar() {
                         <Link to={"/home/#about"} className="nav-link">
                             <li className="items">About Us</li>
                         </Link>
+                        <NavLink to={`/calender`} className="nav-link">
+                            <img src="/images/calenderi.png" alt="human" width={"60px"} />
+                        </NavLink>
                         <NavLink to={`/chat`} className="nav-link">
                             <img src="/images/chati.png" alt="human" width={"70px"} />
                         </NavLink>

@@ -9,15 +9,16 @@ console.log(event)
         <>
                 
                 <Container>
-                
-                    <div class="card">
-                    <img class="card-img-top" src={event.place.profile[0]} alt="Card image cap"/>
+                <div className="min-vh-100" >
+                    <div class="card mt-5 ">
+                    <img class="card-img-top " src={event.place.profile[0]} alt="Card image cap" width="300" height="250"/>
                     <div class="card-body">
                         <h5 class="card-title">{event.place.name}</h5>
                         <h5 class="card-title">{event.date}</h5>
                         <h5 class="card-title">From:{event.time.from}  To:{event.time.to}</h5>
                     </div>
                     </div>
+                </div>
                 </Container>
         </>
    

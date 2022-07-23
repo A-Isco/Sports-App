@@ -140,7 +140,8 @@ let ChatComponent=()=>{
                           </div>
                         ))}
               
-                  </div>  
+                  </div>
+            <div>
                   <div className='chatHeader'>
                     {setHeader()}
                   </div>
@@ -170,7 +171,8 @@ let ChatComponent=()=>{
                               <input   onChange={(e)=>{setMessage(e.target.value)}} value={sendedMessage} className='inputsend' type='text'/>
                               <button onClick={()=>{sendMessage()}}>send</button>
                             </div>
-              </div> 
+              </div>
+        </div>
       
         
       </Container>

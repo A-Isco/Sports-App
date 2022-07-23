@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="merged with main">
-      <change afterPath="$PROJECT_DIR$/../client/src/components/calender/calendercard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/src/components/calender/calendercomponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.js" afterDir="false" />
+    <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="merged with calender">
+      <change afterPath="$PROJECT_DIR$/../client/public/images/calenderi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/components/calender/calendercard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/calender/calendercard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/landing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/ReservationController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ReservationController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/reservations.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/reservations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658342471285</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="merged with calender">
+      <created>1658598308624</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658598308624</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge book" />
     <MESSAGE value="merged with main" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged with main" />
+    <MESSAGE value="merged with calender" />
+    <option name="LAST_COMMIT_MESSAGE" value="merged with calender" />
   </component>
 </project>
