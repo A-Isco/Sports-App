@@ -29,7 +29,7 @@ const createPlace = async (req, res) => {
             address:req.body.address
         });
 
-        console.log(place);
+        //console.log(place);
 
         await place.save();
         res.status(200).json({
@@ -44,7 +44,7 @@ const createPlace = async (req, res) => {
 //*********************** Get Places ***********************
 const getPlaces = async (req, res) => {
     let sport = req.params.sport;
-    console.log(sport)
+   // console.log(sport)
     const q = req.query.q;
 
     const PAGE_SIZE = 3;

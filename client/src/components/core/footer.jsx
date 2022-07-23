@@ -5,7 +5,7 @@ let footer = ()=>{
         <>
         <Container>
             <div className="footer text-center">
-                Copyright  <img src="/images/copyright.png" alt="copyrights" />  2022 OS42
+                Copyright  <img src="/images/copyright.png" alt="copyrights" />  2022 EL Mal3ab
             </div>
         </Container>
         </>

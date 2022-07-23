@@ -14,43 +14,49 @@ module.exports = {
 
     },
     create_player:(req,res,next)=>{
+
         Player.find({"email":req.body.email}).then((player)=>{
-        if (player != '')
-                res.status(400).send('email already exists')
+            if(!req.file){
+                res.status(400).send("Only .png, .jpg and .jpeg format allowed!");
 
-            else{
-                let player_body =   player_validation.validate(req.body,{aboutEarly:false})
-                if(player_body.error){
-                    let str = ''
-                    player_body.error.details.map(element=>{
-                        str+=element.message+'\n'
-                    })
-                    res.status(400).send(str);
-                }else{
-                    const my_sports=req.body.sports;
-                    const sports_arr=my_sports.split(',');
-                    var ageDifMs = (Date.now() - new Date(req.body.birth_date).getTime());
-                    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-                    var age= Math.abs(ageDate.getUTCFullYear() - 1970);
+            }else {
 
-                bcrypt.hash(player_body.value['password'], 10, function(err, hash) {
-                        player_body.value['password']=hash
-                    player_obj={
-                        name: req.body.name,
-                        email: req.body.email,
-                        password: player_body.value['password'],
-                        gender: req.body.gender,
-                        birth_date: req.body.birth_date,
-                        region: req.body.region,
-                        sports: sports_arr,
-                        img:req.file.path,
-                        age:age
-                    }
-                    console.log(player_obj);
-                        Player.create(player_obj).then(us=>
-                            {
-                                const id = {"id":us._id}
-                                jwt.sign(id,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1h'}, (err, token) => {
+
+                if (player != '')
+                    res.status(400).send('email already exists')
+
+                else {
+                    let player_body = player_validation.validate(req.body, {aboutEarly: false})
+                    if (player_body.error) {
+                        let str = ''
+                        player_body.error.details.map(element => {
+                            str += element.message + '\n'
+                        })
+                        res.status(400).send(str);
+                    } else {
+                        const my_sports = req.body.sports;
+                        const sports_arr = my_sports.split(',');
+                        var ageDifMs = (Date.now() - new Date(req.body.birth_date).getTime());
+                        var ageDate = new Date(ageDifMs); // miliseconds from epoch
+                        var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+                        bcrypt.hash(player_body.value['password'], 10, function (err, hash) {
+                            player_body.value['password'] = hash
+                            player_obj = {
+                                name: req.body.name,
+                                email: req.body.email,
+                                password: player_body.value['password'],
+                                gender: req.body.gender,
+                                birth_date: req.body.birth_date,
+                                region: req.body.region,
+                                sports: sports_arr,
+                                img: req.file.path,
+                                age: age
+                            }
+                            console.log(player_obj);
+                            Player.create(player_obj).then(us => {
+                                const id = {"id": us._id}
+                                jwt.sign(id, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'}, (err, token) => {
                                     jwt.sign(id, process.env.REFRESH_TOKEN_SECRET, {}, (err2, refresh_token) => {
                                         const obj = {
                                             token: token,
@@ -60,12 +66,12 @@ module.exports = {
                                     })
                                 });
                             })
-                        .catch(next)
+                                .catch(next)
 
-                });
+                        });
 
 
-
+                    }
                 }
             }
         })

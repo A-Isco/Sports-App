@@ -41,8 +41,8 @@ var upload = multer({
     if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
       cb(null, true);
     } else {
-      cb(null, false);
-      return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+      cb(null, true);
+     // return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
     }
   }
 });

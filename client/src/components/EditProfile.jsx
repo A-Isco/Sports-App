@@ -84,6 +84,7 @@ let EditProfile = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [value,setValue]=useState("");
     const [errors, SetErrors] = useState("");
+    const [imgerr,setImgerr]=useState("");
 
 
 
@@ -131,7 +132,15 @@ let EditProfile = () => {
 
             })
             .catch((response) => {
-                SetErrors(response.response.data.error.details[0].message);
+               if(response.response.data==="Only .png, .jpg and .jpeg format allowed!"){
+                   setImgerr(response.response.data)
+                   SetErrors({});
+               }
+                //console.log(response.response.data.error.details[0].message)
+                      else if(response.response.data.error.details[0].message!==undefined) {
+                   SetErrors(response.response.data.error.details[0].message);
+                   setImgerr("");
+               }
             });
         console.log(Player);
     }
@@ -254,12 +263,21 @@ let EditProfile = () => {
                             </label>
                     </div>
                     <button className="btn btn-primary btn-block  form-control mt-3 mb-3" type="submit"  >Update</button>
+
                     {(errors.length > 0) ?
                         <div className="mt-2  form-control mx-auto alert alert-danger ">
                             {errors}
 
                         </div>:null
                     }
+                    {(imgerr!=="") ?
+                        <div className="mt-2  form-control mx-auto alert alert-danger ">
+                            {imgerr}
+
+                        </div>:null
+                    }
+
+
                     </form>
 
         </div>

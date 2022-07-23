@@ -24,7 +24,9 @@ const createPlayer = async (req, res) => {
       message: `New Player has been Created`,
     });
   } catch (error) {
+    console.log("error occurred")
     res.status(500).send(error.message);
+
   }
 };
 
@@ -80,77 +82,57 @@ const getPlayersBySearch = async (req, res) => {
 //get 1 player
 
 const getPlayer = async (req, res) => {
-  console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
-  console.log(req);
+
 
   //const playerId = req.params.id;
   const playerId=req.player_id.id
-  console.log(playerId)
+
   const player=await Player.findById(playerId)
-  console.log(player)
+
   res.send(player);
 
 };
 const updatePlayer=async (req,res)=>{
+    try {
+      //const value =  playerauth.validate(req.body);
+      const value = schema.validate(req.body);
+      id = req.player_id.id
+      const my_sports = req.body.sports;
+      sports_arr = my_sports.split(',');
+
+
+      if (!value.error) {
+        const player1 = await Player.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
+        const playersports = await Player.findByIdAndUpdate(id, {sports: sports_arr}, {new: true, runValidators: true});
+
+        if (req.file) {
+          console.log("ddd",req.file.mimetype)
+          if(req.file.mimetype !== "image/png" && req.file.mimetype && "image/jpg" && req.file.mimetype !== "image/jpeg"){
+            console.log("imagesjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+            res.status(400).send("Only .png, .jpg and .jpeg format allowed!");
+          }else {
+            const inserted_image = req.file.path;
+            console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+            const playerimg = await Player.findByIdAndUpdate(id, {img: inserted_image}, {new: true, runValidators: true});
+
+          }
 
 
 
+        }
+        res.send(player1);
 
 
+      } else {
+        res.status(400);
+        res.send(value);
+      }
 
-
-
-
-  console.log("up")
-  console.log(req.file)
-  //console.log(req.params.id)
-  console.log(req.body)
-  console.log(req.body)
-  try {
-    //const value =  playerauth.validate(req.body);
-    const value=schema.validate(req.body);
-    //console.log("val")
-   // console.log(req.file.mimetype)
-   //  const splitted=req.file.mimetype.split("/");
-   //  console.log("llllllllllllllllllllllllllllllllllllllll");
-   //  console.log(splitted[1]);
-    id=req.player_id.id
-    const my_sports=req.body.sports;
-    //console.log("sports");
-    //console.log(my_sports)
-    sports_arr=my_sports.split(',');
-    //console.log("ibsgjfnmdc mcmndmndmncdfdc,dnfkldjlkfjlkdfmf");
-
-
-
-    console.log("storage")
-    //console.log(storage);
-
-
-
-
-    if(!value.error){
-    const player1= await Player.findByIdAndUpdate(id,req.body,{new:true,runValidators:true});
-    const playersports=await Player.findByIdAndUpdate(id,{sports:sports_arr},{new:true,runValidators:true});
-
-      if (req.file){
-      const inserted_image=req.file.path;
-      console.log(inserted_image)
-
-
-      const playerimg=await Player.findByIdAndUpdate(id,{img:inserted_image},{new:true,runValidators:true});
-
+    } catch (err) {
+     // res.send(err)
+      console.log(err)
     }
-      res.send(player1);
-    }else {
-   res.status(400);
-  res.send(value);
-    }
-  }
-  catch (err) {
-    res.send(err)
-    console.log(err)
-  }
+
 };
 // app.post('/profile', upload.single('img'), function (req, res, next) {
 //   // req.file is the `avatar` file

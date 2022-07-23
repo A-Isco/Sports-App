@@ -1,5 +1,11 @@
 const Joi = require('joi')
+//const BaseJoi = require('joi')
+
 const { joiPassword } = require('joi-password');
+// const ImageExtension = require('joi-image-extension')
+// const joi = Joi.extend(ImageExtension)
+
+
 let user_validation = Joi.object().keys({
     name:Joi.string().min(3).required(),
     email:Joi.string().email().required(),
@@ -20,7 +26,7 @@ let user_validation = Joi.object().keys({
     img:Joi.allow(),
     age:Joi.number()
         .min(18)
-        .max(100)
+        .max(100),
 
 
 })
