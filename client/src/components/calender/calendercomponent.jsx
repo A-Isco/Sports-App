@@ -35,9 +35,11 @@ let CalenderComponent=()=>{
         <>
                 <Navbar/>
                 <Container>
+                    <div className="d-flex justify-content-start min-vh-100 flex-wrap ">
                 {
                        renderReservations()
                         }
+                    </div>
                 </Container>
         </>
    

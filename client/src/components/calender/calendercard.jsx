@@ -9,8 +9,8 @@ console.log(event)
         <>
                 
                 <Container>
-                <div className="min-vh-100" >
-                    <div class="card mt-5 ">
+                <div className="" >
+                    <div class="card ">
                     <img class="card-img-top " src={event.place.profile[0]} alt="Card image cap" width="300" height="250"/>
                     <div class="card-body">
                         <h5 class="card-title">{event.place.name}</h5>
