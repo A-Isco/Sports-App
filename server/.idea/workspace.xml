@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee9bcaa1-3a95-4489-a74b-abac745b6ce5" name="Changes" comment="merged with calender">
-      <change afterPath="$PROJECT_DIR$/../client/public/images/calenderi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/calender/calendercard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/calender/calendercard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/chat/chatcomponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/landingNavBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/core/newHomeBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
