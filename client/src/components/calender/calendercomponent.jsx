@@ -25,7 +25,7 @@ let CalenderComponent=()=>{
                    if( typeof reservations != "undefined"){
                     console.log('data:')
                         console.log(reservations)
-                        return(    reservations.reverse().map((item) => (
+                        return(    reservations.map((item) => (
                                 <CalenderCard event={item}></CalenderCard>
                             )))
                    }
