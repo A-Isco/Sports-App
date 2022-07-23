@@ -95,7 +95,20 @@ module.exports={
             return res.json({ status: false },400);
      }
      
+    },
+
+    async getReservedOpponent(req,res,next){
+        console.log('kkkl')
+        try{
+            let reservedOpponents=await Reservation.find({user:req.player_id.id}).populate('time').populate('place')
+            return res.json({'reservedOpponents':reservedOpponents},200);
+        }catch (ex) {
+            next(ex);
+            return res.json({ status: false },400);
+     }
+
     }
+
 
 
   
